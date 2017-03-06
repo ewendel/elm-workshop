@@ -13,22 +13,33 @@ init =
     ( { game = NotStarted }, Cmd.none )
 
 
-setCardOpen : Bool -> Card -> Deck -> Deck
-setCardOpen open card deck =
+setCard : CardState -> Card -> Deck -> Deck
+setCard state card deck =
     (deck
         |> List.map
             (\c ->
                 if c.id == card.id && c.group == card.group then
-                    { c | open = open }
+                    { c | state = state }
                 else
                     c
             )
     )
 
 
-matchCards : Card -> Card -> Bool
-matchCards c1 c2 =
-    c1.id == c2.id && c1.group /= c2.group
+closeUnmatched : Deck -> Deck
+closeUnmatched =
+    List.map
+        (\c ->
+            if c.state /= Matched then
+                { c | state = Closed }
+            else
+                c
+        )
+
+
+allMatched : Deck -> Bool
+allMatched deck =
+    deck |> List.all (\c -> c.state == Matched)
 
 
 updateCardClick : Card -> GameState -> GameState
@@ -38,19 +49,30 @@ updateCardClick clickedCard state =
             state
 
         Choosing deck ->
-            Matching
-                (setCardOpen True clickedCard deck)
-                clickedCard
+            let
+                updatedDeck =
+                    deck
+                        |> closeUnmatched
+                        |> setCard Open clickedCard
+            in
+                Matching
+                    updatedDeck
+                    clickedCard
 
         Matching deck openCard ->
             let
                 updatedDeck =
-                    if matchCards clickedCard openCard then
-                        (setCardOpen True clickedCard deck)
+                    if clickedCard.id == openCard.id && clickedCard.group /= openCard.group then
+                        deck
+                            |> setCard Matched clickedCard
+                            |> setCard Matched openCard
                     else
-                        (setCardOpen False openCard deck)
+                        setCard Open clickedCard deck
             in
-                Choosing updatedDeck
+                if allMatched updatedDeck then
+                    GameOver deck
+                else
+                    Choosing updatedDeck
 
         GameOver deck ->
             state
@@ -83,19 +105,20 @@ imgUrlPrefix =
 
 viewCard : Card -> Html Msg
 viewCard card =
-    if card.open then
-        li [ class "card open" ]
-            [ text (toString card) ]
-        -- [ img [ src (imgUrlPrefix ++ card.id) ] []
-        -- ]
-    else
-        li [ class "card" ]
-            [ img
-                [ src (imgUrlPrefix ++ "13337")
-                , onClick (CardClick card)
+    case card.state of
+        Closed ->
+            li [ class "card" ]
+                [ img
+                    [ src (imgUrlPrefix ++ "13337")
+                    , onClick (CardClick card)
+                    ]
+                    []
                 ]
-                []
-            ]
+
+        _ ->
+            li [ class "card open" ]
+                [ img [ src (imgUrlPrefix ++ card.id) ] []
+                ]
 
 
 viewCards : Deck -> Html Msg

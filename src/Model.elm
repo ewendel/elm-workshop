@@ -12,9 +12,15 @@ type GameState
     | GameOver Deck
 
 
+type CardState
+    = Closed
+    | Open
+    | Matched
+
+
 type alias Card =
     { group : Group
-    , open : Bool
+    , state : CardState
     , id : String
     }
 

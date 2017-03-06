@@ -1,6 +1,6 @@
 module GameGenerator exposing (generateDeck)
 
-import Model exposing (Game, Deck, Card, Group(..))
+import Model exposing (Game, Deck, Card, Group(..), CardState(..))
 import Random
 import Random.List
 
@@ -18,10 +18,10 @@ generateDeck =
             ]
 
         groupA =
-            urls |> List.map (Card A False)
+            urls |> List.map (Card A Closed)
 
         groupB =
-            urls |> List.map (Card B False)
+            urls |> List.map (Card B Closed)
     in
         List.concat [ groupA, groupB ]
             |> Random.List.shuffle
