@@ -35,7 +35,11 @@ viewCard card =
 
 viewCards : Deck -> Html Msg
 viewCards cards =
-    div [ class "cards" ] (List.map viewCard cards)
+    div [ class "cards" ]
+        [ h1 [] [ text "Catnip Carnival" ]
+        , div []
+            (List.map viewCard cards)
+        ]
 
 
 setCard : CardState -> Card -> Deck -> Deck
@@ -128,9 +132,12 @@ view model =
             viewCards deck
 
         GameOver ->
-            div []
+            div [ class "victory" ]
                 [ text "You won!"
-                , button [ onClick RestartGame ]
+                , button
+                    [ class "restart"
+                    , onClick RestartGame
+                    ]
                     [ text "Click to restart"
                     ]
                 ]

@@ -1,9 +1,14 @@
 body {
   font-family: 'Source Sans Pro', 'Trebuchet MS', 'Lucida Grande', 'Bitstream Vera Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Pacifico', cursive;
   font-size: 30px;
   margin: 0;
   text-align: center;
   color: #293c4b;
+}
+
+h1 {
+  margin: 0 auto;
 }
 
 img {
@@ -33,4 +38,17 @@ ul {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   justify-content: space-between;
+}
+
+.victory {
+  font-size: 72px;
+}
+
+.restart {
+  display: block;
+  margin: 0 auto;
+  border: 0;
+  background: none;
+  font-family: inherit;
+  font-size: 24px;
 }
