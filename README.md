@@ -1,154 +1,107 @@
-This project is bootstrapped with [Create Elm App](https://github.com/halfzebra/create-elm-app).
+## Task 1 - Hello, world!
+File: Main.elm
 
-Below you will find some information on how to perform basic tasks.  
-You can find the most recent version of this guide [here](https://github.com/halfzebra/create-elm-app/blob/master/template/README.md).
+Code is not compiling - need HTML, not `String`.
+1. Create text node with the `text` function - it takes a `String` and returns some HTML
+1. Create a function `greet` that has the signature `greet : String -> Html a`
+  * Strings are concatenated by `++`
+  * `greet "my name"` should output `Hello, my name` to the screen
+1. Move the `Hello, ` prefix to a value, use it in `greet`
+1. Add type signatures
 
-## Table of Contents
-- [Sending feedback](#sending-feedback)
-- [Folder structure](#folder-structure)
-- [Installing Elm packages](#installing-elm-packages)
-- [Installing JavaScript packages](#installing-js-packages)
-- [Available scripts](#available-scripts)
-  - [elm-app build](#elm-app-build)
-  - [elm-app start](#elm-app-start)
-  - [elm-app test](#elm-app-test)
-  - [elm-app eject](#elm-app-eject)
-  - [elm-app <elm-platform-comand>](#elm-app-elm-platform-comand)
-    - [package](#package)
-    - [repl](#repl)
-    - [make](#make)
-    - [reactor](#reactor)
-- [Adding Images and Fonts](#adding-images-and-fonts)
-- [IDE setup for Hot Module Replacement](#ide-setup-for-hot-module-replacement)
+## Task 2 - types!
+1. Create a value `card` that has property `id` = "1" - it's a new record!
+1. Add it's type annotation
+1. Create function `viewCard : { id : String } -> Html a` -> return its `id`
+1. Call `viewCard` from `main` with `card`
+1. Instead of returning the card's `id`, return an `img` with `src "/static/closed.png"
+1. Create union type `CardState = Open | Closed | Matched`
+1. Add `state : CardState` in for `card` usages
+1. Create `type alias` for `Card`, use it for `card` and `viewCard`
+1. Rename `card` to `openCard`; add `closedCard` and `matchedCard`
+1. Create `viewCards : List Card -> Html a`
+  * `List.map viewCard cards`
+1. Call `viewCards` with `[ openCard, closedCard, matchedCard ]`
+1. In `viewCard`; pattern match on `card.state`
+  * For `Closed`, show "/static/closed.png"
+  * For `Open` and `Matched`, show "/static/cats/{cardId}.png"
+1. Add the respective css classes `open`, `closed` and `matched`
 
-## Sending feedback
-You are very welcome with any [feedback](https://github.com/halfzebra/create-elm-app/issues)
+## Task 3 - Beginner program!
+1. Create a type alias called `Model` with a field `cards : List Card`
+1. Create the type `Msg` that has just a `CardClick Card`
+1. Create a function `update : Msg -> Model -> Model` that just returns the model it's passed
+1. Create function `view : Model -> Html a` that calls `viewCards`
+1. Change `main` to `Html.beginnerProgram { ... }`
+1. Create `setCard : CardState -> Card -> Card` -> `{ card | state = state }`
+1. Pattern match on `msg` in `update`. Open the clicked card.
+1. Add `onClick (CardClick card)` on the closed card
 
-## Installing Elm packages
+## Task 4 - The game!
+1. `type alias Deck = List Card`
+1. `type Group = A | B`
+1. Add `group : Group` to `Card`
+1. Update `Model` to have `deck`
+1. Move all types to file `Model.elm`
+  * Remember to expose them
+1. Add file `GameGenerator.elm` with the following contents:
 
-```sh
-elm-app package install <package-name>
-```
-
-## Installing JavaScript packages
-
-To use JavaScript packages from npm, you'll need to add a `package.json`, install the dependencies, and you're ready to go.
-
-```sh
-npm init -y # Add package.json
-npm install --save-dev pouchdb-browser # Install library from npm
-```
-
-```js
-// Use in your JS code
-var PouchDB = require('pouchdb-browser');
-var db = new PouchDB('mydb');
-```
-
-## Folder structure
-```
-my-app/
-  .gitignore
-  README.md
-  elm-package.json
-  src/
-    favicon.ico
-    index.html
-    index.js
-    main.css
-    Main.elm
-  tests/
-    elm-package.json
-    Main.elm
-    Tests.elm
-```
-For the project to build, these files must exist with exact filenames:
-
-- `src/index.html` is the page template;
-- `src/favicon.ico` is the icon you see in the browser tab;
-- `src/index.js` is the JavaScript entry point.
-
-You can delete or rename the other files.
-
-You may create subdirectories inside src.
-
-## Available scripts
-In the project directory you can run:
-### `elm-app build`
-Builds the app for production to the `dist` folder.  
-
-The build is minified, and the filenames include the hashes.  
-Your app is ready to be deployed!
-
-### `elm-app start`
-Runs the app in the development mode.  
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.  
-You will also see any lint errors in the console.
-
-### `elm-app test`
-Run tests with [node-test-runner](https://github.com/rtfeldman/node-test-runner/tree/master)
-
-You can make test runner watch project files by running:
-```sh
-elm-app test --watch
-```
-
-### `elm-app eject`
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Elm Platform, etc.) right into your project, so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point, you’re on your own.
-
-You don’t have to use 'eject' The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However, we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-### `elm-app <elm-platform-comand>`
-Create Elm App does not rely on the global installation of Elm Platform, but you still can use it's local Elm Platform to access default command line tools:
-
-#### `package`
-Alias for [elm-package](http://guide.elm-lang.org/get_started.html#elm-package)
-
-Use it for installing Elm packages from [package.elm-lang.org](http://package.elm-lang.org/)
-
-#### `repl`
-Alias for [elm-repl](http://guide.elm-lang.org/get_started.html#elm-repl)
-
-#### `make`
-Alias for  [elm-make](http://guide.elm-lang.org/get_started.html#elm-make)
-
-#### `reactor`
-Alias for  [elm-reactor](http://guide.elm-lang.org/get_started.html#elm-reactor)
-
-## Adding Images and Fonts
-
-With Webpack, using static assets like images and fonts works similarly to CSS.
-
-By requiring an image in JavaScript code, you tell Webpack to add a file to the build of your application. The variable will contain a unique path to the said file.
-
-Here is an example:
-
-```js
-require('./main.css');
-var logoPath = require('./logo.svg'); // Tell Webpack this JS file uses this image
-var Elm = require('./Main.elm');
-
-var root = document.getElementById('root');
-
-Elm.Main.embed(root, logoPath); // Pass image path as a flag.
-```
-Later on, you can use the image path in your view for displaying it in the DOM.
+### GameGen
 
 ```elm
-view : Model -> Html Msg
-view model =
-    div []
-        [ img [ src model.logo ] []
-        , div [] [ text model.message ]
-        ]
+module GameGenerator exposing (staticDeck, randomDeck)
+
+staticDeck : Deck
+staticDeck =
+    let
+        urls =
+            [ "1"
+            , "2"
+            , "3"
+            , "4"
+            , "5"
+            , "6"
+            ]
+
+        groupA =
+            urls |> List.map (\id -> { id = id, state = Closed, group = A })
+
+        groupB =
+            urls |> List.map (\id -> { id = id, state = Closed, group = B })
+    in
+        List.concat [ groupA, groupB ]
+
+generateDeck : Random.Generator Deck
+generateDeck =
+    staticDeck
+        |> Random.List.shuffle
 ```
 
+1. Use `GameGenerator.staticDeck` as model's initial value
+1. Have fun clicking cards for about 20 minutes.
 
-## IDE setup for Hot Module Replacement
-Remember to disable [safe write](https://webpack.github.io/docs/webpack-dev-server.html#working-with-editors-ides-supporting-safe-write) if you are using VIM or IntelliJ IDE, such as WebStorm.
+## Task 5 - The game 2
+1. Add `type GameState = Choosing Deck | Matching Deck Card | GameOver`
+1. Change `Model` to `{ game : GameState }` and `init` to `{ game = Choosing GameGenerator.staticDeck }`
+1. Change `view` to accommodate this; just return whatever in whatever
+1. Create function `updateCardClick : Card -> GameState -> GameState`
+  * Only worry about `Choosing` branch -> Next `GameState` is `Matching`
+1. Call `updateCardClick` from the `update` function
+1. Change `setCard` to `setCard : CardState -> Card -> Deck -> Deck`
+  * `if c.id == card.id && c.group == card.group then`....
+  * Use this from `updateCardClick`
+1. Create `isMatching : Card -> Card -> Bool`
+1. Create `closeUnmatched : Deck -> Deck`
+1. Create `allMatched : Deck -> Bool`
+  * (`List.all`)
+1. Implement the `Matching` branch in `updateCardClick`
+  * When the two cards match (`isMatching`), set both cards to `Matched` (PIPELINE)
+  * When the two cards do not match, set the second card to `Open`
+  * Go to `Choosing` state
+1. In `Choosing` state, close all unmatched cards before opening the clicked card
+1. In `Matching`, if all cards match after updating deck, go to `GameOver`
+1. In the "game over" view, congratulate the user and add a button that restarts the game
+1. Move the game's initial state to a value `init : Model`
+1. On "restart button click" set the model to `init`
+
+## Task 6 - Side effects and randomness
