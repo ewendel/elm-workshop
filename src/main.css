@@ -9,6 +9,7 @@ body {
 img {
   margin: 20px 0;
   max-width: 200px;
+  border-radius: 999px;
 }
 
 ul {
@@ -22,6 +23,9 @@ ul {
 .cards {
   display: flex;
   flex-wrap: wrap;
+  width: 800px;
+  width: 75%;
+  margin: 0 auto;
 }
 
 .card {
@@ -34,6 +38,7 @@ ul {
 }
 
 .card .open {
+  border-radius: 99999px;
 }
 
 .card .matched {

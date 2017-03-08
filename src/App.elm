@@ -100,7 +100,7 @@ update msg model =
 
 imgUrlPrefix : String
 imgUrlPrefix =
-    "http://lorempixel.com/200/200/cats/"
+    "/static/cats/"
 
 
 viewCard : Card -> Html Msg
@@ -109,7 +109,9 @@ viewCard card =
         Closed ->
             li [ class "card" ]
                 [ img
-                    [ src (imgUrlPrefix ++ "13337")
+                    [ src (imgUrlPrefix ++ "question-mark.png")
+                    , width 200
+                    , height 200
                     , onClick (CardClick card)
                     ]
                     []
@@ -117,7 +119,7 @@ viewCard card =
 
         _ ->
             li [ class "card open" ]
-                [ img [ src (imgUrlPrefix ++ card.id) ] []
+                [ img [ src (imgUrlPrefix ++ card.id ++ ".jpg") ] []
                 ]
 
 
