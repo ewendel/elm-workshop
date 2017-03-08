@@ -1,12 +1,18 @@
-module GameGenerator exposing (generateDeck)
+module GameGenerator exposing (generateDeck, staticDeck)
 
-import Model exposing (Game, Deck, Card, Group(..), CardState(..))
+import Model exposing (Deck, Card, Group(..), CardState(..))
 import Random
 import Random.List
 
 
 generateDeck : Random.Generator Deck
 generateDeck =
+    staticDeck
+        |> Random.List.shuffle
+
+
+staticDeck : Deck
+staticDeck =
     let
         urls =
             [ "1"
@@ -18,10 +24,9 @@ generateDeck =
             ]
 
         groupA =
-            urls |> List.map (Card A Closed)
+            urls |> List.map (\url -> { id = url, group = A, state = Closed })
 
         groupB =
-            urls |> List.map (Card B Closed)
+            urls |> List.map (\url -> { id = url, group = B, state = Closed })
     in
         List.concat [ groupA, groupB ]
-            |> Random.List.shuffle

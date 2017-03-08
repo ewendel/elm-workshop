@@ -36,10 +36,3 @@ ul {
   box-sizing: border-box;
   justify-content: space-between;
 }
-
-.card .open {
-  border-radius: 99999px;
-}
-
-.card .matched {
-}

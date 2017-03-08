@@ -46,7 +46,7 @@ module.exports = {
       {
         test: /\.elm$/,
         exclude: [ /elm-stuff/, /node_modules/ ],
-        loader: 'elm-hot!elm-webpack?verbose=true&warn=true&debug=true&pathToMake=' + paths.elmMake
+        loader: 'elm-hot!elm-webpack?verbose=true&warn=false&debug=true&pathToMake=' + paths.elmMake
       },
       {
         test: /\.css$/,

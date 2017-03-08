@@ -1,42 +1,10 @@
 module Model exposing (..)
 
 
-type alias Score =
-    Int
-
-
 type GameState
-    = NotStarted
-    | Choosing Deck
+    = Choosing Deck
     | Matching Deck Card
-    | GameOver Deck
-
-
-type CardState
-    = Closed
-    | Open
-    | Matched
-
-
-type alias Card =
-    { group : Group
-    , state : CardState
-    , id : String
-    }
-
-
-type Group
-    = A
-    | B
-
-
-type alias Deck =
-    List Card
-
-
-type alias Game =
-    { cards : List Card
-    }
+    | GameOver
 
 
 type alias Model =
@@ -45,7 +13,27 @@ type alias Model =
 
 
 type Msg
-    = StartGameClick
-    | DeckGenerated Deck
-    | CardClick Card
-    | GameTimeout
+    = CardClicked Card
+    | RestartGame
+
+
+type CardState
+    = Open
+    | Closed
+    | Matched
+
+
+type alias Deck =
+    List Card
+
+
+type Group
+    = A
+    | B
+
+
+type alias Card =
+    { id : String
+    , group : Group
+    , state : CardState
+    }
