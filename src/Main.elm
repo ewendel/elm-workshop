@@ -36,7 +36,7 @@ viewCard card =
 viewCards : Deck -> Html Msg
 viewCards cards =
     div [ class "cards" ]
-        [ h1 [] [ text "Catnip Carnival" ]
+        [ h1 [] [ text "Memory Meow" ]
         , div []
             (List.map viewCard cards)
         ]
