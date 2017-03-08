@@ -12,14 +12,14 @@ viewCard card =
     case card.state of
         Open ->
             img
-                [ class "open"
+                [ class "card open"
                 , src ("/static/cats/" ++ card.id ++ ".jpg")
                 ]
                 []
 
         Closed ->
             img
-                [ class "closed"
+                [ class "card closed"
                 , onClick (CardClicked card)
                 , src ("/static/cats/closed.png")
                 ]
@@ -27,7 +27,7 @@ viewCard card =
 
         Matched ->
             img
-                [ class "matched"
+                [ class "card matched"
                 , src ("/static/cats/" ++ card.id ++ ".jpg")
                 ]
                 []
@@ -35,7 +35,7 @@ viewCard card =
 
 viewCards : Deck -> Html Msg
 viewCards cards =
-    div [] (List.map viewCard cards)
+    div [ class "cards" ] (List.map viewCard cards)
 
 
 setCard : CardState -> Card -> Deck -> Deck

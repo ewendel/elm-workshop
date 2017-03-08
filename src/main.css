@@ -10,14 +10,12 @@ img {
   margin: 20px 0;
   max-width: 200px;
   border-radius: 999px;
+  max-height: 200px;
 }
 
 ul {
   padding: 0;
   margin: 0;
-}
-
-.game {
 }
 
 .cards {
