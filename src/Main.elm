@@ -3,8 +3,9 @@ module Main exposing (..)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
-import GameGenerator
+import DeckGenerator
 import Model exposing (..)
+import Random
 
 
 viewCard : Card -> Html Msg
@@ -107,19 +108,22 @@ updateCardClick clickedCard game =
             game
 
 
-update : Msg -> Model -> Model
+update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         CardClicked card ->
-            { model | game = updateCardClick card model.game }
+            ( { model | game = updateCardClick card model.game }, Cmd.none )
+
+        DeckGenerated deck ->
+            ( { game = Choosing deck }, Cmd.none )
 
         RestartGame ->
-            init
+            ( init, Cmd.none )
 
 
 init : Model
 init =
-    { game = Choosing GameGenerator.staticDeck }
+    { game = Choosing DeckGenerator.static }
 
 
 view : Model -> Html Msg
@@ -144,8 +148,12 @@ view model =
 
 
 main =
-    Html.beginnerProgram
-        { model = init
+    Html.program
+        { init =
+            ( init
+            , Random.generate DeckGenerated DeckGenerator.random
+            )
         , view = view
         , update = update
+        , subscriptions = \s -> Sub.none
         }

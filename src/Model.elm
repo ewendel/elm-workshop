@@ -14,6 +14,7 @@ type alias Model =
 
 type Msg
     = CardClicked Card
+    | DeckGenerated Deck
     | RestartGame
 
 

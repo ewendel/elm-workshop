@@ -1,15 +1,272 @@
-## Task 1 - Hello, world!
-File: Main.elm
+# Elm Arcade 
+# Getting Started With Elm and Typed Functional Programming
 
-Code is not compiling - need HTML, not `String`.
-1. Create text node with the `text` function - it takes a `String` and returns some HTML
-1. Create a function `greet` that has the signature `greet : String -> Html a`
-  * Strings are concatenated by `++`
-  * `greet "my name"` should output `Hello, my name` to the screen
-1. Move the `Hello, ` prefix to a value, use it in `greet`
-1. Add type signatures
+Welcome to this workshop! Today we're learning Elm and basic functional programming techniques from the ML-language family through creating the classic game Memory.
 
-## Task 2 - types!
+The workshop will cover the following topics:
+
+* Tuples
+* Records
+* Type Inference
+* Type Signatures (Hindley-Milner type system)
+* Union Types
+* Type Aliases
+* Pattern Matching
+* Functions
+* Partial Application
+* Currying
+
+Some of these concepts may be unfamiliar and somewhat confusing to begin with, but please do ask us if and when you get stuck, or simply have a question. That's what we're here for!
+
+## Prerequisites
+
+We hope you've already done the following:
+
+1. Clone this repo to your computer
+
+2. Install `elm`. This can be done with `npm`, `brew` or an old-school file download from elm-lang.org.
+
+3. Install `elm-format`. This is a really crucial tool to make your learning experience more enjoyable. ([github.com/avh4/elm-format#for-elm-018]())
+
+4. Atom has the best Elme addons around, namely [Elmjutsu](https://atom.io/packages/elmjutsu). You really should install it if you're on Atom, or perhaps consider Atom for your Elm career.
+
+If not, please at least do step one, two and three.
+
+Before we begin, start your local application enviroment with `npm start` in the root folder. This should open a new browser window with `localhost:3000`.
+
+## Level 1 - Hello, world!
+File: _Main.elm_
+
+As you can see in your browser, the app will fill the screen with an error message if your code does not compile. This is a big difference between JavaScript and Elm! You will have to run your JavaScript code in the browser to discover any programming mistakes, while Elm will simply not compile with errors.
+
+Read the error message on screen.
+
+The creators of Elm have put a lot of energy into creating helpful error messages that guide towards solving the problem.
+
+Our app is now telling us that the value of `main` has the wrong type: it is a `String` but it should be either `Html`, `Svg` or `Program`.
+
+To change the String into Html we'll need to call a function that does exactly that:
+
+`text "I am going to be a HTML text node, hooray!"`
+#### Function calls in Elm
+
+Unlike JavaScript, Elm uses
+
+* a space between function name and argument list, not parens
+* spaces between arguments, not commas
+
+```elm
+// JavaScript
+add(2,3) == 5
+
+-- Elm
+add 2 3 == 5
+```
+
+This means that calling our `text` function in JavaScript would look something like this:
+
+`text("I am going to be a HTML node, hooray!")`
+
+In terms of types, which is a huge part of Elm, `text` has the following _type signature_:
+
+[text: String -> Html](http://package.elm-lang.org/packages/evancz/elm-html/4.0.1/Html#text)
+
+The colon means "has the type", so the line reads as _"text has the type string to html"_. 
+
+Clicking the link takes you the documentation.
+Now you should be able to see "Hello World" printed on the screen.
+
+### Creating a greeting function
+
+Now we want to create a function that takes a name and greets. It has this type signature:
+`greet: String -> String`
+
+Called with "Erik", it should produce the string "Hello, Erik". Thus:
+
+`greet "Erik" == "Hello, Erik"`
+
+Here is an example of a function that takes two numbers and returns the sum of those numbers:
+
+```
+add x y =
+	x + y
+```
+
+There are several things to note here:
+
+* There's no `return` keyword - the evaluated value of the function body is automatically returned
+* The parameters are named and follows the function name
+* You don't have to specify the types for the parameters - they are _inferred_! This can be done because Elm sees the addition operator (`+`) and knows that it only works on numbers. Therefore, x and y must be numbers!
+
+Go ahead and make the `greet` function. The string concatenation operator in Elm is `++`
+
+### A prefix binding
+
+When you got that part down, lets move the prefix into a variable so that it can be reused later.
+Creating a variable, or binding as they are called in Elm, is similar to a function with _zero_ arguments. Try it out!
+
+### Adding type signatures
+
+Before we finish off this first level, try adding type signatures to both the function and the binding. Type signatures are never needed as the compiler can infer them, but we usually add them anyway to make our code easier to read.
+
+Type signatures look like this:
+
+```
+addOne : Int -> Int
+addOne x =
+	x + 1
+```
+
+## Level 2 - Learning types
+
+From here on we'll move in small steps, writing small chunks of code that will be a part of our final game, while adding more and more features from functional programming and Elm along the way. Ready, set, go!
+
+### It's a new record!
+
+We are going to create a representation of a "card" - something that is hiding a picture and can be flipped by the player. We'll start off with creating the equivalent data structure of a JavaScript object - a _record_ .
+
+```
+// JavaScript
+
+var card = {
+	name: 'Tom Cruise',
+	expensiveShoes: true
+}
+
+-- Elm
+card : { name: String, fancyShoes: Bool }
+card = {
+	name = "Tom Cruise",
+	expensiveShoes = true
+}
+```
+
+Our Elm record should contain a single field `id` of type String - this string will refer to the file name of the image our card will be hiding.
+
+Next up - let's render our card to the screen. Write the following function:
+
+`viewCard: { id: String ] -> Html a`
+
+### About the scary type..
+
+Don't worry about that scary type `Html a` - we'll learn more about that later! Simply put, it's just saying that "hey, our Html will emit som actions later on, and they'll be of type _a_ (which is a type placeholder)
+
+
+### Rendering HTML to the screen
+
+Oh, right, we didn't tell you about HTML yet! If you're familiar with the library React.js, the following section might feel familiar to you.
+
+```
+// JavaScript with React
+<div class="ninja">
+	<span>Banzai!</span>
+</div>
+
+
+-- Elm
+div [ class "ninja" ] [ 
+	span [] [ text "Banzai!" ] 
+]
+```
+
+All HTML tags have their own functions in Elm, and they all accept two parameters:
+
+1. a list of `Html.Attribute`
+2. a list of zero or more `Html` nodes
+
+Here, we want you to represent a card with the following Html:
+
+```
+<div>
+	<img src="/static/cats/" + card.id + ".jpg" />
+</div>
+```
+
+Remember, the string concatenation operator is `++`!
+
+You should now see a beautiful little kitten on you screen.
+
+### Union Types: Representing card state
+
+Memory requires us to flip a card and reveal it's image when clicked. This means we need a way to represent card state, as a card can be in one of three potential states: `{ open | closed | matched }`.
+
+Think about how we'd store this state in JS. Most likely, we'd reach for a string:
+
+```
+{
+	id: '1',
+	state: 'open'
+}
+```
+
+This is obviously not very safe. This doesn't constrain us to using only the three possible values, and there's nothing to avoid typing errors. Elm and other ML-languages have a great feature for this use case: _Union Types_.
+
+A union type is like a Java or C# enumerable - a union type is a value that may be one of a fixed set of values. Like black pieces may only be white or black.
+
+```
+type PieceColor = White | Black
+```
+
+`PieceColor` is now treated a fullworthy type in our system, just as `String` or `Bool`. `White` or `Black` are _constructor functions_, functions that take _zero_ arguments and return a value of type `PieceColor`. Or, said with a type signature:
+
+```
+White : PieceColor
+Black : PieceColor
+```
+
+Union types may also carry data. This means that the _constructor functions_ for such union type values aren't zero argument functions:
+
+```
+type CustomerAge = Unknown | Age Int
+
+Unknown: CustomerAge
+Age: Int -> CustomerAge
+```
+
+Let's say we either have an age value for a given customer, or we don't. 
+This _accompanying data_ that is wrapped within a union type may be of any type, and they don't have to the same for all value types within a union.
+
+Some people say that _union types_ can be seen as _enums on stereoids_. In a way, thats fitting description.
+
+Let's create a union type called `CardState` that can be either `open`, `closed` or `matched`.
+
+Enrich our previous `card` record with a field `state` that carries a `CardState` value.
+You'll also have to update the signature of `viewCard`.
+Our `card` should now have the following type signature:
+
+```
+card: { id: String, state: CardState }
+```
+
+By now it should become clear that our signature for `card` is getting unwieldy. Imagine maintaining signatures for our card objects all around the codebase as we add more fields!
+
+### Type Alias (alias slayer) 
+
+_Type aliases_ allow us to define a record with a specified data structure as a new type. Let's model everyone favourite data structure using a type alias:
+
+```
+type alias Person = {
+	name: String,
+	age: CustomerAge
+}
+```
+
+The above code tells the Elm compiler that a `Person` is a record with a field `name` of type `String`, and a field `age` of the type `CustomerAge` (that we defined earlier).
+
+This allows to use this type throughout our code:
+
+```
+getName : Person -> String
+getName person = 
+	person.name
+```
+
+Imagine calling this function with an object without a name field. In JavaScript, this would obviously crash hard, but in Elm - the code won't even compile! This moves the time of discovering the error from compiletime og runtime, which is a huge deal.
+
+Create a type alias `Card` that defines the card data structure from before. Use this new type in the signatures of `viewCard` and `card`
+
+
+
 1. Create a value `card` that has property `id` = "1" - it's a new record!
 1. Add it's type annotation
 1. Create function `viewCard : { id : String } -> Html a` -> return its `id`

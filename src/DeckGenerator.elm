@@ -1,18 +1,18 @@
-module GameGenerator exposing (generateDeck, staticDeck)
+module DeckGenerator exposing (random, static)
 
 import Model exposing (Deck, Card, Group(..), CardState(..))
 import Random
 import Random.List
 
 
-generateDeck : Random.Generator Deck
-generateDeck =
-    staticDeck
+random : Random.Generator Deck
+random =
+    static
         |> Random.List.shuffle
 
 
-staticDeck : Deck
-staticDeck =
+static : Deck
+static =
     let
         urls =
             [ "1"
