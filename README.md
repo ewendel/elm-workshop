@@ -274,34 +274,64 @@ Imagine calling this function with an object without a name field. In JavaScript
 
 Create a type alias `Card` that defines the card data structure from before. Use this new type in the signatures of `viewCard` and `card`
 
+### Rendering all the states
 
+Let's expand our single card to three cards, each representing one of the three possible values of `CardState`.
 
-1. Create a value `card` that has property `id` = "1" - it's a new record!
-1. Add it's type annotation
-1. Create function `viewCard : { id : String } -> Html a` -> return its `id`
-1. Call `viewCard` from `main` with `card`
-1. Instead of returning the card's `id`, return an `img` with `src "/static/closed.png"
-1. Create union type `CardState = Open | Closed | Matched`
-1. Add `state : CardState` in for `card` usages
-1. Create `type alias` for `Card`, use it for `card` and `viewCard`
-1. Rename `card` to `openCard`; add `closedCard` and `matchedCard`
-1. Create `viewCards : List Card -> Html a`
-  * `List.map viewCard cards`
-1. Call `viewCards` with `[ openCard, closedCard, matchedCard ]`
-1. In `viewCard`; pattern match on `card.state`
-  * For `Closed`, show "/static/closed.png"
-  * For `Open` and `Matched`, show "/static/cats/{cardId}.png"
-1. Add the respective css classes `open`, `closed` and `matched`
+Next, we're going to create this function: `viewCards : List Card -> Html a`.
 
-## Level 3 - Beginner program!
-1. Create a type alias called `Model` with a field `cards : List Card`
-1. Create the type `Msg` that has just a `CardClick Card`
-1. Create a function `update : Msg -> Model -> Model` that just returns the model it's passed
-1. Create function `view : Model -> Html a` that calls `viewCards`
-1. Change `main` to `Html.beginnerProgram { ... }`
-1. Create `setCard : CardState -> Card -> Card` -> `{ card | state = state }`
-1. Pattern match on `msg` in `update`. Open the clicked card.
-1. Add `onClick (CardClick card)` on the closed card
+Notice how the type signature helps in communicating what the function does! Type signatures are a very powerful tool, as you will discover throughout this workshop.
+
+Make sure you render the correct image source for each card (`{id}.png`)
+
+Hint: `List.map viewCards cards`
+
+### Matching all the patterns
+
+The next languge feature we will be using is `Pattern Matching`. It can best be described as a switch-statement on stereoids, allowing us to do more than simple matching on a value:
+
+```
+isAdult : CustomerAge -> Bool
+isAdult age =
+    case age of
+        CustomerAge age ->
+            age > 18
+        Unknown ->
+            false
+```
+
+This is a powerful technique, and is almost always used whenever there's a union type around. In this case, it is handy for rendering different stuff based on the `CardState` of a card.
+
+For rendering cards, use the following logic:
+
+- For `Closed`, show `"/static/closed.png"`
+- For `Open` and `Matched`, show `"/static/cats/{cardId}.png"`
+- Add the respective css classes `open`, `closed` and `matched`
+
+## Level 3 - Beginner Program!
+
+In this section, we will take our first steps toward learning The Elm Architecture (TEA), the architecture that inspired Dan Abramov to write Redux. 
+
+We've made it this far without TEA because have a simple, static app. Now we want to start responding to user input, and TEA is the Elm structures applications and handles interactivity.
+
+The goal of the section is to implement card clicking: all cards should start as `Closed`, and change to `Open` when clicked. Don't worry about `Matched` for now - we'll deal with that later.
+
+[Begin by reading the official docs on `Html.beginnerProgram`](http://package.elm-lang.org/packages/elm-lang/html/1.1.0/Html-App#beginnerProgram)
+
+[You may also find the docs on The Elm Architecture interesting.](https://guide.elm-lang.org/architecture/)
+
+Now that you're getting warm, we will be giving you fewer specific instructions and more high-level requirements. Use the workshop hosts if you have questions and don't forget to make use of the helpfulness of the compiler.
+
+Section outline:
+
+4. Create a helper function `setCard: CardState -> Card -> Card`. See the docs for [updating a record](http://elm-lang.org/docs/records#updating-records)
+1. Change `main` to `Html.beginnerProgram { ... }`. Read the docs to see what parameters it accepts!
+2. Our `Model` should have the following type: `{ cards : List Card }`
+3. Create the type `Msg` with the value `CardClick`
+4. Use pattern matching in `update` on the type of `Msg`
+5. Add an event handler on closed cards
+
+When this section is complete, you should render three closed cards, each of them opening when clicked.
 
 ## Level 4 - The game!
 
