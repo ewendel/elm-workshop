@@ -1,4 +1,4 @@
-# Elm Arcade 
+# Elm Arcade
 # Getting Started With Elm and Typed Functional Programming
 
 Welcome to this workshop! Today we're learning Elm and basic functional programming techniques from the ML-language family through creating the classic game Memory.
@@ -28,7 +28,7 @@ We hope you've already done the following:
 
 3. Install `elm-format`. This is a really crucial tool to make your learning experience more enjoyable. ([github.com/avh4/elm-format#for-elm-018]())
 
-4. Atom has the best Elme addons around, namely [Elmjutsu](https://atom.io/packages/elmjutsu). You really should install it if you're on Atom, or perhaps consider Atom for your Elm career.
+4. At the time of writing, Atom has the best Elm addons around, namely [Elmjutsu](https://atom.io/packages/elmjutsu). You really should install it if you're on Atom, or perhaps consider Atom for your Elm career.
 
 If not, please at least do step one, two and three.
 
@@ -80,7 +80,7 @@ In terms of types, which is a huge part of Elm, `text` has the following _type s
 
 [text: String -> Html](http://package.elm-lang.org/packages/evancz/elm-html/4.0.1/Html#text)
 
-The colon means "has the type", so the line reads as _"text has the type string to html"_. 
+The colon means "has the type", so the line reads as _"text has the type string to html"_.
 
 Clicking the link takes you the documentation.
 Now you should be able to see "Hello World" printed on the screen.
@@ -173,8 +173,8 @@ Oh, right, we didn't tell you about HTML yet! If you're familiar with the librar
 
 
 -- Elm
-div [ class "ninja" ] [ 
-	span [] [ text "Banzai!" ] 
+div [ class "ninja" ] [
+	span [] [ text "Banzai!" ]
 ]
 ```
 
@@ -232,7 +232,7 @@ Unknown: CustomerAge
 Age: Int -> CustomerAge
 ```
 
-Let's say we either have an age value for a given customer, or we don't. 
+Let's say we either have an age value for a given customer, or we don't.
 This _accompanying data_ that is wrapped within a union type may be of any type, and they don't have to the same for all value types within a union.
 
 Some people say that _union types_ can be seen as _enums on stereoids_. In a way, thats fitting description.
@@ -249,7 +249,7 @@ card: { id: String, state: CardState }
 
 By now it should become clear that our signature for `card` is getting unwieldy. Imagine maintaining signatures for our card objects all around the codebase as we add more fields!
 
-### Type Alias (alias slayer) 
+### Type Alias (alias slayer)
 
 _Type aliases_ allow us to define a record with a specified data structure as a new type. Let's model everyone favourite data structure using a type alias:
 
@@ -266,7 +266,7 @@ This allows to use this type throughout our code:
 
 ```
 getName : Person -> String
-getName person = 
+getName person =
 	person.name
 ```
 
@@ -397,33 +397,38 @@ Have fun clicking cards for about 20 minutes.
 
 Let's now implement the game logic!
 
-As we've established, our game has three states: `Choosing`, `Matching` and `GameOver`.
+First, let's create some nice helper functions:
+* `closeUnmatched : Deck -> Deck`
+* `allMatched : Deck -> Bool` - Hint: the `List` module has a nice function called `all`
+* `isMatching : Card -> Card -> Bool`. Hint: for two cards to match, both their `id`s and `group`s must match.
+
+As we will soon see, our `setCard` will be more useful if it has this signature: `setCard : CardState -> Card -> Deck -> Deck`. That is, it should map over the passed deck and update the card in the list that matches the passed card with the passed `CardState`.
+
+
+As we established earlier, our game has three states: `Choosing`, `Matching` and `GameOver`.
 Let's implement this as a union type called `GameState`.
 
 The `GameOver` state does not need any extra data, but `Choosing` needs a `Deck` (the deck we are choosing from), and `Matching` needs both a `Deck` (the deck we are choosing from) and a `Card` (the card we are trying to match with).
 
-1. Add `type GameState = Choosing Deck | Matching Deck Card | GameOver`
-1. Change `Model` to `{ game : GameState }` and `init` to `{ game = Choosing DeckGenerator.static }`
-1. Change `view` to accommodate this; just return whatever in whatever
-1. Create function `updateCardClick : Card -> GameState -> GameState`
-  * Only worry about `Choosing` branch -> Next `GameState` is `Matching`
-1. Call `updateCardClick` from the `update` function
-1. Change `setCard` to `setCard : CardState -> Card -> Deck -> Deck`
-  * `if c.id == card.id && c.group == card.group then`....
-  * Use this from `updateCardClick`
-1. Create `isMatching : Card -> Card -> Bool`
-1. Create `closeUnmatched : Deck -> Deck`
-1. Create `allMatched : Deck -> Bool`
-  * (`List.all`)
-1. Implement the `Matching` branch in `updateCardClick`
-  * When the two cards match (`isMatching`), set both cards to `Matched` (PIPELINE)
-  * When the two cards do not match, set the second card to `Open`
-  * Go to `Choosing` state
-1. In `Choosing` state, close all unmatched cards before opening the clicked card
-1. In `Matching`, if all cards match after updating deck, go to `GameOver`
-1. In the "game over" view, congratulate the user and add a button that restarts the game
-1. Move the game's initial state to a value `init : Model`
-1. On "restart button click" set the model to `init`
+Instead of our `Model` holding a deck of cards, it should now hold a property (maybe called `state`?) with type `GameState`.
+Hint: The `init` value should be `Choosing` with the static deck from `DeckGenerator`.
+
+Since we now have to pattern match on both the `msg` and the game state in our update function, we can simplify things by creating a function that only takes care of updating the game state when the player clicks a card.
+This function should have the following signature: `updateCardClick : Card -> GameState -> GameState`.
+* In `Choosing` state
+  1. Close all unmatched cards
+  2. Open the clicked card
+* In `Matching` state
+  1. When the two cards match , set both cards to `Matched`. When the two cards do not match, set the clicked card to `Open`.
+  1. If all cards are now matched, go to `GameOver`. If not, go to `Choosing`.
+* In `GameOver` state, do nothing
+
+
+You will also have to update the `view` function to accomodate for the new shape of our model.
+Refreshing the page every time you want to play another game is boring, so try to add a "restart game" button in the "Game over" view. Hint: it is common to have a top-level value called `init`.
+
+Now, take a minute to pat yourself on the back for making an awesome game in Elm!
+
 
 ## Level 6 - Side effects and randomness
 1. Change `beginnerProgram` to `program`
@@ -435,5 +440,7 @@ The `GameOver` state does not need any extra data, but `Choosing` needs a `Deck`
 
 
 ## Bonus levels
-1. Count the number of attempts the player uses, use that as score
-1. Count how long the player takes to finish the game. Use [Time.now](http://package.elm-lang.org/packages/elm-lang/core/5.1.1/Time#now) together with [Task.perform](http://package.elm-lang.org/packages/elm-lang/core/5.1.1/Task#perform) to get the current time
+* Count the number of attempts the player uses, use that as score
+* Let the player enter a name
+* Save each game's score and show a high score table
+* Count how long the player takes to finish the game. Use [Time.now](http://package.elm-lang.org/packages/elm-lang/core/5.1.1/Time#now) together with [Task.perform](http://package.elm-lang.org/packages/elm-lang/core/5.1.1/Task#perform) to get the current time
