@@ -234,7 +234,7 @@ Age: Int -> CustomerAge
 Let's say we either have an age value for a given customer, or we don't. 
 This _accompanying data_ that is wrapped within a union type may be of any type, and they don't have to the same for all value types within a union.
 
-Some people say that _union types_ can be seen as _enums on stereoids_. In a way, thats fitting description.
+Some people say that _union types_ can be seen as _enums on stereoids_. In a way, that's a fitting description.
 
 Let's create a union type called `CardState` that can be either `Open`, `Closed` or `Matched` (union type values are always capitalized).
 
@@ -250,7 +250,7 @@ By now it should become clear that our signature for `card` is getting unwieldy.
 
 ### Type Alias (alias slayer) 
 
-_Type aliases_ allow us to define a record with a specified data structure as a new type. Let's model everyone favourite data structure using a type alias:
+_Type aliases_ allow us to define a record with a specified data structure as a new type. Let's model everyone's favourite data structure using a type alias:
 
 ```
 type alias Person = {
@@ -431,38 +431,60 @@ Let's implement this as a union type called `GameState`.
 
 The `GameOver` state does not need any extra data, but `Choosing` needs a `Deck` (the deck we are choosing from), and `Matching` needs both a `Deck` (the deck we are choosing from) and a `Card` (the card we are trying to match with).
 
-1. Add `type GameState = Choosing Deck | Matching Deck Card | GameOver`
-1. Change `Model` to `{ game : GameState }` and `init` to `{ game = Choosing DeckGenerator.static }`
-1. Change `view` to accommodate this; just return whatever in whatever
-1. Create function `updateCardClick : Card -> GameState -> GameState`
-  * Only worry about `Choosing` branch -> Next `GameState` is `Matching`
-1. Call `updateCardClick` from the `update` function
-1. Change `setCard` to `setCard : CardState -> Card -> Deck -> Deck`
-  * `if c.id == card.id && c.group == card.group then`....
-  * Use this from `updateCardClick`
-1. Create `isMatching : Card -> Card -> Bool`
-1. Create `closeUnmatched : Deck -> Deck`
-1. Create `allMatched : Deck -> Bool`
-  * (`List.all`)
-1. Implement the `Matching` branch in `updateCardClick`
-  * When the two cards match (`isMatching`), set both cards to `Matched` (PIPELINE)
-  * When the two cards do not match, set the second card to `Open`
-  * Go to `Choosing` state
-1. In `Choosing` state, close all unmatched cards before opening the clicked card
-1. In `Matching`, if all cards match after updating deck, go to `GameOver`
-1. In the "game over" view, congratulate the user and add a button that restarts the game
-1. Move the game's initial state to a value `init : Model`
-1. On "restart button click" set the model to `init`
 
-## Level 6 - Side effects and randomness
-1. Change `beginnerProgram` to `program`
+
+To recap our implementation:
+* In `Choosing` state
+  1. Close all unmatched cards
+  2. Open the clicked card
+* In `Matching` state
+  1. When the two cards match , set both cards to `Matched`. When the two cards do not match, set the clicked card to `Open`.
+  1. If all cards are now matched, go to `GameOver`. If not, go to `Choosing`.
+* In `GameOver` state, do nothing
+
+
+You will also have to update the `view` function to accomodate for the new shape of our model.
+Refreshing the page every time you want to play another game is boring, so try to add a "restart game" button in the "Game over" view. Hint: it is common to have a top-level value called `init`.
+
+Now, take a minute to pat yourself on the back for making an awesome game in Elm!
+
+## Level 6 - Let's get random!
+
+You might have noticed that our game is kind of easy; the cards are in the same spots every time, and that's no fun!
+Let's make things more interesting by shuffling the deck of cards at the start of each game.
+
+Shuffling a list of something includes randomness, and generating random numbers is an effectful operation. (Short explanation?)
+If you look through the type signatures of the functions we have written so far, there is no way to express side effects because Elm is a _pure_ functional language. Luckily, we have a way to do that.
+
+To generate something random, we can to use the built-in function `Random.generate`, which has the signature: `Random.generate : (a -> msg) -> Generator a -> Cmd msg`.
+The `Generator a` part is covered by `DeckGenerator.random : Generator Deck`, so that means you have to supply a function that takes a `Deck` and returns a `Msg`.
+
+Now you're probably wondering what that `Cmd` thingy is, so take a minute and head on over to the official documentation, which has nice, short explanations of [_subscriptions_](http://package.elm-lang.org/packages/elm-lang/core/5.1.1/Platform-Sub#Sub) and [_commands_](http://package.elm-lang.org/packages/elm-lang/core/5.1.1/Platform-Cmd#Cmd).
+
+Since we're now not longer _beginners_ we should change `Html.beginnerProgram` to `Html.program`.
+
+There are a couple of changes we have to make this official transition from _beginners_ to _adepts_.
+
+* The argument to `Html.program` differ slightly from the argument to `Html.beginnerProgram`:
+  1. `model` is now called `init`, and it's type is now `(Model, Cmd Msg)`
+  1. The record should have a new field called `subscriptions : Model -> Sub Msg`.
+* `update` now has the type signature `update : Msg -> Model -> (Model, Cmd Msg)`
+
+Hint: in your code you can use `Sub.none` and `Cmd.none` when you don't have any _subscriptions_ or _commands_ you want to perform.
+
+So, to summarize:
+
+1. Change `beginnerProgram` to `program` and modify it's argument:
   * Rename `model` to `init`
-  * Add `subscriptions = \_ -> Sub.none`
   * Change `init` and `update` according to new type sigs (`Cmd.none`)
-1. Add new constructor for `Msg`; `DeckGenerated Deck`
-1. When starting the game, return the command `Random.generate DeckGenerated DeckGenerator.random`
+  * Add the `subscriptions` field in the record
+2. Create a function that takes a `Deck` and returns a `Msg`
+1. When starting the game, return the command to generate the random deck along with the initial `model`
 
+Once done, you have nothing left to do but congratulate yourself on making an awesome memory game in Elm! Congratulations!
 
 ## Bonus levels
-1. Count the number of attempts the player uses, use that as score
-1. Count how long the player takes to finish the game. Use [Time.now](http://package.elm-lang.org/packages/elm-lang/core/5.1.1/Time#now) together with [Task.perform](http://package.elm-lang.org/packages/elm-lang/core/5.1.1/Task#perform) to get the current time
+* Count the number of attempts the player uses, use that as score
+* Let the player enter a name
+* Save each game's score and show a high score table
+* Count how long the player takes to finish the game. Use [Time.now](http://package.elm-lang.org/packages/elm-lang/core/5.1.1/Time#now) together with [Task.perform](http://package.elm-lang.org/packages/elm-lang/core/5.1.1/Task#perform) to get the current time
