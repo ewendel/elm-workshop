@@ -269,7 +269,7 @@ getName person =
 	person.name
 ```
 
-Imagine calling this function with an object without a name field. In JavaScript, this would obviously crash hard, but in Elm - the code won't even compile! This moves the time of discovering the error from compiletime og runtime, which is a huge deal.
+Imagine calling this function with an object without a name field. In JavaScript, this would obviously crash hard, but in Elm - the code won't even compile! This moves the time of discovering the error from compiletime to runtime, which is a huge deal.
 
 Create a type alias `Card` that defines the card data structure from before. Use this new type in the signatures of `viewCard` and `card`
 
@@ -303,9 +303,9 @@ This is a powerful technique, and is almost always used whenever there's a union
 
 For rendering cards, use the following logic:
 
-- For `Closed`, show `"/static/closed.png"`
+- For `Closed`, show `"/static/cats/closed.png"`
 - For `Open` and `Matched`, show `"/static/cats/{cardId}.jpg"`
-- Add the respective css classes `open`, `closed` and `matched`
+- Add the respective css classes `open`, `closed` and `matched` to the `img` tags
 
 ## Level 3 - Beginner Program!
 
