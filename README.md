@@ -196,7 +196,7 @@ You should now see a beautiful little kitten on you screen.
 
 ### Union Types: Representing card state
 
-Memory requires us to flip a card and reveal it's image when clicked. This means we need a way to represent card state, as a card can be in one of three potential states: `{ open | closed | matched }`.
+Memory requires us to flip a card and reveal it's image when clicked. This means we need a way to represent card state, as a card can be in one of three potential states: `Open | Closed | Matched`.
 
 Think about how we'd store this state in JS. Most likely, we'd reach for a string:
 
