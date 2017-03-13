@@ -236,7 +236,7 @@ This _accompanying data_ that is wrapped within a union type may be of any type,
 
 Some people say that _union types_ can be seen as _enums on stereoids_. In a way, thats fitting description.
 
-Let's create a union type called `CardState` that can be either `open`, `closed` or `matched`.
+Let's create a union type called `CardState` that can be either `Open`, `Closed` or `Matched` (union type values are always capitalized).
 
 Enrich our previous `card` record with a field `state` that carries a `CardState` value.
 You'll also have to update the signature of `viewCard`.
