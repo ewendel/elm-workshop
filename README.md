@@ -157,7 +157,7 @@ Next up - let's render our card to the screen. Write the following function:
 
 ### About the scary type..
 
-Don't worry about that scary type `Html msg` - we'll learn more about that later! Simply put, it's just saying that "hey, our Html will emit som actions later on, and they'll be of type _a_ (which is a type placeholder)
+Don't worry about that scary type `Html msg` - we'll learn more about that later! Simply put, it's just saying that "hey, our Html will emit some actions later on, and they'll be of type _a_ (which is a type placeholder)
 
 
 ### Rendering HTML to the screen
