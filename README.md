@@ -323,7 +323,7 @@ Now that you're getting warm, we will be giving you fewer specific instructions 
 
 Section outline:
 
-4. Create a helper function `setCard: CardState -> Card -> Card`. See the docs for [updating a record](http://elm-lang.org/docs/records#updating-records)
+4. Create a helper function `setCard: CardState -> Card -> Card`. The function should update the `CardState` of the passed `Card` and return a new `Card`. See the docs for [updating a record](http://elm-lang.org/docs/records#updating-records)
 1. Change `main` to `Html.beginnerProgram { ... }`. Read the docs to see what parameters it accepts!
 2. Our `Model` should have the following type: `{ cards : List Card }`
 3. Create the type `Msg` with the value `CardClick`
