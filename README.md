@@ -26,9 +26,9 @@ We hope you've already done the following:
 
 2. Install `elm`. This can be done with `npm`, `brew` or an old-school file download from elm-lang.org.
 
-3. Install `elm-format`. This is a really crucial tool to make your learning experience more enjoyable. ([github.com/avh4/elm-format#for-elm-018]())
+3. Install [`elm-format`](github.com/avh4/elm-format#for-elm-018). This is a really crucial tool to make your learning experience more enjoyable. 
 
-4. Atom has the best Elme addons around, namely [Elmjutsu](https://atom.io/packages/elmjutsu). You really should install it if you're on Atom, or perhaps consider Atom for your Elm career.
+4. Atom has the best Elm addons around, namely [Elmjutsu](https://atom.io/packages/elmjutsu). You really should install it if you're on Atom, or perhaps consider Atom for your Elm career.
 
 Before we begin, start your local application enviroment with `npm start` in the root folder. This should open a new browser window with `localhost:3000`.
 
@@ -138,14 +138,14 @@ We are going to create a representation of a "card" - something that is hiding a
 
 var card = {
 	name: 'Tom Cruise',
-	expensiveShoes: true
+	expensiveShoes: True
 }
 
 -- Elm
-card : { name: String, fancyShoes: Bool }
+card : { name: String, expensiveShoes: Bool }
 card = {
 	name = "Tom Cruise",
-	expensiveShoes = true
+	expensiveShoes = True
 }
 ```
 
@@ -153,7 +153,7 @@ Our Elm record should contain a single field `id` of type String - this string w
 
 Next up - let's render our card to the screen. Write the following function:
 
-`viewCard: { id: String ] -> Html a`
+`viewCard: { id: String } -> Html a`
 
 ### About the scary type..
 
@@ -296,7 +296,7 @@ isAdult age =
         CustomerAge age ->
             age > 18
         Unknown ->
-            false
+            False
 ```
 
 This is a powerful technique, and is almost always used whenever there's a union type around. In this case, it is handy for rendering different stuff based on the `CardState` of a card.
