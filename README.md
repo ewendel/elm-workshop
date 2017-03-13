@@ -149,7 +149,7 @@ card = {
 }
 ```
 
-Our Elm record should contain a single field `id` of type String - this string will refer to the file name of the image our card will be hiding.
+Our Elm record should contain a single field `id` of type String - this string will refer to the file name of the image our card will be hiding. Start with `id = "1"`.
 
 Next up - let's render our card to the screen. Write the following function:
 
