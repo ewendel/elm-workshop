@@ -138,14 +138,14 @@ We are going to create a representation of a "card" - something that is hiding a
 
 var card = {
 	name: 'Tom Cruise',
-	expensiveShoes: True
+	expensiveShoes: true
 }
 
 -- Elm
-card : { name: String, expensiveShoes: Bool }
+card : { name: String, fancyShoes: Bool }
 card = {
 	name = "Tom Cruise",
-	expensiveShoes = True
+	expensiveShoes = true
 }
 ```
 
@@ -153,11 +153,11 @@ Our Elm record should contain a single field `id` of type String - this string w
 
 Next up - let's render our card to the screen. Write the following function:
 
-`viewCard: { id: String } -> Html a`
+`viewCard: { id: String ] -> Html msg`
 
 ### About the scary type..
 
-Don't worry about that scary type `Html a` - we'll learn more about that later! Simply put, it's just saying that "hey, our Html will emit som actions later on, and they'll be of type _a_ (which is a type placeholder)
+Don't worry about that scary type `Html msg` - we'll learn more about that later! Simply put, it's just saying that "hey, our Html will emit som actions later on, and they'll be of type _a_ (which is a type placeholder)
 
 
 ### Rendering HTML to the screen
@@ -190,7 +190,7 @@ Here, we want you to represent a card with the following Html:
 </div>
 ```
 
-Remember, the string concatenation operator is `++`!
+Make sure you import `Html.Attributes` and use the string concatenation operator `++`!
 
 You should now see a beautiful little kitten on you screen.
 
@@ -277,7 +277,7 @@ Create a type alias `Card` that defines the card data structure from before. Use
 
 Let's expand our single card to three cards, each representing one of the three possible values of `CardState`.
 
-Next, we're going to create this function: `viewCards : List Card -> Html a`.
+Next, we're going to create this function: `viewCards : List Card -> Html msg`.
 
 Notice how the type signature helps in communicating what the function does! Type signatures are a very powerful tool, as you will discover throughout this workshop.
 
@@ -296,7 +296,7 @@ isAdult age =
         CustomerAge age ->
             age > 18
         Unknown ->
-            False
+            false
 ```
 
 This is a powerful technique, and is almost always used whenever there's a union type around. In this case, it is handy for rendering different stuff based on the `CardState` of a card.
