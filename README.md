@@ -318,12 +318,12 @@ Now that you're getting warm, we will be giving you fewer specific instructions 
 
 Section outline:
 
-4. Create a helper function `setCard: CardState -> Card -> Card`. The function should update the `CardState` of the passed `Card` and return a new `Card`. See the docs for [updating a record](http://elm-lang.org/docs/records#updating-records)
-1. Change `main` to `Html.beginnerProgram { ... }`. Read the docs to see what parameters it accepts!
-2. Our `Model` should have the following type: `{ cards : List Card }`
-3. Create the type `Msg` with the value `CardClick`
-4. Use pattern matching in `update` on the type of `Msg`
-5. Add an event handler on closed cards
+1. Create a helper function `setCard: CardState -> Card -> Card`. The function should update the `CardState` of the passed `Card` and return a new `Card`. See the docs for [updating a record](http://elm-lang.org/docs/records#updating-records)
+2. Change `main` to `Html.beginnerProgram { ... }`. Read the docs to see what parameters it accepts!
+3. Create a type alias `Model` that has the following type: `{ cards : List Card }`
+4. Create the type `Msg` with the value `CardClick`
+5. Use pattern matching in `update` on the type of `Msg`
+6. Import `Html.Events` and add an `onClick` event handler on closed cards.
 
 When this section is complete, you should render three closed cards, each of them opening when clicked.
 
@@ -362,7 +362,7 @@ Therefore, instead of having to write `List Card` everywhere, we want to be able
 1. Create a `type alias` for `List Card` called `Deck`
 1. Update `Model` to have `deck`
 
-In the game we will be matching pairs of cards with eachother, and will need some way of distinguish between to cards with the same image.
+In the game we will be matching pairs of cards with each other, and will need some way of distinguish between two cards with the same image.
 
 1. Create a type `Group` that is either `A` or `B`
 1. Add that as a field in our `Card` type
