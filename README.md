@@ -281,7 +281,7 @@ Next, we're going to create this function: `viewCards : List Card -> Html msg`.
 
 Notice how the type signature helps in communicating what the function does! Type signatures are a very powerful tool, as you will discover throughout this workshop.
 
-Make sure you render the correct image source for each card (`{id}.png`)
+Make sure you render the correct image source for each card (`{id}.jpg`)
 
 Hint: `List.map viewCards cards`
 
@@ -304,7 +304,7 @@ This is a powerful technique, and is almost always used whenever there's a union
 For rendering cards, use the following logic:
 
 - For `Closed`, show `"/static/closed.png"`
-- For `Open` and `Matched`, show `"/static/cats/{cardId}.png"`
+- For `Open` and `Matched`, show `"/static/cats/{cardId}.jpg"`
 - Add the respective css classes `open`, `closed` and `matched`
 
 ## Level 3 - Beginner Program!
