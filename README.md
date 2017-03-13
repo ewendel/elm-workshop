@@ -336,33 +336,31 @@ If they do not match, both cards are closed again.
 This repeats until all cards on the board are open.
 
 Our game implementation will have three states:
+  
   1. `Choosing` - the player chooses the first card
   1. `Matching` - the player chooses the second card to match with the first
   1. `GameOver` - all cards are matched and the player has won
 
 The game logic will flow like this:
+  
   1. When the player chooses the first card:
     1. Set all unmatched cards to `Closed`
     1. Set the chosen card to `Open`
     1. Go to `Matching` state
   1. When the player chooses the second card:
-    1. ```
-    If it matches the first card, then set the two cards to `Matched`
-    Else set the second card to `Open`
-    ```
-    1. ```
-    If all cards are `Matched`, then go to `GameOver` state
-    Else go to `Choosing` state
-    ```
+    1. If it matches the first card, then set the two cards to `Matched`, else set the second card to `Open`
+	1. If all cards are `Matched`, then go to `GameOver` state, else go to `Choosing` state
+    
 
 Let's get back to the code.
 
 Our deck of cards is a list of `Card`s and we will be passing them around in our program.
 Therefore, instead of having to write `List Card` everywhere, we want to be able to write `Deck`.
+
 1. Create a `type alias` for `List Card` called `Deck`
 1. Update `Model` to have `deck`
 
-In the game we will be matching pairs of cards with each other, and will need some way of distinguish between two cards with the same image.
+In the game we will be matching pairs of cards with each other, and will need some way to distinguish between two cards with the same image.
 
 1. Create a type `Group` that is either `A` or `B`
 1. Add that as a field in our `Card` type
@@ -371,6 +369,7 @@ Now we are able to check if two cards are of one pair by comparing their `id` an
 
 By now our `Main.elm` file is getting quite big, so we should probably do something about that.
 It is common in Elm projects to have the application's models in their own file, so let's try that:
+
 1. Move all types and type aliases to a new file: `Model.elm`
   * A file and it's module name must match, so in our case `Model.elm` should start with `module Model exposing (..)`
 1. To use our types in `Main.elm` we also need to import them. This is done in the same way as we import the `Html` module; `import Html exposing (..)`
