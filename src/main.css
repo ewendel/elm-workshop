@@ -24,16 +24,17 @@ ul {
 }
 
 .cards {
+  position: relative;
   display: flex;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   width: 800px;
-  width: 75%;
   margin: 0 auto;
 }
 
 .card {
   list-style-type: none;
-  flex: 1 0 25%;
+  flex: 1;
+  flex-basis: 25%;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
