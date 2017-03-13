@@ -108,11 +108,6 @@ There are several things to note here:
 
 Go ahead and make the `greet` function. The string concatenation operator in Elm is `++`
 
-### A prefix binding
-
-When you got that part down, lets move the prefix into a variable so that it can be reused later.
-Creating a variable, or binding as they are called in Elm, is similar to a function with _zero_ arguments. Try it out!
-
 ### Adding type signatures
 
 Before we finish off this first level, try adding type signatures to both the function and the binding. Type signatures are never needed as the compiler can infer them, but we usually add them anyway to make our code easier to read.
@@ -311,7 +306,7 @@ For rendering cards, use the following logic:
 
 In this section, we will take our first steps toward learning The Elm Architecture (TEA), the architecture that inspired Dan Abramov to write Redux. 
 
-We've made it this far without TEA because have a simple, static app. Now we want to start responding to user input, and TEA is the Elm structures applications and handles interactivity.
+We've made it this far without TEA because we have a simple, static app. Now we want to start responding to user input, and TEA is the way Elm structures applications and handles interactivity.
 
 The goal of the section is to implement card clicking: all cards should start as `Closed`, and change to `Open` when clicked. Don't worry about `Matched` for now - we'll deal with that later.
 
