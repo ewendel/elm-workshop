@@ -446,40 +446,75 @@ Now take a minute and pat yourself on the back for making an awesome game in Elm
 ## Level 5 - Let's get random!
 
 You might have noticed that our game is kind of easy; the cards are in the same spots every time, and that's no fun!
-Let's make things more interesting by shuffling the deck of cards at the start of each game.
+We will now make things more interesting by shuffling the deck of cards at the start of each game.
 
-Shuffling a list of something includes randomness, and generating random numbers is an effectful operation. (Short explanation?)
-If you look through the type signatures of the functions we have written so far, there is no way to express side effects because Elm is a _pure_ functional language. Luckily, we have a way to do that.
+Shuffling a list of something includes randomness, and generating random numbers is an impure operation.
+Elm is a _pure_ functional language, and if you look through the type signatures of the functions we have written so far, there is no way to express impurity.
+Luckily, there is a way to do exactly that.
 
-To generate something random, we can to use the built-in function `Random.generate`, which has the signature: `Random.generate : (a -> msg) -> Generator a -> Cmd msg`.
+> #### Why is generating random numbers impure?
+> Take for example JavaScript's function `Math.random()`, which produces random floating point numbers. It takes zero arguments and it will (probably) give you a different number back each time you call it.
+
+> From wikipedia:
+> > random() is impure because each call potentially yields a different value. This is because pseudorandom generators use and update a global "seed" state. If we modify it to take the seed as an argument, i.e. random(seed); then random becomes pure, because multiple calls with the same seed value return the same random number.
+
+To generate something random, we can to use the built-in function `Random.generate : (a -> msg) -> Generator a -> Cmd msg`.
 The `Generator a` part is covered by `DeckGenerator.random : Generator Deck`, so that means you have to supply a function that takes a `Deck` and returns a `Msg`.
 
-Now you're probably wondering what that `Cmd` thingy is, so take a minute and head on over to the official documentation, which has nice, short explanations of [_subscriptions_](http://package.elm-lang.org/packages/elm-lang/core/5.1.1/Platform-Sub#Sub) and [_commands_](http://package.elm-lang.org/packages/elm-lang/core/5.1.1/Platform-Cmd#Cmd).
+Now you're probably wondering what that `Cmd` thingy is, so take a minute and head on over to [elm-tutorial.org](https://www.elm-tutorial.org/en/), which has a nice explanation of [commands](https://www.elm-tutorial.org/en/03-subs-cmds/02-commands.html).
 
-Since we're now not longer _beginners_ we should change `Html.beginnerProgram` to `Html.program`.
+Since we're now not longer _beginners_ we should change our `Html.beginnerProgram` to `Html.program`.
 
-There are a couple of changes we have to make this official transition from _beginners_ to _adepts_.
+There are a couple of changes we have to do to make this official transition from _beginners_ to _adepts_.
 
 * The argument to `Html.program` differ slightly from the argument to `Html.beginnerProgram`:
   1. `model` is now called `init`, and it's type is now `(Model, Cmd Msg)`
   1. The record should have a new field called `subscriptions : Model -> Sub Msg`.
 * `update` now has the type signature `update : Msg -> Model -> (Model, Cmd Msg)`
 
+The official docs has a nice exaplanation of what [_subscriptions_](http://package.elm-lang.org/packages/elm-lang/core/5.1.1/Platform-Sub#Sub) are.
+
 Hint: in your code you can use `Sub.none` and `Cmd.none` when you don't have any _subscriptions_ or _commands_ you want to perform.
 
 So, to summarize:
 
-1. Change `beginnerProgram` to `program` and modify it's argument:
-  * Rename `model` to `init`
-  * Change `init` and `update` according to new type sigs (`Cmd.none`)
-  * Add the `subscriptions` field in the record
-2. Create a function that takes a `Deck` and returns a `Msg`
-1. When starting the game, return the command to generate the random deck along with the initial `model`
+* Use `Random.generate : (a -> msg) -> Generator a -> Cmd msg` and `DeckGenerator.random : Generator Deck` to get a different deck each time the game is started.
 
-Once done, you have nothing left to do but congratulate yourself on making an awesome memory game in Elm! Congratulations!
+## Game over?
+
+And there you have it! You have now created your own version of a memory game with Elm (and cats)!
+
+Hopefully this is just the beginning of your journey with Elm. Please do reach out to us (links at the bottom) if you have any feedback on the workshop or if you just want to get in touch.
+
 
 ## Bonus levels
 * Count the number of attempts the player uses, use that as score
 * Let the player enter a name
 * Save each game's score and show a high score table
 * Count how long the player takes to finish the game. Use [Time.now](http://package.elm-lang.org/packages/elm-lang/core/5.1.1/Time#now) together with [Task.perform](http://package.elm-lang.org/packages/elm-lang/core/5.1.1/Task#perform) to get the current time
+
+
+<h2 align="center">Made by</h2>
+
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top">
+        <img width="150" height="150" src="https://github.com/ingara.png?s=150">
+        <br>
+        <a href="https://github.com/ingara">Ingar Almklov</a>
+        <br />
+        <br />
+        <p><small><a href="https://twitter.com/ingara">@ingara</a></small></p>
+      </td>
+      <td align="center" valign="top">
+        <img width="150" height="150" src="https://github.com/ewendel.png?s=150">
+        <br>
+        <a href="https://github.com/ewendel">Erik Wendel</a>
+        <br />
+        <br />
+        <p><small><a href="https://twitter.com/ewndl">@ewndl</a></small></p>
+      </td>
+     </tr>
+  </tbody>
+</table>
