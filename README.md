@@ -1,14 +1,14 @@
 # Elm Arcade 
 # Getting Started With Elm and Typed Functional Programming
 
-Welcome to this workshop! Today we're learning Elm and basic functional programming techniques from the ML-language family through creating the classic game Memory.
+Welcome to this workshop! Today we're learning Elm and typed functional programming techniques through creating the classic game Memory.
 
 The workshop will cover the following topics:
 
 * Tuples
 * Records
 * Type Inference
-* Type Signatures (Hindley-Milner type system)
+* Type Signatures
 * Union Types
 * Type Aliases
 * Pattern Matching
@@ -16,21 +16,26 @@ The workshop will cover the following topics:
 * Partial Application
 * Currying
 
-Some of these concepts may be unfamiliar and somewhat confusing to begin with, but please do ask us if and when you get stuck, or simply have a question. That's what we're here for!
+Some of these concepts may be unfamiliar and somewhat confusing to begin with, so please do ask us if and when you get stuck, or simply have a question. That's what we're here for!
 
 ## Prerequisites
 
-We hope you've already done the following:
+1. Install `elm`. This can be done with `npm install -g elm`, `brew install elm` (if on MacOS) or an old-school file download from [elm-lang.org](https://guide.elm-lang.org/install.html).
+
+1. Install a [`plugin`](https://guide.elm-lang.org/install.html#configure-your-editor) for your editor. At the time of writing, Atom's Elm integration seems the best so we **strongly** recommend you use that, even if Atom is not usually your main editor of choice.
+
+    *  [Atom editor setup](https://github.com/halohalospecial/atom-elmjutsu#setup)
+
+1. [`elm-format`](github.com/avh4/elm-format#for-elm-018) is a crucial tool to make your Elm experience more enjoyable.
+    * Remember to ake sure that `elm-format` is available on your PATH or that you tell your editor where to find it
+    * In Atom, this can be done under package settings for the `elm-format` package: input the path to the `elm-format` binary. (If you for example installed it via `brew` on MacOS, the path should be along the lines of `/urs/local/bin/elm-format-0.18`)
+    * We also recommend you enable `Format on save`
 
 1. Clone this repo to your computer
 
-2. Install `elm`. This can be done with `npm`, `brew` or an old-school file download from elm-lang.org.
+1. Start your local application enviroment with `npm start` in the root folder of this repo. This should open a new browser window with `localhost:3000` and a nice compilation error.
 
-3. Install [`elm-format`](github.com/avh4/elm-format#for-elm-018). This is a really crucial tool to make your learning experience more enjoyable. 
-
-4. Atom has the best Elm addons around, namely [Elmjutsu](https://atom.io/packages/elmjutsu). You really should install it if you're on Atom, or perhaps consider Atom for your Elm career.
-
-Before we begin, start your local application enviroment with `npm start` in the root folder. This should open a new browser window with `localhost:3000`.
+Congratulations, you're now ready to begin learning Elm!
 
 ## Level 1 - Hello, world!
 File: _Main.elm_
@@ -42,52 +47,36 @@ module Main exposing (..)
 
 import Html exposing (..)
 
-main = "Hello, world!"
+main =
+    "Hello, world!"
 ```
 
-As you can see in your browser, the app will fill the screen with an error message if your code does not compile. This is a big difference between JavaScript and Elm! You will have to run your JavaScript code in the browser to discover any programming mistakes, while Elm will simply not compile with errors.
+As you can see in your browser, the app will fill the screen with an error message then your code does not compile.
+This might be unfamiliar to you if you're coming from JavaScript to Elm. With JavaScript you have to run your code in the browser to discover any programming mistakes you might have made, while with Elm these errors will be caught right as you hit save in your editor!
 
-Study the on-screen error message.
+> #### A note on Elm's compiler:
+>
+> Elm is famous for it's compiler errors.
+>If you get stuck with your program not compiling, please read the error message carefully.
+>The creators of Elm have put a lot of energy into making these error messages helpful, and they are!
+>Most times they tell you exactly what you have to do to make your program work.
 
-The creators of Elm have put a lot of energy into creating helpful error messages that guide towards solving the problem at hand.
+Now, study the on-screen error message.
 
 Our app is now telling us that the value of `main` has the wrong type: it is a `String` but it should be either `Html`, `Svg` or `Program`.
 
-To change the String into Html we'll need to call a function that does exactly that:
+To change the `String` (`"Hello, world!"`) into some `Html` we have a function that does exactly that; [`text : String -> Html msg`](http://package.elm-lang.org/packages/evancz/elm-html/4.0.1/Html#text). 
 
-`text "Some text here"`
-#### Function calls in Elm
+>#### Note:
+>* The official docs has a nice chapter on ["Reading types in Elm"](https://guide.elm-lang.org/types/reading_types.html)
+>* Elm-tutorial has a nice chapter on functions in Elm: ["Function basics"](https://www.elm-tutorial.org/en/01-foundations/02-functions.html)
 
-Unlike JavaScript, Elm uses
-
-* a space between function name and argument list, not parens
-* spaces between arguments, not commas
-
-```elm
-// JavaScript
-add(2,3) == 5
-
--- Elm
-add 2 3 == 5
-```
-
-This means that calling our `text` function in JavaScript would look something like this:
-
-`text("Some text here")`
-
-In terms of types, `text` has the following _type signature_:
-
-[text: String -> Html](http://package.elm-lang.org/packages/evancz/elm-html/4.0.1/Html#text)
-
-The colon means "has the type", so the line reads as _"text has the type string to html"_. 
-
-Clicking the link takes you the documentation.
-Now you should be able to see "Hello World" printed on the screen.
+Use this to make your program compile and print "Hello, world!" to the screen.
 
 ### Creating a greeting function
 
-Now we want to create a function that takes a name and greets. It has this type signature:
-`greet: String -> String`
+Now we want to create a function that takes a name and greets.
+It should have this type signature: `greet: String -> String`.
 
 Called with "Erik", it should produce the string "Hello, Erik". Thus:
 
@@ -103,22 +92,17 @@ add x y =
 There are several things to note here:
 
 * There's no `return` keyword - the evaluated value of the function body is automatically returned
-* The parameters are named and follows the function name
-* You don't have to specify the types for the parameters - they are _inferred_! This can be done because Elm sees the addition operator (`+`) and knows that it only works on numbers. Therefore, x and y must be numbers!
+* The parameters are named and come after the function name
+* You don't have to specify the types for the parameters - they are _inferred_! This can be done because Elm sees the addition operator (`+`) and knows that it only works on numbers. Therefore, `x` and `y` must be numbers!
 
-Go ahead and make the `greet` function. The string concatenation operator in Elm is `++`
+Go ahead and make the `greet` function. The string concatenation operator in Elm is `++`.
 
 ### Adding type signatures
 
-Before we finish off this first level, try adding type signatures to both the function and the binding. Type signatures are never needed as the compiler can infer them, but we usually add them anyway to make our code easier to read.
+Before we finish of the first level, try adding the type signature for your `greet` function.
+As mentioned, type signatures are not needed, as the compiler can infer them, but it is good practice to add them anyways.
+This makes the code easier to read and can help you get better error messages.
 
-Type signatures look like this:
-
-```
-addOne : Int -> Int
-addOne x =
-	x + 1
-```
 
 ## Level 2 - Learning types
 
