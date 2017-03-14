@@ -99,7 +99,7 @@ Go ahead and make the `greet` function. The string concatenation operator in Elm
 
 ### Adding type signatures
 
-Before we finish of the first level, try adding the type signature for your `greet` function.
+Before we finish off the first level, try adding the type signature for your `greet` function.
 As mentioned, type signatures are not needed, as the compiler can infer them, but it is good practice to add them anyways.
 This makes the code easier to read and can help you get better error messages.
 
@@ -286,7 +286,7 @@ Make sure you render the correct image source for each card (`{card.id}.jpg`).
 
 ### Match all the patterns!
 
-The next languge feature we will be using is _pattern matching_. It can best be described as a switch-statement on stereoids, allowing us to do more than simple matching on a value:
+The next language feature we will be using is _pattern matching_. It can best be described as a switch-statement on stereoids, allowing us to do more than simple matching on a value:
 
 ```elm
 isAdult : CustomerAge -> Bool
