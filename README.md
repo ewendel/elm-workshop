@@ -106,72 +106,78 @@ This makes the code easier to read and can help you get better error messages.
 
 ## Level 2 - Learning types
 
-From here on we'll move in small steps, writing small chunks of code that will be a part of our final game, while adding more and more features from functional programming and Elm along the way. Ready, set, go!
+From here on we'll move in small steps, writing small chunks of code that will be a part of our final game, while using more and more features from functional programming and Elm along the way. Ready, set, go!
 
 ### It's a new record!
 
 We are going to create a representation of a "card" - something that is hiding a picture and can be flipped by the player. We'll start off with creating the equivalent data structure of a JavaScript object - a _record_ .
 
-```
-// JavaScript
-
-var card = {
+Example comparison:
+```javascript
+// JavaScript object
+var person = {
 	name: 'Tom Cruise',
 	expensiveShoes: true
-}
-
--- Elm
-card : { name: String, fancyShoes: Bool }
-card = {
-	name = "Tom Cruise",
-	expensiveShoes = true
-}
+};
+```
+```elm
+-- Elm record
+person : { name: String, fancyShoes: Bool }
+person =
+    { name = "Tom Cruise"
+    , fancyShoes = True
+    }
 ```
 
-Our Elm record should contain a single field `id` of type String - this string will refer to the file name of the image our card will be hiding. Start with `id = "1"`.
-
-Next up - let's render our card to the screen. Write the following function:
-
-`viewCard: { id: String ] -> Html msg`
-
-### About the scary type..
-
-Don't worry about that scary type `Html msg` - we'll learn more about that later! Simply put, it's just saying that "hey, our Html will emit some actions later on, and they'll be of type _a_ (which is a type placeholder)
-
+Our Elm record should have the type `{ id : String }`. The `id` string will refer to the file name of the image our card will be hiding. Start with `id = "1"`.
 
 ### Rendering HTML to the screen
 
-Oh, right, we didn't tell you about HTML yet! If you're familiar with the library React.js, the following section might feel familiar to you.
+Oh, right, we didn't tell you about HTML yet! If you're familiar with the library `React.js`, the following section might feel familiar to you.
 
-```
+```javascript
 // JavaScript with React
 <div class="ninja">
 	<span>Banzai!</span>
 </div>
-
-
--- Elm
-div [ class "ninja" ] [ 
-	span [] [ text "Banzai!" ] 
-]
 ```
 
-All HTML tags have their own functions in Elm, and they all accept two parameters:
+
+```elm
+-- Elm
+div [ class "ninja" ]
+    [ span [] [ text "Banzai!" ] 
+    ]
+```
+
+All HTML tags have corresponding functions in Elm, and they all accept two parameters:
 
 1. a list of `Html.Attribute`
-2. a list of zero or more `Html` nodes
+1. a list of zero or more `Html` nodes
+
+Example: `div : List (Attribute msg) -> List (Html msg) -> Html msg`
 
 Here, we want you to represent a card with the following Html:
 
 ```
 <div>
-	<img src="/static/cats/" + card.id + ".jpg" />
+	<img src="/static/cats/{card.id}.jpg" />
 </div>
 ```
 
-Make sure you import `Html.Attributes` and use the string concatenation operator `++`!
+Write the following function: `viewCard: { id: String } -> Html msg` by using these:
+* `div : List (Attribute msg) -> List (Html msg) -> Html msg`
+* `img : List (Attribute msg) -> List (Html msg) -> Html msg`
+* `src : String -> Attribute msg`
 
-You should now see a beautiful little kitten on you screen.
+To get the `src` function you should put `import Html.Attributes exposing (..)` near the beginning of your file.
+
+Remember that string concatenation is done with `++`.
+
+If you call `viewCard` with the card record you created in the previous task you should now see a beautiful little kitten on you screen!
+
+>#### Note about `Html msg`
+>Don't worry about that scary type `Html msg` - we'll learn more about that later! Simply put, it's just saying that "hey, our HTML will emit some actions later on, and they will be of type `msg` (which is a type placeholder).
 
 ### Union Types: Representing card state
 
@@ -179,47 +185,51 @@ Memory requires us to flip a card and reveal it's image when clicked. This means
 
 Think about how we'd store this state in JS. Most likely, we'd reach for a string:
 
-```
+```javascript
 {
 	id: '1',
-	state: 'open'
+	state: 'open' // or 'closed' or 'matched'
 }
 ```
 
 This is obviously not very safe. This doesn't constrain us to using only the three possible values, and there's nothing to avoid typing errors. Elm and other ML-languages have a great feature for this use case: _Union Types_.
 
-A union type is like a Java or C# enumerable - a union type is a value that may be one of a fixed set of values. Like black pieces may only be white or black.
+A union type is like a Java or C# enumerable - a union type is a value that may be one of a fixed set of values. Chess pieces, for example, can only be either white or black.
 
-```
+```elm
 type PieceColor = White | Black
 ```
 
 `PieceColor` is now treated a fullworthy type in our system, just as `String` or `Bool`. `White` or `Black` are _constructor functions_, functions that take _zero_ arguments and return a value of type `PieceColor`. Or, said with a type signature:
 
-```
+```elm
 White : PieceColor
 Black : PieceColor
 ```
 
 Union types may also carry data. This means that the _constructor functions_ for such union type values aren't zero argument functions:
 
+Union types may also carry data. Let's look at an example:
+
+```elm
+type CustomerAge = Unknown | Known Int
+-- Unknown : CustomerAge
+-- Known : Int -> CustomerAge
 ```
-type CustomerAge = Unknown | Age Int
+This can be used to represent a customer's age which we might or might not know at the time.
+We see that the _constructor function_ `Known` takes an `Int` argument and returns a `CustomerAge`.
 
-Unknown: CustomerAge
-Age: Int -> CustomerAge
-```
+This _accompanying data_ that is wrapped within a union type value may be of any type, and they don't have to the same for all value types within a union.
 
-Let's say we either have an age value for a given customer, or we don't. 
-This _accompanying data_ that is wrapped within a union type may be of any type, and they don't have to the same for all value types within a union.
+This is incredibly useful, and we will now make our own!
 
-Some people say that _union types_ can be seen as _enums on stereoids_. In a way, that's a fitting description.
 
-Let's create a union type called `CardState` that can be either `Open`, `Closed` or `Matched` (union type values are always capitalized).
+Let's create a union type called `CardState` that can be either `Open`, `Closed` or `Matched` (_constructor functions_ are always capitalized).
 
-Enrich our previous `card` record with a field `state` that carries a `CardState` value.
-You'll also have to update the signature of `viewCard`.
-Our `card` should now have the following type signature:
+Enrich our previous `card` record with a field called `state` that carries a `CardState` value.
+You will also have to update the signature of `viewCard`.
+
+Our `card` value should now have the following type signature:
 
 ```
 card: { id: String, state: CardState }
@@ -229,62 +239,74 @@ By now it should become clear that our signature for `card` is getting unwieldy.
 
 ### Type Alias (alias slayer) 
 
+_Type aliases_ allow us give a name to records with a specified structure, and use it as a type.
+
 _Type aliases_ allow us to define a record with a specified data structure as a new type. Let's model everyone's favourite data structure using a type alias:
 
-```
-type alias Person = {
-	name: String,
-	age: CustomerAge
-}
+```elm
+type alias Customer =
+    { name: String
+    , age: CustomerAge
+    }
 ```
 
-The above code tells the Elm compiler that a `Person` is a record with a field `name` of type `String`, and a field `age` of the type `CustomerAge` (that we defined earlier).
+The above code tells the Elm compiler that a `Customer` is a record with a field `name` of type `String`, and a field `age` of the type `CustomerAge` (that we defined earlier).
 
 This allows to use this type throughout our code:
 
+```elm
+getName : Customer -> String
+getName customer = 
+	customer.name
 ```
-getName : Person -> String
-getName person = 
-	person.name
-```
 
-Imagine calling this function with an object without a name field. In JavaScript, this would obviously crash hard, but in Elm - the code won't even compile! This moves the time of discovering the error from compiletime to runtime, which is a huge deal.
+Imagine calling this function with an object without a name field.
+In JavaScript, this would obviously crash hard, but in Elm - the code won't even compile!
+This moves the time of discovering the error from compile time (when you hit _save_ in your editor) to runtime, which significally improves our feedback cycle!
 
-Create a type alias `Card` that defines the card data structure from before. Use this new type in the signatures of `viewCard` and `card`
+Now, create a type alias called `Card` that defines the card data structure from before.
+Use this new type in the signatures of `viewCard` and `card`
 
-### Rendering all the states
+### Render all the states!
 
-Let's expand our single card to three cards, each representing one of the three possible values of `CardState`.
+Having only one card is boring, so create a list of three cards, each having different values for `state` (and maybe `id` too?).
 
 Next, we're going to create this function: `viewCards : List Card -> Html msg`.
 
-Notice how the type signature helps in communicating what the function does! Type signatures are a very powerful tool, as you will discover throughout this workshop.
+Notice how the type signature helps in communicating what the function does!
+Type signatures are a very powerful tool, as you will discover throughout this workshop.
 
-Make sure you render the correct image source for each card (`{id}.jpg`)
+Make sure you render the correct image source for each card (`{card.id}.jpg`).
 
-Hint: `List.map viewCards cards`
+> Hint:
+> * `viewCard : Card -> Html msg`
+> * `cards : List Card`
+> * `List.map : (a -> b) -> List a -> List b`
+> * `div : List (Atribute msg) -> List (Html msg) -> Html msg`
 
-### Matching all the patterns
+### Match all the patterns!
 
-The next languge feature we will be using is `Pattern Matching`. It can best be described as a switch-statement on stereoids, allowing us to do more than simple matching on a value:
+The next languge feature we will be using is _pattern matching_. It can best be described as a switch-statement on stereoids, allowing us to do more than simple matching on a value:
 
-```
+```elm
 isAdult : CustomerAge -> Bool
 isAdult age =
     case age of
-        CustomerAge age ->
+        Known age ->
             age > 18
+
         Unknown ->
-            false
+            False
 ```
+
+Notice that we can even extract the value that was used when `Known : Int -> CustomerAge` was used!
 
 This is a powerful technique, and is almost always used whenever there's a union type around. In this case, it is handy for rendering different stuff based on the `CardState` of a card.
 
-For rendering cards, use the following logic:
-
-- For `Closed`, show `"/static/cats/closed.png"`
-- For `Open` and `Matched`, show `"/static/cats/{cardId}.jpg"`
-- Add the respective css classes `open`, `closed` and `matched` to the `img` tags
+In `viewCard`, use the following logic (css classes should be applied to the `img` tag):
+* When `Closed` -> show `/static/cats/closed.png` and the css class `closed`
+* When `Open` -> show `/static/cats/{cardId}.jpg` and the css class `open`
+* When `Matched` -> show `/static/cats/{cardId}.jpg` and the css class `matched`
 
 ## Level 3 - Beginner Program!
 
