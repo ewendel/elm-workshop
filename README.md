@@ -338,9 +338,9 @@ When this section is complete, you should render three closed cards, each of the
 
 ## Level 4 - The game!
 
-We are now going to implement our game logic.
+We are now going to implement the game logic.
 
-In memory, as you may know, the player opens two cards, and if they match they stay open.
+In memory, as you may know, the player opens two cards, one after another, and if they match they stay open.
 If they do not match, both cards are closed again.
 This repeats until all cards on the board are open.
 
@@ -364,23 +364,18 @@ The game logic will flow like this:
 Let's get back to the code.
 
 Our deck of cards is a list of `Card`s and we will be passing them around in our program.
-Therefore, instead of having to write `List Card` everywhere, we want to be able to write `Deck`.
-
-1. Create a `type alias` for `List Card` called `Deck`
-1. Update `Model` to have `deck`
+Therefore, instead of having to write `List Card` everywhere, we want to be able to write `Deck`. Use a type alias to achieve this.
 
 In the game we will be matching pairs of cards with each other, and will need some way to distinguish between two cards with the same image.
+We will do this by saying that a card can be _either_ in group `A` or in group `B`. Use a union type to achieve this, and add it as a field in our `Card` type.
 
-1. Create a type `Group` that is either `A` or `B`
-1. Add that as a field in our `Card` type
-
-Now we are able to check if two cards are of one pair by comparing their `id` and `group` fields!
+Now we can check if two cards are of one pair by comparing their `id` and `group` fields!
 
 By now our `Main.elm` file is getting quite big, so we should probably do something about that.
-It is common in Elm projects to have the application's models in their own file, so let's try that:
+It is common in Elm projects to have the application's model and associated in their own file(s), so let's try that:
 
-1. Move all types and type aliases to a new file: `Model.elm`
-  * A file and it's module name must match, so in our case `Model.elm` should start with `module Model exposing (..)`
+1. Move all types and type aliases to the file `Model.elm`
+    * A module's name must match it's file name, so in our case `Model.elm` should start with `module Model exposing (..)`
 1. To use our types in `Main.elm` we also need to import them. This is done in the same way as we import the `Html` module; `import Html exposing (..)`
 
 
@@ -398,7 +393,7 @@ import Model exposing (Deck, CardState(..), Group(..))
 static : Deck
 static =
     let
-        urls =
+        ids =
             [ "1"
             , "2"
             , "3"
@@ -408,10 +403,10 @@ static =
             ]
 
         groupA =
-            urls |> List.map (\id -> { id = id, state = Closed, group = A })
+            ids |> List.map (\id -> { id = id, state = Closed, group = A })
 
         groupB =
-            urls |> List.map (\id -> { id = id, state = Closed, group = B })
+            ids |> List.map (\id -> { id = id, state = Closed, group = B })
     in
         List.concat [ groupA, groupB ]
 
@@ -420,26 +415,20 @@ random =
     Random.List.shuffle static
 ```
 
-Use this by importing `DeckGenerator` in `Main.elm` and using the `static` value as `model`'s initial value.
+Use this by importing `DeckGenerator` in `Main.elm` and using the `DeckGenerator.static` value as `model`'s initial value.
 
-Have fun clicking cards for about 20 minutes.
-
-
-## Level 5 - The game 2
-
-Let's now implement the game logic!
+### Game logic!
 
 As we've established, our game has three states: `Choosing`, `Matching` and `GameOver`.
-Let's implement this as a union type called `GameState`.
+Implement this as a union type called `GameState`.
 
 The `GameOver` state does not need any extra data, but `Choosing` needs a `Deck` (the deck we are choosing from), and `Matching` needs both a `Deck` (the deck we are choosing from) and a `Card` (the card we are trying to match with).
 
-
-
-To recap our implementation:
+To recap our implementation with regards to the `update` function:
 * In `Choosing` state
   1. Close all unmatched cards
-  2. Open the clicked card
+  1. Open the clicked card
+  1. Go to `Matching`
 * In `Matching` state
   1. When the two cards match , set both cards to `Matched`. When the two cards do not match, set the clicked card to `Open`.
   1. If all cards are now matched, go to `GameOver`. If not, go to `Choosing`.
@@ -447,11 +436,14 @@ To recap our implementation:
 
 
 You will also have to update the `view` function to accomodate for the new shape of our model.
-Refreshing the page every time you want to play another game is boring, so try to add a "restart game" button in the "Game over" view. Hint: it is common to have a top-level value called `init`.
 
-Now, take a minute to pat yourself on the back for making an awesome game in Elm!
+Now take a minute and pat yourself on the back for making an awesome game in Elm!
 
-## Level 6 - Let's get random!
+>#### Optional:
+
+>Refreshing the page every time you want to play another game is boring, so try to add a "restart game" button in the "Game over" view. Hint: it is common to have a top-level value called `init` that contains the initial state of the `model`.
+
+## Level 5 - Let's get random!
 
 You might have noticed that our game is kind of easy; the cards are in the same spots every time, and that's no fun!
 Let's make things more interesting by shuffling the deck of cards at the start of each game.
