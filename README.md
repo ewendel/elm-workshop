@@ -18,6 +18,10 @@ The workshop will cover the following topics:
 
 Some of these concepts may be unfamiliar and somewhat confusing to begin with, so please do ask us if and when you get stuck, or simply have a question. That's what we're here for!
 
+## Presentation slides
+
+The slide deck from the presentation are available [here](https://drive.google.com/file/d/0B3Lh4pXvCuflcnpKWHhBUzU2c0U/view?usp=sharing).
+
 ## Prerequisites
 
 1. Install `elm`. This can be done with `npm install -g elm`, `brew install elm` (if on MacOS) or an old-school file download from [elm-lang.org](https://guide.elm-lang.org/install.html).
