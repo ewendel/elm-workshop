@@ -84,9 +84,12 @@ Use the function `text` to make your program compile and print "Hello, world!" t
 Now we want to create a function that takes a name and greets.
 It should have this type signature: `greet: String -> String`.
 
-Called with "Erik", it should produce the string "Hello, Erik". Thus:
+Called with the argument "Erik", the function should produce the string "Hello, Erik". Thus:
 
-`greet "Erik" == "Hello, Erik"`
+```
+> greet "Erik"
+"Hello, Erik" : String
+```
 
 Here is an example of a function that takes two numbers and returns the sum of those numbers:
 
