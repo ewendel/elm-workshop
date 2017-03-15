@@ -37,6 +37,8 @@ The slide deck from the presentation are available [here](https://drive.google.c
 
 1. Clone this repo to your computer
 
+1. Run `npm install`
+
 1. Start your local application enviroment with `npm start` in the root folder of this repo. This should open a new browser window with `localhost:3000` and a nice compilation error.
 
 Congratulations, you're now ready to begin learning Elm!
