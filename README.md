@@ -30,7 +30,7 @@ The slides from the presentation are available [here](https://drive.google.com/f
 
     *  [Atom editor setup](https://github.com/halohalospecial/atom-elmjutsu#setup)
 
-1. [`elm-format`](github.com/avh4/elm-format#for-elm-018) is a crucial tool to make your Elm experience more enjoyable.
+1. [`elm-format`](https://github.com/avh4/elm-format#for-elm-018) is a crucial tool to make your Elm experience more enjoyable.
     * Remember to ake sure that `elm-format` is available on your PATH or that you tell your editor where to find it
     * In Atom, this can be done under package settings for the `elm-format` package: input the path to the `elm-format` binary. (If you for example installed it via `brew` on MacOS, the path should be along the lines of `/urs/local/bin/elm-format-0.18`)
     * We also recommend you enable `Format on save`
