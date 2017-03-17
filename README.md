@@ -271,7 +271,7 @@ getName customer =
 
 Imagine calling this function with an object without a name field.
 In JavaScript, this would obviously crash hard, but in Elm - the code won't even compile!
-This moves the discovery the error from runtime to compile time (when you hit _save_ in your editor), which significantly improves our feedback cycle!
+This moves the discovery errors from runtime to compile time (when you hit _save_ in your editor), which significantly improves our feedback cycle!
 
 Now, create a type alias called `Card` that defines the card data structure from before.
 Use this new type in the signatures of `viewCard` and `card`
