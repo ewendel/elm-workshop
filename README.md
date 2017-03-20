@@ -72,22 +72,25 @@ Now, study the on-screen error message.
 
 Our app is now telling us that the value of `main` has the wrong type: it is a `String` but it should be either `Html`, `Svg` or `Program`.
 
-To change the `String` (`"Hello, world!"`) into some `Html` we have a function that does exactly that; [`text : String -> Html msg`](http://package.elm-lang.org/packages/evancz/elm-html/4.0.1/Html#text). 
+Luckily, we have function named `text` for turning a `String` (such as `"Hello, world!"`) into `Html`. The function has the following signature `text : String -> Html msg`, and you can read it's documentation [here](http://package.elm-lang.org/packages/evancz/elm-html/4.0.1/Html#text).
 
 >#### Note:
 >* The official docs has a nice chapter on ["Reading types in Elm"](https://guide.elm-lang.org/types/reading_types.html)
 >* Elm-tutorial has a nice chapter on functions in Elm: ["Function basics"](https://www.elm-tutorial.org/en/01-foundations/02-functions.html)
 
-Use this to make your program compile and print "Hello, world!" to the screen.
+Use the function `text` to make your program compile and print "Hello, world!" to the screen.
 
 ### Creating a greeting function
 
 Now we want to create a function that takes a name and greets.
 It should have this type signature: `greet: String -> String`.
 
-Called with "Erik", it should produce the string "Hello, Erik". Thus:
+Called with the argument "Erik", the function should produce the string "Hello, Erik". Thus:
 
-`greet "Erik" == "Hello, Erik"`
+```
+> greet "Erik"
+"Hello, Erik" : String
+```
 
 Here is an example of a function that takes two numbers and returns the sum of those numbers:
 
@@ -261,13 +264,13 @@ This allows to use this type throughout our code:
 
 ```elm
 getName : Customer -> String
-getName customer = 
+getName customer =
 	customer.name
 ```
 
 Imagine calling this function with an object without a name field.
 In JavaScript, this would obviously crash hard, but in Elm - the code won't even compile!
-This moves the time of discovering the error from compile time (when you hit _save_ in your editor) to runtime, which significally improves our feedback cycle!
+This moves the discovery of errors from runtime to compile time (when you hit _save_ in your editor), which significantly improves our feedback cycle!
 
 Now, create a type alias called `Card` that defines the card data structure from before.
 Use this new type in the signatures of `viewCard` and `card`
