@@ -31,7 +31,7 @@ The slides from the presentation are available [here](https://drive.google.com/f
     *  [Atom editor setup](https://github.com/halohalospecial/atom-elmjutsu#setup)
 
 1. [`elm-format`](github.com/avh4/elm-format#for-elm-018) is a crucial tool to make your Elm experience more enjoyable.
-    * Remember to ake sure that `elm-format` is available on your PATH or that you tell your editor where to find it
+    * Remember to make sure that `elm-format` is available on your PATH or that you tell your editor where to find it
     * In Atom, this can be done under package settings for the `elm-format` package: input the path to the `elm-format` binary. (If you for example installed it via `brew` on MacOS, the path should be along the lines of `/urs/local/bin/elm-format-0.18`)
     * We also recommend you enable `Format on save`
 
@@ -206,16 +206,14 @@ A union type is like a Java or C# enumerable - a union type is a value that may 
 type PieceColor = White | Black
 ```
 
-`PieceColor` is now treated a fullworthy type in our system, just as `String` or `Bool`. `White` or `Black` are _constructor functions_, functions that take _zero_ arguments and return a value of type `PieceColor`. Or, said with a type signature:
+`PieceColor` is now treated as a normal type in our system, just as `String` or `Bool`. `White` or `Black` are _constructor functions_, functions that take _zero_ arguments and return a value of type `PieceColor`. Or, said with a type signature:
 
 ```elm
 White : PieceColor
 Black : PieceColor
 ```
 
-Union types may also carry data. This means that the _constructor functions_ for such union type values aren't zero argument functions:
-
-Union types may also carry data. Let's look at an example:
+Union types may also carry data. This means that the _constructor functions_ for such union type values aren't zero argument functions. Let's look at an example:
 
 ```elm
 type CustomerAge = Unknown | Known Int
