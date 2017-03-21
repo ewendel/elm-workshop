@@ -170,8 +170,8 @@ Example: `div : List (Attribute msg) -> List (Html msg) -> Html msg`
 Here, we want you to represent a card with the following Html:
 
 ```
-<div>
-	<img src="/static/cats/{card.id}.jpg" />
+<div class "cards">
+	<img class "card" src="/static/cats/{card.id}.jpg" />
 </div>
 ```
 
