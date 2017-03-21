@@ -210,7 +210,7 @@ A union type is like a Java or C# enumerable - a union type is a value that may 
 type PieceColor = White | Black
 ```
 
-`PieceColor` is now treated as a normal type in our system, just as `String` or `Bool`. `White` or `Black` are _constructor functions_, functions that take _zero_ arguments and return a value of type `PieceColor`. Or, said with a type signature:
+`PieceColor` is now treated as a normal type in our system, just as `String` or `Bool`. `White` or `Black` are _constructor functions_, functions that take _zero_ arguments and return a value of type `PieceColor`. Or, expressed with a type signature:
 
 ```elm
 White : PieceColor
@@ -224,10 +224,10 @@ type CustomerAge = Unknown | Known Int
 -- Unknown : CustomerAge
 -- Known : Int -> CustomerAge
 ```
-This can be used to represent a customer's age which we might or might not know at the time.
-We see that the _constructor function_ `Known` takes an `Int` argument and returns a `CustomerAge`.
+This can be used to represent a customer's age in a situation where we might not know the age.
+We see that the constructor function `Known` takes an `Int` argument and returns a `CustomerAge`.
 
-This _accompanying data_ that is wrapped within a union type value may be of any type, and they don't have to the same for all value types within a union.
+We can wrap any type of _accompanying data_ within a union type value (like `Known`), and the type of the accompanying data doesn't have to be the same for all the value types within a union.
 
 This is incredibly useful, and we will now make our own!
 
