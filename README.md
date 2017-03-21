@@ -388,41 +388,6 @@ It is common in Elm projects to have the application's model and associated in t
 
 
 Let's pretend we're famous TV chefs and cheat a little bit. We have prepared a module `DeckGenerator` that can be used to generate a deck of cards.
-
-1. Add file `DeckGenerator.elm` with the following contents:
-
-```elm
-module DeckGenerator exposing (static, random)
-
-import Random
-import Random.List
-import Model exposing (Deck, CardState(..), Group(..))
-
-static : Deck
-static =
-    let
-        ids =
-            [ "1"
-            , "2"
-            , "3"
-            , "4"
-            , "5"
-            , "6"
-            ]
-
-        groupA =
-            ids |> List.map (\id -> { id = id, state = Closed, group = A })
-
-        groupB =
-            ids |> List.map (\id -> { id = id, state = Closed, group = B })
-    in
-        List.concat [ groupA, groupB ]
-
-random : Random.Generator Deck
-random =
-    Random.List.shuffle static
-```
-
 Use this by importing `DeckGenerator` in `Main.elm` and using the `DeckGenerator.static` value as `model`'s initial value.
 
 ### Game logic!
