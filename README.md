@@ -336,7 +336,7 @@ See the docs on [how to update a record](http://elm-lang.org/docs/records#updati
 1. Change `main` to `Html.beginnerProgram { ... }`. Read the docs to see what parameters it accepts!
 1. Create a type alias `Model` that has the following type: `{ cards : List Card }`
 1. Create the union type `Msg` with only one constructor: `CardClick Card`
-1. Use pattern matching in `update` on the type of `Msg` and open the clicked card. Note: for now your case switch has only one case, but it will be extended when we add more moves to the game.
+1. Use pattern matching in `update` on the type of `Msg` and open the clicked card. Note: for now your pattern match expression only has the one case (`CardClick`) but we will add more cases later.
 1. Add `import Html.Events exposing (..)` and add an `onClick` event handler on closed cards.
 
 When this section is complete, you should render three closed cards, each of them opening when clicked.
