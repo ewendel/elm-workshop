@@ -30,9 +30,6 @@ Slides from a slightly more advanced presentation from the Booster conference ar
 
 1. Install a [`plugin`](https://guide.elm-lang.org/install.html#configure-your-editor) for your editor. At the time of writing, Atom's Elm integration seems the best so we **strongly** recommend you use that, even if Atom is not usually your main editor of choice.
 
-    *  [Atom editor setup](https://github.com/halohalospecial/atom-elmjutsu#setup)
-
-
 1. [`elm-format`](https://github.com/avh4/elm-format#for-elm-018) is a crucial tool to make your Elm experience more enjoyable.
     * Remember to make sure that `elm-format` is available on your PATH or that you tell your editor where to find it
     * In Atom, this can be done under package settings for the `elm-format` package: input the path to the `elm-format` binary. (If you for example installed it via `brew` on MacOS, the path should be along the lines of `/urs/local/bin/elm-format-0.18`)
@@ -60,7 +57,7 @@ main =
     "Hello, world!"
 ```
 
-As you can see in your browser, the app will fill the screen with an error message then your code does not compile.
+As you can see in your browser, the app will fill the screen with an error message that your code does not compile.
 This might be unfamiliar to you if you're coming from JavaScript to Elm. With JavaScript you have to run your code in the browser to discover any programming mistakes you might have made, while with Elm these errors will be caught right as you hit save in your editor!
 
 > #### A note on Elm's compiler:
@@ -341,37 +338,16 @@ See the docs on [how to update a record](http://elm-lang.org/docs/records#updati
 1. Change `main` to `Html.beginnerProgram { ... }`. Read the docs to see what parameters it accepts!
 1. Create a type alias `Model` that has the following type: `{ cards : List Card }`
 1. Create the union type `Msg` with only one constructor: `CardClick Card`
-1. Use pattern matching in `update` on the type of `Msg` and open the clicked card
+1. Use pattern matching in `update` on the type of `Msg` and open the clicked card. Note: for now your pattern match expression only has the one case (`CardClick`) but we will add more cases later.
 1. Add `import Html.Events exposing (..)` and add an `onClick` event handler on closed cards.
 
 When this section is complete, you should render three closed cards, each of them opening when clicked.
 
 ## Level 4 - The game!
 
-We are now going to implement the game logic.
-
 In memory, as you may know, the player opens two cards, one after another, and if they match they stay open.
 If they do not match, both cards are closed again.
-This repeats until all cards on the board are open.
-
-Our game implementation will have three states:
-  
-  1. `Choosing` - the player chooses the first card
-  1. `Matching` - the player chooses the second card to match with the first
-  1. `GameOver` - all cards are matched and the player has won
-
-The game logic will flow like this:
-  
-  1. When the player chooses the first card:
-    1. Set all unmatched cards to `Closed`
-    1. Set the chosen card to `Open`
-    1. Go to `Matching` state
-  1. When the player chooses the second card:
-    1. If it matches the first card, then set the two cards to `Matched`, else set the second card to `Open`
-	1. If all cards are `Matched`, then go to `GameOver` state, else go to `Choosing` state
-    
-
-Let's get back to the code.
+This repeats until all cards on the board are open. Before we start implementing the game logic, let's clean up a bit.
 
 Our deck of cards is a list of `Card`s and we will be passing them around in our program.
 Therefore, instead of having to write `List Card` everywhere, we want to be able to write `Deck`. Use a type alias to achieve this.
@@ -393,24 +369,28 @@ Let's pretend we're famous TV chefs and cheat a little bit. We have prepared a m
 Use this by importing `DeckGenerator` in `Main.elm` and using the `DeckGenerator.static` value as `model`'s initial value.
 
 ### Game logic!
+Our game implementation will have three states:
+  
+  1. `Choosing` - the player chooses the first card
+  1. `Matching` - the player chooses the second card to match with the first
+  1. `GameOver` - all cards are matched and the player has won
+  
+The game logic will flow like this:
 
-As we've established, our game has three states: `Choosing`, `Matching` and `GameOver`.
-Implement this as a union type called `GameState`.
+  1. When the player chooses the first card he is in the `Choosing` state:
+    1. Set all unmatched cards to `Closed`
+    1. Set the chosen/clicked card to `Open`
+    1. Go to `Matching` state
+  1. In the `Matching` state, the player chooses his second card:
+    1. If it matches the first card, then set the two cards to `Matched`. If the two cards do not match, set the clicked card to `Open`.
+  1. If all cards are `Matched`, then go to `GameOver` state, else go to `Choosing` state
 
-The `GameOver` state does not need any extra data, but `Choosing` needs a `Deck` (the deck we are choosing from), and `Matching` needs both a `Deck` (the deck we are choosing from) and a `Card` (the card we are trying to match with).
+Start by implementing the three states as a union type called `GameState`.
+The `GameOver` state does not need any extra data, but `Choosing` needs a `Deck` (the deck we are choosing from), and `Matching` needs both a `Deck` (the deck we are choosing from) and a `Card` (the card we are trying to match with). 
 
-To recap our implementation with regards to the `update` function:
-* In `Choosing` state
-  1. Close all unmatched cards
-  1. Open the clicked card
-  1. Go to `Matching`
-* In `Matching` state
-  1. When the two cards match , set both cards to `Matched`. When the two cards do not match, set the clicked card to `Open`.
-  1. If all cards are now matched, go to `GameOver`. If not, go to `Choosing`.
-* In `GameOver` state, do nothing
+The `Model` of our program should now change from consisting of just a `Deck` to being a `GameState`. Continue by creating a `updateCardClick` function that can handle the three different `GameState`s.
 
-
-You will also have to update the `view` function to accomodate for the new shape of our model.
+To complete the game logic you will need yo update your `update` and `view` functions to accomodate for the new shape of our model.
 
 Now take a minute and pat yourself on the back for making an awesome game in Elm!
 
@@ -493,3 +473,4 @@ Hopefully this is just the beginning of your journey with Elm. Please do reach o
      </tr>
   </tbody>
 </table>
+
