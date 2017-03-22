@@ -372,21 +372,23 @@ Our game implementation will have three states:
   1. `Choosing` - the player chooses the first card
   1. `Matching` - the player chooses the second card to match with the first
   1. `GameOver` - all cards are matched and the player has won
-
-The game logic will flow like this:
   
+The game logic will flow like this:
+
   1. When the player chooses the first card he is in the `Choosing State`:
     1. Set all unmatched cards to `Closed`
     1. Set the chosen/clicked card to `Open`
     1. Go to `Matching` state
-  1. When the player chooses the second card, that is, he is in the `Matching` state:
+  1. In the `Matching` state, the player chooses his second card:
     1. If it matches the first card, then set the two cards to `Matched`. If the two cards do not match, set the clicked card to `Open`.
-	1. If all cards are `Matched`, then go to `GameOver` state, else go to `Choosing` state
+  1. If all cards are `Matched`, then go to `GameOver` state, else go to `Choosing` state
 
 Start by implementing the three states as a union type called `GameState`.
-The `GameOver` state does not need any extra data, but `Choosing` needs a `Deck` (the deck we are choosing from), and `Matching` needs both a `Deck` (the deck we are choosing from) and a `Card` (the card we are trying to match with).
+The `GameOver` state does not need any extra data, but `Choosing` needs a `Deck` (the deck we are choosing from), and `Matching` needs both a `Deck` (the deck we are choosing from) and a `Card` (the card we are trying to match with). 
 
-You will also have to update the `view` function to accomodate for the new shape of our model.
+The `Model` of our program will now consist of a `Game State` instead of just a `Deck`. Continue by creating a `updateCardClick` function that can handle the three different `GameState`s.
+
+To complete the game logic you will need yo update your `update` and `view` functions to accomodate for the new shape of our model.
 
 Now take a minute and pat yourself on the back for making an awesome game in Elm!
 
