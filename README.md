@@ -20,7 +20,9 @@ Some of these concepts may be unfamiliar and somewhat confusing to begin with, s
 
 ## Presentation slides
 
-The slides from the presentation are available [here](https://drive.google.com/file/d/0B3Lh4pXvCuflcnpKWHhBUzU2c0U/view?usp=sharing).
+The slides from the presentation are available [here](https://drive.google.com/open?id=0B3Lh4pXvCuflWXI3OWdtOVlldkU).
+
+Slides from a slightly more advanced presentation from the Booster conference are available [here](https://drive.google.com/file/d/0B3Lh4pXvCuflcnpKWHhBUzU2c0U/view?usp=sharing).
 
 ## Prerequisites
 
