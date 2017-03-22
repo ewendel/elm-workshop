@@ -375,7 +375,7 @@ Our game implementation will have three states:
   
 The game logic will flow like this:
 
-  1. When the player chooses the first card he is in the `Choosing State`:
+  1. When the player chooses the first card he is in the `Choosing` state:
     1. Set all unmatched cards to `Closed`
     1. Set the chosen/clicked card to `Open`
     1. Go to `Matching` state
@@ -386,7 +386,7 @@ The game logic will flow like this:
 Start by implementing the three states as a union type called `GameState`.
 The `GameOver` state does not need any extra data, but `Choosing` needs a `Deck` (the deck we are choosing from), and `Matching` needs both a `Deck` (the deck we are choosing from) and a `Card` (the card we are trying to match with). 
 
-The `Model` of our program will now consist of a `Game State` instead of just a `Deck`. Continue by creating a `updateCardClick` function that can handle the three different `GameState`s.
+The `Model` of our program should now change from consisting of just a `Deck` to being a `GameState`. Continue by creating a `updateCardClick` function that can handle the three different `GameState`s.
 
 To complete the game logic you will need yo update your `update` and `view` functions to accomodate for the new shape of our model.
 
