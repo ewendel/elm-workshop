@@ -378,11 +378,11 @@ Our game implementation will have three states:
 The game logic will flow like this:
 
   1. When the player chooses the first card he is in the `Choosing` state:
-    1. Set all unmatched cards to `Closed`
-    1. Set the chosen/clicked card to `Open`
-    1. Go to `Matching` state
+      1. Set all unmatched cards to `Closed`
+      1. Set the chosen/clicked card to `Open`
+      1. Go to `Matching` state
   1. In the `Matching` state, the player chooses his second card:
-    1. If it matches the first card, then set the two cards to `Matched`. If the two cards do not match, set the clicked card to `Open`.
+      1. If it matches the first card, then set the two cards to `Matched`. If the two cards do not match, set the clicked card to `Open`.
   1. If all cards are `Matched`, then go to `GameOver` state, else go to `Choosing` state
 
 Start by implementing the three states as a union type called `GameState`.
