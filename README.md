@@ -20,7 +20,9 @@ Some of these concepts may be unfamiliar and somewhat confusing to begin with, s
 
 ## Presentation slides
 
-The slides from the presentation are available [here](https://drive.google.com/file/d/0B3Lh4pXvCuflcnpKWHhBUzU2c0U/view?usp=sharing).
+The slides from the presentation are available [here](https://drive.google.com/open?id=0B3Lh4pXvCuflWXI3OWdtOVlldkU).
+
+Slides from a slightly more advanced presentation from the Booster conference are available [here](https://drive.google.com/file/d/0B3Lh4pXvCuflcnpKWHhBUzU2c0U/view?usp=sharing).
 
 ## Prerequisites
 
@@ -28,10 +30,8 @@ The slides from the presentation are available [here](https://drive.google.com/f
 
 1. Install a [`plugin`](https://guide.elm-lang.org/install.html#configure-your-editor) for your editor. At the time of writing, Atom's Elm integration seems the best so we **strongly** recommend you use that, even if Atom is not usually your main editor of choice.
 
-    *  [Atom editor setup](https://github.com/halohalospecial/atom-elmjutsu#setup)
-
-1. [`elm-format`](github.com/avh4/elm-format#for-elm-018) is a crucial tool to make your Elm experience more enjoyable.
-    * Remember to ake sure that `elm-format` is available on your PATH or that you tell your editor where to find it
+1. [`elm-format`](https://github.com/avh4/elm-format#for-elm-018) is a crucial tool to make your Elm experience more enjoyable.
+    * Remember to make sure that `elm-format` is available on your PATH or that you tell your editor where to find it
     * In Atom, this can be done under package settings for the `elm-format` package: input the path to the `elm-format` binary. (If you for example installed it via `brew` on MacOS, the path should be along the lines of `/urs/local/bin/elm-format-0.18`)
     * We also recommend you enable `Format on save`
 
@@ -57,7 +57,7 @@ main =
     "Hello, world!"
 ```
 
-As you can see in your browser, the app will fill the screen with an error message then your code does not compile.
+As you can see in your browser, the app will fill the screen with an error message that your code does not compile.
 This might be unfamiliar to you if you're coming from JavaScript to Elm. With JavaScript you have to run your code in the browser to discover any programming mistakes you might have made, while with Elm these errors will be caught right as you hit save in your editor!
 
 > #### A note on Elm's compiler:
@@ -71,22 +71,26 @@ Now, study the on-screen error message.
 
 Our app is now telling us that the value of `main` has the wrong type: it is a `String` but it should be either `Html`, `Svg` or `Program`.
 
-To change the `String` (`"Hello, world!"`) into some `Html` we have a function that does exactly that; [`text : String -> Html a`](http://package.elm-lang.org/packages/evancz/elm-html/4.0.1/Html#text). 
+Luckily, we have function named `text` for turning a `String` (such as `"Hello, world!"`) into `Html`. The function has the following signature `text : String -> Html a`, and you can read it's documentation [here](http://package.elm-lang.org/packages/evancz/elm-html/4.0.1/Html#text).
+
 
 >#### Note:
 >* The official docs has a nice chapter on ["Reading types in Elm"](https://guide.elm-lang.org/types/reading_types.html)
 >* Elm-tutorial has a nice chapter on functions in Elm: ["Function basics"](https://www.elm-tutorial.org/en/01-foundations/02-functions.html)
 
-Use this to make your program compile and print "Hello, world!" to the screen.
+Use the function `text` to make your program compile and print "Hello, world!" to the screen.
 
 ### Creating a greeting function
 
 Now we want to create a function that takes a name and greets.
 It should have this type signature: `greet: String -> String`.
 
-Called with "Erik", it should produce the string "Hello, Erik". Thus:
+Called with the argument "Erik", the function should produce the string "Hello, Erik". Thus:
 
-`greet "Erik" == "Hello, Erik"`
+```
+> greet "Erik"
+"Hello, Erik" : String
+```
 
 Here is an example of a function that takes two numbers and returns the sum of those numbers:
 
@@ -166,8 +170,8 @@ Example: `div : List (Attribute msg) -> List (Html a) -> Html a`
 Here, we want you to represent a card with the following Html:
 
 ```
-<div>
-	<img src="/static/cats/{card.id}.jpg" />
+<div class "cards">
+	<img class "card" src="/static/cats/{card.id}.jpg" />
 </div>
 ```
 
@@ -206,26 +210,24 @@ A union type is like a Java or C# enumerable - a union type is a value that may 
 type PieceColor = White | Black
 ```
 
-`PieceColor` is now treated a fullworthy type in our system, just as `String` or `Bool`. `White` or `Black` are _constructor functions_, functions that take _zero_ arguments and return a value of type `PieceColor`. Or, said with a type signature:
+`PieceColor` is now treated as a normal type in our system, just as `String` or `Bool`. `White` or `Black` are _constructor functions_, functions that take _zero_ arguments and return a value of type `PieceColor`. Or, expressed with a type signature:
 
 ```elm
 White : PieceColor
 Black : PieceColor
 ```
 
-Union types may also carry data. This means that the _constructor functions_ for such union type values aren't zero argument functions:
-
-Union types may also carry data. Let's look at an example:
+Union types may also carry data. This means that the _constructor functions_ for such union type values aren't zero argument functions. Let's look at an example:
 
 ```elm
 type CustomerAge = Unknown | Known Int
 -- Unknown : CustomerAge
 -- Known : Int -> CustomerAge
 ```
-This can be used to represent a customer's age which we might or might not know at the time.
-We see that the _constructor function_ `Known` takes an `Int` argument and returns a `CustomerAge`.
+This can be used to represent a customer's age in a situation where we might not know the age.
+We see that the constructor function `Known` takes an `Int` argument and returns a `CustomerAge`.
 
-This _accompanying data_ that is wrapped within a union type value may be of any type, and they don't have to the same for all value types within a union.
+We can wrap any type of _accompanying data_ within a union type value (like `Known`), and the type of the accompanying data doesn't have to be the same for all the value types within a union.
 
 This is incredibly useful, and we will now make our own!
 
@@ -262,13 +264,13 @@ This allows to use this type throughout our code:
 
 ```elm
 getName : Customer -> String
-getName customer = 
+getName customer =
 	customer.name
 ```
 
 Imagine calling this function with an object without a name field.
 In JavaScript, this would obviously crash hard, but in Elm - the code won't even compile!
-This moves the time of discovering the error from compile time (when you hit _save_ in your editor) to runtime, which significally improves our feedback cycle!
+This moves the discovery of errors from runtime to compile time (when you hit _save_ in your editor), which significantly improves our feedback cycle!
 
 Now, create a type alias called `Card` that defines the card data structure from before.
 Use this new type in the signatures of `viewCard` and `card`
@@ -337,37 +339,16 @@ See the docs on [how to update a record](http://elm-lang.org/docs/records#updati
 1. Change `main` to `Html.beginnerProgram { ... }`. Read the docs to see what parameters it accepts!
 1. Create a type alias `Model` that has the following type: `{ cards : List Card }`
 1. Create the union type `Msg` with only one constructor: `CardClick Card`
-1. Use pattern matching in `update` on the type of `Msg` and open the clicked card
+1. Use pattern matching in `update` on the type of `Msg` and open the clicked card. Note: for now your pattern match expression only has the one case (`CardClick`) but we will add more cases later.
 1. Add `import Html.Events exposing (..)` and add an `onClick` event handler on closed cards.
 
 When this section is complete, you should render three closed cards, each of them opening when clicked.
 
 ## Level 4 - The game!
 
-We are now going to implement the game logic.
-
 In memory, as you may know, the player opens two cards, one after another, and if they match they stay open.
 If they do not match, both cards are closed again.
-This repeats until all cards on the board are open.
-
-Our game implementation will have three states:
-  
-  1. `Choosing` - the player chooses the first card
-  1. `Matching` - the player chooses the second card to match with the first
-  1. `GameOver` - all cards are matched and the player has won
-
-The game logic will flow like this:
-  
-  1. When the player chooses the first card:
-    1. Set all unmatched cards to `Closed`
-    1. Set the chosen card to `Open`
-    1. Go to `Matching` state
-  1. When the player chooses the second card:
-    1. If it matches the first card, then set the two cards to `Matched`, else set the second card to `Open`
-	1. If all cards are `Matched`, then go to `GameOver` state, else go to `Choosing` state
-    
-
-Let's get back to the code.
+This repeats until all cards on the board are open. Before we start implementing the game logic, let's clean up a bit.
 
 Our deck of cards is a list of `Card`s and we will be passing them around in our program.
 Therefore, instead of having to write `List Card` everywhere, we want to be able to write `Deck`. Use a type alias to achieve this.
@@ -386,62 +367,32 @@ It is common in Elm projects to have the application's model and associated in t
 
 
 Let's pretend we're famous TV chefs and cheat a little bit. We have prepared a module `DeckGenerator` that can be used to generate a deck of cards.
-
-1. Add file `DeckGenerator.elm` with the following contents:
-
-```elm
-module DeckGenerator exposing (static, random)
-
-import Random
-import Random.List
-import Model exposing (Deck, CardState(..), Group(..))
-
-static : Deck
-static =
-    let
-        ids =
-            [ "1"
-            , "2"
-            , "3"
-            , "4"
-            , "5"
-            , "6"
-            ]
-
-        groupA =
-            ids |> List.map (\id -> { id = id, state = Closed, group = A })
-
-        groupB =
-            ids |> List.map (\id -> { id = id, state = Closed, group = B })
-    in
-        List.concat [ groupA, groupB ]
-
-random : Random.Generator Deck
-random =
-    Random.List.shuffle static
-```
-
 Use this by importing `DeckGenerator` in `Main.elm` and using the `DeckGenerator.static` value as `model`'s initial value.
 
 ### Game logic!
+Our game implementation will have three states:
+  
+  1. `Choosing` - the player chooses the first card
+  1. `Matching` - the player chooses the second card to match with the first
+  1. `GameOver` - all cards are matched and the player has won
+  
+The game logic will flow like this:
 
-As we've established, our game has three states: `Choosing`, `Matching` and `GameOver`.
-Implement this as a union type called `GameState`.
+  1. When the player chooses the first card he is in the `Choosing` state:
+      1. Set all unmatched cards to `Closed`
+      1. Set the chosen/clicked card to `Open`
+      1. Go to `Matching` state
+  1. In the `Matching` state, the player chooses his second card:
+      1. If it matches the first card, then set the two cards to `Matched`. If the two cards do not match, set the clicked card to `Open`.
+  1. If all cards are `Matched`, then go to `GameOver` state, else go to `Choosing` state
 
-The `GameOver` state does not need any extra data, but `Choosing` needs a `Deck` (the deck we are choosing from), and `Matching` needs both a `Deck` (the deck we are choosing from) and a `Card` (the card we are trying to match with).
+Start by implementing the three states as a union type called `GameState`.
+The `GameOver` state does not need any extra data, but `Choosing` needs a `Deck` (the deck we are choosing from), and `Matching` needs both a `Deck` (the deck we are choosing from) and a `Card` (the card we are trying to match with). 
 
-To recap our implementation with regards to the `update` function:
-* In `Choosing` state
-  1. Close all unmatched cards
-  1. Open the clicked card
-  1. Go to `Matching`
-* In `Matching` state
-  1. When the two cards match , set both cards to `Matched`. When the two cards do not match, set the clicked card to `Open`.
-  1. If all cards are now matched, go to `GameOver`. If not, go to `Choosing`.
-* In `GameOver` state, do nothing
+The `Model` of our program should now change from consisting of just a `Deck` to being a `GameState`. Continue by creating a `updateCardClick` function that can handle the three different `GameState`s.  It should have the following signature:
+`updateCardClick : Card -> GameState -> GameState`.
 
-
-You will also have to update the `view` function to accomodate for the new shape of our model.
+To complete the game logic you will need yo update your `update` and `view` functions to accommodate for the new shape of our model.
 
 Now take a minute and pat yourself on the back for making an awesome game in Elm!
 
@@ -524,3 +475,4 @@ Hopefully this is just the beginning of your journey with Elm. Please do reach o
      </tr>
   </tbody>
 </table>
+
