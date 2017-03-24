@@ -71,7 +71,7 @@ Now, study the on-screen error message.
 
 Our app is now telling us that the value of `main` has the wrong type: it is a `String` but it should be either `Html`, `Svg` or `Program`.
 
-To change the `String` (`"Hello, world!"`) into some `Html` we have a function that does exactly that; [`text : String -> Html msg`](http://package.elm-lang.org/packages/evancz/elm-html/4.0.1/Html#text). 
+To change the `String` (`"Hello, world!"`) into some `Html` we have a function that does exactly that; [`text : String -> Html a`](http://package.elm-lang.org/packages/evancz/elm-html/4.0.1/Html#text). 
 
 >#### Note:
 >* The official docs has a nice chapter on ["Reading types in Elm"](https://guide.elm-lang.org/types/reading_types.html)
@@ -141,8 +141,8 @@ Our Elm record should have the type `{ id : String }`. The `id` string will refe
 
 Oh, right, we didn't tell you about HTML yet! If you're familiar with the library `React.js`, the following section might feel familiar to you.
 
-```javascript
-// JavaScript with React
+```html
+// HTML
 <div class="ninja">
 	<span>Banzai!</span>
 </div>
@@ -161,7 +161,7 @@ All HTML tags have corresponding functions in Elm, and they all accept two param
 1. a list of `Html.Attribute`
 1. a list of zero or more `Html` nodes
 
-Example: `div : List (Attribute msg) -> List (Html msg) -> Html msg`
+Example: `div : List (Attribute msg) -> List (Html a) -> Html a`
 
 Here, we want you to represent a card with the following Html:
 
@@ -171,9 +171,9 @@ Here, we want you to represent a card with the following Html:
 </div>
 ```
 
-Write the following function: `viewCard: { id: String } -> Html msg` by using these:
-* `div : List (Attribute msg) -> List (Html msg) -> Html msg`
-* `img : List (Attribute msg) -> List (Html msg) -> Html msg`
+Write the following function: `viewCard: { id: String } -> Html a` by using these:
+* `div : List (Attribute msg) -> List (Html a) -> Html a`
+* `img : List (Attribute msg) -> List (Html a) -> Html a`
 * `src : String -> Attribute msg`
 
 To get the `src` function you should put `import Html.Attributes exposing (..)` near the beginning of your file.
@@ -182,8 +182,8 @@ Remember that string concatenation is done with `++`.
 
 If you call `viewCard` with the card record you created in the previous task you should now see a beautiful little kitten on you screen!
 
->#### Note about `Html msg`
->Don't worry about that scary type `Html msg` - we'll learn more about that later! Simply put, it's just saying that "hey, our HTML will emit some actions later on, and they will be of type `msg` (which is a type placeholder).
+>#### Note about `Html a`
+>Don't worry about that scary type `Html a` - we'll learn more about that later! Simply put, it's just saying that "hey, our HTML will emit some actions later on, and they will be of type `a` (which is a type variable, or a wildcard).
 
 ### Union Types: Representing card state
 
@@ -277,7 +277,7 @@ Use this new type in the signatures of `viewCard` and `card`
 
 Having only one card is boring, so create a list of three cards, each having different values for `state` (and maybe `id` too?).
 
-Next, we're going to create this function: `viewCards : List Card -> Html msg`.
+Next, we're going to create this function: `viewCards : List Card -> Html a`.
 
 Notice how the type signature helps in communicating what the function does!
 Type signatures are a very powerful tool, as you will discover throughout this workshop.
@@ -285,10 +285,10 @@ Type signatures are a very powerful tool, as you will discover throughout this w
 Make sure you render the correct image source for each card (`{card.id}.jpg`).
 
 > Hint:
-> * `viewCard : Card -> Html msg`
+> * `viewCard : Card -> Html a`
 > * `cards : List Card`
 > * `List.map : (a -> b) -> List a -> List b`
-> * `div : List (Atribute msg) -> List (Html msg) -> Html msg`
+> * `div : List (Atribute msg) -> List (Html a) -> Html a`
 
 ### Match all the patterns!
 
