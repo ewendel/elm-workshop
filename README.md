@@ -15,6 +15,9 @@ The workshop will cover the following topics:
 * Functions
 * Partial Application
 * Currying
+* Maybe
+* Html.beginnerProgram
+* Piping
 
 Some of these concepts may be unfamiliar and somewhat confusing to begin with, so please do ask us if and when you get stuck, or simply have a question. That's what we're here for!
 
