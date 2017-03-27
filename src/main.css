@@ -57,3 +57,28 @@ ul {
   font-family: inherit;
   font-size: 24px;
 }
+.row {
+  height: 32px;
+}
+
+.tile {
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+}
+
+.Wall {
+  background-color: #ccc;
+}
+
+.wall {
+  background-color: #ccc;
+}
+
+.snake {
+  background: lightcoral;
+}
+
+.food {
+  background-image: url('/static/snake/food.ico');
+}
