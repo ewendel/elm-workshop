@@ -1,4 +1,4 @@
-# Elm Arcade 
+# Elm Arcade
 # Getting Started With Elm and Typed Functional Programming
 
 Welcome to this workshop! Today we're learning Elm and typed functional programming techniques through creating the classic game Memory.
@@ -157,7 +157,7 @@ Oh, right, we didn't tell you about HTML yet! If you're familiar with the librar
 ```elm
 -- Elm
 div [ class "ninja" ]
-    [ span [] [ text "Banzai!" ] 
+    [ span [] [ text "Banzai!" ]
     ]
 ```
 
@@ -246,7 +246,7 @@ card: { id: String, state: CardState }
 
 By now it should become clear that our signature for `card` is getting unwieldy. Imagine maintaining signatures for our card objects all around the codebase as we add more fields!
 
-### Type Alias (alias slayer) 
+### Type Alias (alias slayer)
 
 _Type aliases_ allow us give a name to records with a specified structure, and use it as a type.
 
@@ -319,7 +319,7 @@ In `viewCard`, use the following logic (css classes should be applied to the `im
 
 ## Level 3 - Beginner Program!
 
-In this section, we will take our first steps toward learning The Elm Architecture (TEA), the architecture that inspired Dan Abramov to create Redux. 
+In this section, we will take our first steps toward learning The Elm Architecture (TEA), the architecture that inspired Dan Abramov to create Redux.
 
 We've made it this far without TEA because we have a simple, static app.
 Now we want to start responding to user input, and TEA is the way Elm structures applications and handles interactivity.
@@ -372,11 +372,11 @@ Use this by importing `DeckGenerator` in `Main.elm` and using the `DeckGenerator
 
 ### Game logic!
 Our game implementation will have three states:
-  
+
   1. `Choosing` - the player chooses the first card
   1. `Matching` - the player chooses the second card to match with the first
   1. `GameOver` - all cards are matched and the player has won
-  
+
 The game logic will flow like this:
 
   1. When the player chooses the first card he is in the `Choosing` state:
@@ -388,7 +388,7 @@ The game logic will flow like this:
   1. If all cards are `Matched`, then go to `GameOver` state, else go to `Choosing` state
 
 Start by implementing the three states as a union type called `GameState`.
-The `GameOver` state does not need any extra data, but `Choosing` needs a `Deck` (the deck we are choosing from), and `Matching` needs both a `Deck` (the deck we are choosing from) and a `Card` (the card we are trying to match with). 
+The `GameOver` state does not need any extra data, but `Choosing` needs a `Deck` (the deck we are choosing from), and `Matching` needs both a `Deck` (the deck we are choosing from) and a `Card` (the card we are trying to match with).
 
 The `Model` of our program should now change from consisting of just a `Deck` to being a `GameState`. Continue by creating a `updateCardClick` function that can handle the three different `GameState`s.  It should have the following signature:
 `updateCardClick : Card -> GameState -> GameState`.
@@ -476,4 +476,3 @@ Hopefully this is just the beginning of your journey with Elm. Please do reach o
      </tr>
   </tbody>
 </table>
-
