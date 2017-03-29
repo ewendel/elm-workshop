@@ -451,6 +451,11 @@ Hopefully this is just the beginning of your journey with Elm. Please do reach o
 * Save each game's score and show a high score table
 * Count how long the player takes to finish the game. Use [Time.now](http://package.elm-lang.org/packages/elm-lang/core/5.1.1/Time#now) together with [Task.perform](http://package.elm-lang.org/packages/elm-lang/core/5.1.1/Task#perform) to get the current time
 
+# To infinity and beyond!
+
+What's cooler than having made _one_ game? _Two_ games!
+
+Move the contents of `Main.elm` to `Memory.elm` and head on over to [SNAKE.md](SNAKE.md) to continue your game-making journey with elm!
 
 <h2 align="center">Made by</h2>
 
