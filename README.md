@@ -118,13 +118,13 @@ This makes the code easier to read and can help you get better error messages.
 
 
 ## Level 2 - Learning types
-> The goal of this level is to learn union types and type aliases, which we use to represent and view state.
+> The goal of this level is to learn union types and type aliases, which we often use to represent state.
 
 From here on we'll move in small steps, writing small chunks of code that will be a part of our final game, while using more and more features from functional programming and Elm along the way. Ready, set, go!
 
 ### 2.1 It's a new record!
 
-We are going to create a representation of a "card" - something that is hiding a picture and can be flipped by the player. We'll start off with creating the equivalent data structure of a JavaScript object - a _record_. You can see how JavaScript objects and Elm records translate in the two code examples at the bottom of this section.
+We are going to create a representation of a "card" - something that is hiding a picture and can be flipped by the player. We'll start off with creating the equivalent data structure of a JavaScript object - a _record_. You can see the similarities between JavaScript objects and Elm records in the two code examples at the bottom of this section.
 
 Our Elm record should have the type `{ id : String }`. The `id` string will refer to the file name of the image our card will be hiding. Start with `id = "1"`.
 
