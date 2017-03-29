@@ -1,4 +1,4 @@
-# Elm Arcade 
+# Elm Arcade
 # Getting Started With Elm and Typed Functional Programming
 
 Welcome to this workshop! Today we're learning Elm and typed functional programming techniques through creating the classic game Memory.
@@ -45,9 +45,11 @@ The slides from the presentation are available here: [part 1](https://drive.goog
 Congratulations, you're now ready to begin learning Elm!
 
 ## Level 1 - Hello, world!
-File: _Main.elm_
+> The goal of this level is to print "Hello, (name)" to the screen.
 
-Main.elm should look like this:
+### 1.1 Displaying text
+
+Locate the file _Main.elm_, which should look like this:
 
 ```elm
 module Main exposing (..)
@@ -74,16 +76,16 @@ Our app is now telling us that the value of `main` has the wrong type: it is a `
 
 Luckily, we have function named `text` for turning a `String` (such as `"Hello, world!"`) into `Html`. The function has the following signature `text : String -> Html a`, and you can read it's documentation [here](http://package.elm-lang.org/packages/evancz/elm-html/4.0.1/Html#text).
 
-
 >#### Note:
 >* The official docs has a nice chapter on ["Reading types in Elm"](https://guide.elm-lang.org/types/reading_types.html)
 >* Elm-tutorial has a nice chapter on functions in Elm: ["Function basics"](https://www.elm-tutorial.org/en/01-foundations/02-functions.html)
 
+##### Hint
 Use the function `text` to make your program compile and print "Hello, world!" to the screen.
 
-### Creating a greeting function
+### 1.2 Creating a greeting function
 
-Now we want to create a function that takes a name and greets.
+Now we want to create a function that takes a name as input and returns a greeting.
 It should have this type signature: `greet: String -> String`.
 
 Called with the argument "Erik", the function should produce the string "Hello, Erik". Thus:
@@ -108,7 +110,7 @@ There are several things to note here:
 
 Go ahead and make the `greet` function. The string concatenation operator in Elm is `++`.
 
-### Adding type signatures
+### 1.3 Adding type signatures
 
 Before we finish off the first level, try adding the type signature for your `greet` function.
 As mentioned, type signatures are not needed, as the compiler can infer them, but it is good practice to add them anyways.
@@ -116,14 +118,16 @@ This makes the code easier to read and can help you get better error messages.
 
 
 ## Level 2 - Learning types
+> The goal of this level is to learn union types and type aliases, which we use to represent and view state.
 
 From here on we'll move in small steps, writing small chunks of code that will be a part of our final game, while using more and more features from functional programming and Elm along the way. Ready, set, go!
 
-### It's a new record!
+### 2.1 It's a new record!
 
-We are going to create a representation of a "card" - something that is hiding a picture and can be flipped by the player. We'll start off with creating the equivalent data structure of a JavaScript object - a _record_ .
+We are going to create a representation of a "card" - something that is hiding a picture and can be flipped by the player. We'll start off with creating the equivalent data structure of a JavaScript object - a _record_. You can see how JavaScript objects and Elm records translate in the two code examples at the bottom of this section.
 
-Example comparison:
+Our Elm record should have the type `{ id : String }`. The `id` string will refer to the file name of the image our card will be hiding. Start with `id = "1"`.
+
 ```javascript
 // JavaScript object
 var person = {
@@ -140,10 +144,17 @@ person =
     }
 ```
 
-Our Elm record should have the type `{ id : String }`. The `id` string will refer to the file name of the image our card will be hiding. Start with `id = "1"`.
 
-### Rendering HTML to the screen
 
+### 2.2 Rendering HTML to the screen
+
+Here, we want you to represent a card with the following HTML:
+
+```html
+<div>
+	<img src="/static/cats/{card.id}.jpg" />
+</div>
+```
 Oh, right, we didn't tell you about HTML yet! If you're familiar with the library `React.js`, the following section might feel familiar to you.
 
 ```html
@@ -157,7 +168,7 @@ Oh, right, we didn't tell you about HTML yet! If you're familiar with the librar
 ```elm
 -- Elm
 div [ class "ninja" ]
-    [ span [] [ text "Banzai!" ] 
+    [ span [] [ text "Banzai!" ]
     ]
 ```
 
@@ -168,14 +179,7 @@ All HTML tags have corresponding functions in Elm, and they all accept two param
 
 Example: `div : List (Attribute msg) -> List (Html a) -> Html a`
 
-Here, we want you to represent a card with the following Html:
-
-```
-<div class "cards">
-	<img class "card" src="/static/cats/{card.id}.jpg" />
-</div>
-```
-
+##### Hint
 Write the following function: `viewCard: { id: String } -> Html a` by using these:
 * `div : List (Attribute msg) -> List (Html a) -> Html a`
 * `img : List (Attribute msg) -> List (Html a) -> Html a`
@@ -190,7 +194,7 @@ If you call `viewCard` with the card record you created in the previous task you
 >#### Note about `Html a`
 >Don't worry about that scary type `Html a` - we'll learn more about that later! Simply put, it's just saying that "hey, our HTML will emit some actions later on, and they will be of type `a` (which is a type variable, or a wildcard).
 
-### Union Types: Representing card state
+### 2.3 Union Types: Representing card state
 
 Memory requires us to flip a card and reveal it's image when clicked. This means we need a way to represent card state, as a card can be in one of three potential states: `Open | Closed | Matched`.
 
@@ -233,24 +237,29 @@ We can wrap any type of _accompanying data_ within a union type value (like `Kno
 This is incredibly useful, and we will now make our own!
 
 
-Let's create a union type called `CardState` that can be either `Open`, `Closed` or `Matched` (_constructor functions_ are always capitalized).
+1. Let's create a union type called `CardState` that can be either `Open`, `Closed` or `Matched` (_constructor functions_ are always capitalized).
 
-Enrich our previous `card` record with a field called `state` that carries a `CardState` value.
+1. Enrich our previous `card` record with a field called `state` that carries a `CardState` value.
 You will also have to update the signature of `viewCard`.
 
-Our `card` value should now have the following type signature:
-
+1. Our `card` value should now have the following type signature:
 ```
 card: { id: String, state: CardState }
 ```
 
 By now it should become clear that our signature for `card` is getting unwieldy. Imagine maintaining signatures for our card objects all around the codebase as we add more fields!
 
-### Type Alias (alias slayer) 
+### 2.5 Type Alias (alias slayer)
 
-_Type aliases_ allow us give a name to records with a specified structure, and use it as a type.
+_Type aliases_ allow us to...
+* ...give a name to records with a specified structure, and use it as a type.
+* ...define a record with a specified data structure as a new type.
 
-_Type aliases_ allow us to define a record with a specified data structure as a new type. Let's model everyone's favourite data structure using a type alias:
+Create a type alias, as described below, called `Card` that defines the card data structure from before.
+Use this new type in the signatures of `viewCard` and `card`.
+
+##### Hint
+Let's model everyone's favourite data structure using a type alias:
 
 ```elm
 type alias Customer =
@@ -273,10 +282,9 @@ Imagine calling this function with an object without a name field.
 In JavaScript, this would obviously crash hard, but in Elm - the code won't even compile!
 This moves the discovery of errors from runtime to compile time (when you hit _save_ in your editor), which significantly improves our feedback cycle!
 
-Now, create a type alias called `Card` that defines the card data structure from before.
-Use this new type in the signatures of `viewCard` and `card`
 
-### Render all the states!
+
+### 2.6 Render all the states!
 
 Having only one card is boring, so create a list of three cards, each having different values for `state` (and maybe `id` too?).
 
@@ -287,11 +295,11 @@ Type signatures are a very powerful tool, as you will discover throughout this w
 
 Make sure you render the correct image source for each card (`{card.id}.jpg`).
 
-> Hint:
-> * `viewCard : Card -> Html a`
-> * `cards : List Card`
-> * `List.map : (a -> b) -> List a -> List b`
-> * `div : List (Atribute msg) -> List (Html a) -> Html a`
+##### Hint:
+* `viewCard : Card -> Html a`
+* `cards : List Card`
+* `List.map : (a -> b) -> List a -> List b`
+* `div : List (Atribute msg) -> List (Html a) -> Html a`
 
 ### Match all the patterns!
 
@@ -319,7 +327,7 @@ In `viewCard`, use the following logic (css classes should be applied to the `im
 
 ## Level 3 - Beginner Program!
 
-In this section, we will take our first steps toward learning The Elm Architecture (TEA), the architecture that inspired Dan Abramov to create Redux. 
+In this section, we will take our first steps toward learning The Elm Architecture (TEA), the architecture that inspired Dan Abramov to create Redux.
 
 We've made it this far without TEA because we have a simple, static app.
 Now we want to start responding to user input, and TEA is the way Elm structures applications and handles interactivity.
@@ -372,11 +380,11 @@ Use this by importing `DeckGenerator` in `Main.elm` and using the `DeckGenerator
 
 ### Game logic!
 Our game implementation will have three states:
-  
+
   1. `Choosing` - the player chooses the first card
   1. `Matching` - the player chooses the second card to match with the first
   1. `GameOver` - all cards are matched and the player has won
-  
+
 The game logic will flow like this:
 
   1. When the player chooses the first card he is in the `Choosing` state:
@@ -388,7 +396,7 @@ The game logic will flow like this:
   1. If all cards are `Matched`, then go to `GameOver` state, else go to `Choosing` state
 
 Start by implementing the three states as a union type called `GameState`.
-The `GameOver` state does not need any extra data, but `Choosing` needs a `Deck` (the deck we are choosing from), and `Matching` needs both a `Deck` (the deck we are choosing from) and a `Card` (the card we are trying to match with). 
+The `GameOver` state does not need any extra data, but `Choosing` needs a `Deck` (the deck we are choosing from), and `Matching` needs both a `Deck` (the deck we are choosing from) and a `Card` (the card we are trying to match with).
 
 The `Model` of our program should now change from consisting of just a `Deck` to being a `GameState`. Continue by creating a `updateCardClick` function that can handle the three different `GameState`s.  It should have the following signature:
 `updateCardClick : Card -> GameState -> GameState`.
@@ -481,4 +489,3 @@ Move the contents of `Main.elm` to `Memory.elm` and head on over to [SNAKE.md](S
      </tr>
   </tbody>
 </table>
-
