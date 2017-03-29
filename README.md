@@ -23,7 +23,7 @@ Some of these concepts may be unfamiliar and somewhat confusing to begin with, s
 
 ## Presentation slides
 
-The slides from the presentation are available [here](https://drive.google.com/open?id=0B3Lh4pXvCuflWTFtT3JfMFh0VG8).
+The slides from the presentation are available here: [part 1](https://drive.google.com/open?id=0B3Lh4pXvCuflWTFtT3JfMFh0VG8) & [part 2](https://drive.google.com/open?id=0B3Lh4pXvCuflbENPVmZmSTlCOHM).
 
 ## Prerequisites
 
