@@ -27,18 +27,22 @@ The slides from the presentation are available here: [part 1](https://drive.goog
 
 ## Prerequisites
 
+1. Install `node` version 7 or newer (which includes `npm`) from [nodejs.org](https://nodejs.org/en/download/current/).
+
 1. Install `elm`. This can be done with `npm install -g elm`, `brew install elm` (if on MacOS) or an old-school file download from [elm-lang.org](https://guide.elm-lang.org/install.html).
 
 1. Install a [`plugin`](https://guide.elm-lang.org/install.html#configure-your-editor) for your editor. At the time of writing, Atom's Elm integration seems the best so we **strongly** recommend you use that, even if Atom is not usually your main editor of choice.
 
-1. [`elm-format`](https://github.com/avh4/elm-format#for-elm-018) is a crucial tool to make your Elm experience more enjoyable.
+1. Install [`elm-format`](https://github.com/avh4/elm-format#for-elm-018), which is a crucial tool to make your Elm experience more enjoyable.
+    * `npm install -g elm-format`
     * Remember to make sure that `elm-format` is available on your PATH or that you tell your editor where to find it
-    * In Atom, this can be done under package settings for the `elm-format` package: input the path to the `elm-format` binary. (If you for example installed it via `brew` on MacOS, the path should be along the lines of `/urs/local/bin/elm-format-0.18`)
-    * We also recommend you enable `Format on save`
+    * In Atom, this can be done under package settings for the `elm-format` package: input the path to the `elm-format` binary.
+    * You can find the path for `elm-format` by doing `which elm-format` on MacOS/*Nix or `Get-Command elm-format` in powershell on Windows
+    * We also recommend you enable `Format on save` in your editor
 
 1. Clone this repo to your computer
 
-1. Run `npm install`
+1. Run `npm install` (please make sure to have `npm` version 3 or newer)
 
 1. Start your local application enviroment with `npm start` in the root folder of this repo. This should open a new browser window with `localhost:3000` and a nice compilation error.
 
