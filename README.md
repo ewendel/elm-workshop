@@ -32,6 +32,10 @@ The slides from the presentation are available here: [part 1](https://drive.goog
 1. Install `elm`. This can be done with `npm install -g elm`, `brew install elm` (if on MacOS) or an old-school file download from [elm-lang.org](https://guide.elm-lang.org/install.html).
 
 1. Install a [`plugin`](https://guide.elm-lang.org/install.html#configure-your-editor) for your editor. At the time of writing, Atom's Elm integration seems the best so we **strongly** recommend you use that, even if Atom is not usually your main editor of choice.
+    * The following packages are needed for a pleasant development experience in Atom:
+        * `language-elm`
+        * `elmjutsu`
+        * `elm-format`
 
 1. Install [`elm-format`](https://github.com/avh4/elm-format#for-elm-018), which is a crucial tool to make your Elm experience more enjoyable.
     * `npm install -g elm-format`
