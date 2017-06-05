@@ -1,0 +1,411 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Level 5 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="BONUS.html" />
+    
+    
+    <link rel="prev" href="LEVEL4.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">Elm arcade</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Memory</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="LEVEL1.html">
+            
+                <a href="LEVEL1.html">
+            
+                    
+                    Level 1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="LEVEL2.html">
+            
+                <a href="LEVEL2.html">
+            
+                    
+                    Level 2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="LEVEL3.html">
+            
+                <a href="LEVEL3.html">
+            
+                    
+                    Level 3
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="LEVEL4.html">
+            
+                <a href="LEVEL4.html">
+            
+                    
+                    Level 4
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.5" data-path="LEVEL5.html">
+            
+                <a href="LEVEL5.html">
+            
+                    
+                    Level 5
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="BONUS.html">
+            
+                <a href="BONUS.html">
+            
+                    
+                    Bonus level
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Snake</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../snake/">
+            
+                <a href="../snake/">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../snake/LEVEL1.html">
+            
+                <a href="../snake/LEVEL1.html">
+            
+                    
+                    Level 1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="../snake/LEVEL2.html">
+            
+                <a href="../snake/LEVEL2.html">
+            
+                    
+                    Level 2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="../snake/LEVEL3.html">
+            
+                <a href="../snake/LEVEL3.html">
+            
+                    
+                    Level 3
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Level 5</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="level-5---lets-get-random">Level 5 - Let&apos;s get random!</h2>
+<p>You might have noticed that our game is kind of easy; the cards are in the same spots every time, and that&apos;s no fun!
+We will now make things more interesting by shuffling the deck of cards at the start of each game.</p>
+<p>Shuffling a list of something includes randomness, and generating random numbers is an impure operation.
+Elm is a <em>pure</em> functional language, and if you look through the type signatures of the functions we have written so far, there is no way to express impurity.
+Luckily, there is a way to do exactly that.</p>
+<blockquote>
+<h4 id="why-is-generating-random-numbers-impure">Why is generating random numbers impure?</h4>
+<p>Take for example JavaScript&apos;s function <code>Math.random()</code>, which produces random floating point numbers. It takes zero arguments and it will (probably) give you a different number back each time you call it.</p>
+<p>From wikipedia:</p>
+<blockquote>
+<p>random() is impure because each call potentially yields a different value. This is because pseudorandom generators use and update a global &quot;seed&quot; state. If we modify it to take the seed as an argument, i.e. random(seed); then random becomes pure, because multiple calls with the same seed value return the same random number.</p>
+</blockquote>
+</blockquote>
+<p>To generate something random, we can to use the built-in function <code>Random.generate : (a -&gt; msg) -&gt; Generator a -&gt; Cmd msg</code>.
+The <code>Generator a</code> part is covered by <code>DeckGenerator.random : Generator Deck</code>, so that means you have to supply a function that takes a <code>Deck</code> and returns a <code>Msg</code>.</p>
+<p>Now you&apos;re probably wondering what that <code>Cmd</code> thingy is, so take a minute and head on over to <a href="https://www.elm-tutorial.org/en/" target="_blank">elm-tutorial.org</a>, which has a nice explanation of <a href="https://www.elm-tutorial.org/en/03-subs-cmds/02-commands.html" target="_blank">commands</a>.</p>
+<p>Since we&apos;re now not longer <em>beginners</em> we should change our <code>Html.beginnerProgram</code> to <code>Html.program</code>.</p>
+<p>There are a couple of changes we have to do to make this official transition from <em>beginners</em> to <em>adepts</em>.</p>
+<ul>
+<li>The argument to <code>Html.program</code> differ slightly from the argument to <code>Html.beginnerProgram</code>:<ol>
+<li><code>model</code> is now called <code>init</code>, and it&apos;s type is now <code>(Model, Cmd Msg)</code></li>
+<li>The record should have a new field called <code>subscriptions : Model -&gt; Sub Msg</code>.</li>
+</ol>
+</li>
+<li><code>update</code> now has the type signature <code>update : Msg -&gt; Model -&gt; (Model, Cmd Msg)</code></li>
+</ul>
+<p>The official docs has a nice exaplanation of what <a href="http://package.elm-lang.org/packages/elm-lang/core/5.1.1/Platform-Sub#Sub" target="_blank"><em>subscriptions</em></a> are.</p>
+<p>Hint: in your code you can use <code>Sub.none</code> and <code>Cmd.none</code> when you don&apos;t have any <em>subscriptions</em> or <em>commands</em> you want to perform.</p>
+<p>So, to summarize:</p>
+<ul>
+<li>Use <code>Random.generate : (a -&gt; msg) -&gt; Generator a -&gt; Cmd msg</code> and <code>DeckGenerator.random : Generator Deck</code> to get a different deck each time the game is started.</li>
+</ul>
+<h2 id="game-over">Game over?</h2>
+<p>And there you have it! You have now created your own version of a memory game with Elm (and cats)!</p>
+<p>Hopefully this is just the beginning of your journey with Elm. Please do reach out to us (links at the bottom) if you have any feedback on the workshop or if you just want to get in touch.</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="LEVEL4.html" class="navigation navigation-prev " aria-label="Previous page: Level 4">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="BONUS.html" class="navigation navigation-next " aria-label="Next page: Bonus level">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Level 5","level":"2.5","depth":1,"next":{"title":"Bonus level","level":"2.6","depth":1,"path":"memory/BONUS.md","ref":"memory/BONUS.md","articles":[]},"previous":{"title":"Level 4","level":"2.4","depth":1,"path":"memory/LEVEL4.md","ref":"memory/LEVEL4.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"./book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"memory/LEVEL5.md","mtime":"2017-06-05T18:19:28.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-05T18:26:10.570Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

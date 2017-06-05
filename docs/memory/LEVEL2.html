@@ -1,0 +1,547 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Level 2 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="LEVEL3.html" />
+    
+    
+    <link rel="prev" href="LEVEL1.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">Elm arcade</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Memory</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="LEVEL1.html">
+            
+                <a href="LEVEL1.html">
+            
+                    
+                    Level 1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.2" data-path="LEVEL2.html">
+            
+                <a href="LEVEL2.html">
+            
+                    
+                    Level 2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="LEVEL3.html">
+            
+                <a href="LEVEL3.html">
+            
+                    
+                    Level 3
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="LEVEL4.html">
+            
+                <a href="LEVEL4.html">
+            
+                    
+                    Level 4
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="LEVEL5.html">
+            
+                <a href="LEVEL5.html">
+            
+                    
+                    Level 5
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="BONUS.html">
+            
+                <a href="BONUS.html">
+            
+                    
+                    Bonus level
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Snake</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../snake/">
+            
+                <a href="../snake/">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../snake/LEVEL1.html">
+            
+                <a href="../snake/LEVEL1.html">
+            
+                    
+                    Level 1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="../snake/LEVEL2.html">
+            
+                <a href="../snake/LEVEL2.html">
+            
+                    
+                    Level 2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="../snake/LEVEL3.html">
+            
+                <a href="../snake/LEVEL3.html">
+            
+                    
+                    Level 3
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Level 2</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="level-2---learning-types">Level 2 - Learning types</h2>
+<blockquote>
+<p>The goal of this level is to learn union types and type aliases, which we often use to represent state.</p>
+</blockquote>
+<p>From here on we&apos;ll move in small steps, writing small chunks of code that will be a part of our final game, while using more and more features from functional programming and Elm along the way. Ready, set, go!</p>
+<h3 id="21-its-a-new-record">2.1 It&apos;s a new record!</h3>
+<p>We are going to create a representation of a &quot;card&quot; - something that is hiding a picture and can be flipped by the player. We&apos;ll start off by creating the equivalent data structure of a JavaScript object - a <em>record</em>. You can see the similarities between JavaScript objects and Elm records here:</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// JavaScript object</span>
+<span class="hljs-keyword">var</span> person = {
+    name: <span class="hljs-string">&apos;Tom Cruise&apos;</span>,
+    expensiveShoes: <span class="hljs-literal">true</span>
+};
+</code></pre>
+<pre><code class="lang-elm"><span class="hljs-comment">-- Elm record</span>
+<span class="hljs-title">person</span> : { name: <span class="hljs-type">String</span>, fancyShoes: <span class="hljs-type">Bool</span> }
+<span class="hljs-title">person</span> =
+    { name = <span class="hljs-string">&quot;Tom Cruise&quot;</span>
+    , fancyShoes = <span class="hljs-type">True</span>
+    }
+</code></pre>
+<hr>
+<p><strong>Task</strong>: Create an Elm record with the type <code>{ id : String }</code>. Use <code>id = &quot;1&quot;</code> for the initial value. This <code>id</code> string will refer to the file name of the image our card will be hiding.</p>
+<h3 id="22-rendering-html-to-the-screen">2.2 Rendering HTML to the screen</h3>
+<p>All HTML tags have corresponding functions in Elm, and they all accept two parameters:</p>
+<ol>
+<li>a list of zero or more <code>Html.Attribute</code></li>
+<li>a list of zero or more <code>Html</code> nodes</li>
+</ol>
+<pre><code class="lang-html"><span class="hljs-comment">&lt;!-- HTML --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ninja&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Banzai!<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<pre><code class="lang-elm"><span class="hljs-comment">-- Elm</span>
+<span class="hljs-title">div</span> [ class <span class="hljs-string">&quot;ninja&quot;</span> ]
+    [ span [] [ text <span class="hljs-string">&quot;Banzai!&quot;</span> ]
+    ]
+</code></pre>
+<p>For example, the function to create a <code>div</code> node has this signature: <code>div : List (Attribute msg) -&gt; List (Html a) -&gt; Html a</code></p>
+<blockquote>
+<h4 id="note-about-html-a">Note about <code>Html a</code></h4>
+<p>Don&apos;t worry about that scary type <code>Html a</code> - we&apos;ll learn more about that later! Simply put, it&apos;s just saying that &quot;hey, our HTML will emit some actions later on, and they will be of type <code>a</code> (which is a type variable, or a wildcard).</p>
+</blockquote>
+<hr>
+<p><strong>Task</strong>: Write the function <code>viewCard: { id: String } -&gt; Html a</code>, which should output the following HTML:</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;/static/cats/{card.id}.jpg&quot;</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<h5 id="hint">Hint</h5>
+<p>These functions will be useful:</p>
+<ul>
+<li><code>div : List (Attribute msg) -&gt; List (Html a) -&gt; Html a</code></li>
+<li><code>img : List (Attribute msg) -&gt; List (Html a) -&gt; Html a</code></li>
+<li><code>src : String -&gt; Attribute msg</code></li>
+</ul>
+<p>To get the <code>src</code> function you should put <code>import Html.Attributes exposing (..)</code> near the beginning of your file.</p>
+<p>Remember also that string concatenation is done with <code>++</code>.</p>
+<p>If you now substitute the <code>greet</code> call in <code>main</code> with <code>viewCard</code> called with the record you created earlier you should see a beautiful little kitten on you screen!</p>
+<h3 id="23-union-types-representing-card-state">2.3 Union Types: Representing card state</h3>
+<p>Memory requires us to flip a card and reveal it&apos;s image when clicked. This means we need a way to represent card state, as a card can be in one of three potential states: <code>Open | Closed | Matched</code>.</p>
+<p>Think about how we&apos;d store this state in JS. Most likely, we&apos;d reach for a string:</p>
+<pre><code class="lang-javascript">{
+    id: <span class="hljs-string">&apos;1&apos;</span>,
+    state: <span class="hljs-string">&apos;open&apos;</span> <span class="hljs-comment">// or &apos;closed&apos; or &apos;matched&apos;</span>
+}
+</code></pre>
+<p>This is obviously not very safe. This doesn&apos;t constrain us to using only the three possible values, and there&apos;s nothing to avoid typing errors. Elm and other ML-languages have a great feature for this use case: <em>Union Types</em>.</p>
+<p>A union type is like a Java enumerable or C# enum - a union type is a value that may be one of a fixed set of values. Chess pieces, for example, can only be either white or black.</p>
+<pre><code class="lang-elm"><span class="hljs-keyword">type</span> <span class="hljs-type">PieceColor</span> = <span class="hljs-type">White</span> | <span class="hljs-type">Black</span>
+</code></pre>
+<p><code>PieceColor</code> is now a normal type in our system, just as <code>String</code> or <code>Bool</code>. <code>White</code> or <code>Black</code> are <em>constructor functions</em>, functions that take <em>zero</em> arguments and return a value of type <code>PieceColor</code>. Or, expressed with a type signature:</p>
+<pre><code class="lang-elm"><span class="hljs-type">White</span> : <span class="hljs-type">PieceColor</span>
+<span class="hljs-type">Black</span> : <span class="hljs-type">PieceColor</span>
+</code></pre>
+<p>Union types may also carry data. This means that the <em>constructor functions</em> for such union type values aren&apos;t zero argument functions. Let&apos;s look at an example:</p>
+<pre><code class="lang-elm"><span class="hljs-keyword">type</span> <span class="hljs-type">CustomerAge</span> = <span class="hljs-type">Unknown</span> | <span class="hljs-type">Known</span> <span class="hljs-type">Int</span>
+<span class="hljs-comment">-- Unknown : CustomerAge</span>
+<span class="hljs-comment">-- Known : Int -&gt; CustomerAge</span>
+</code></pre>
+<p>This can be used to represent a customer&apos;s age in a situation where we might not know the age.
+We see that the constructor function <code>Known</code> takes an <code>Int</code> argument and returns a <code>CustomerAge</code>.</p>
+<p>We can wrap any type of <em>accompanying data</em> within a union type value (like <code>Known</code>), and the type of the accompanying data doesn&apos;t have to be the same for all the value types within a union.</p>
+<p>This is incredibly useful, and we will now make our own!</p>
+<hr>
+<p><strong>Task</strong>:</p>
+<ol>
+<li>Create a union type called <code>CardState</code> that can be either <code>Open</code>, <code>Closed</code> or <code>Matched</code> (<em>constructor functions</em> are always capitalized).</li>
+<li>Enrich our previous <code>card</code> record with a field called <code>state</code> that carries a <code>CardState</code> value.
+You will also have to update the signature of <code>viewCard</code>.<ul>
+<li>Our <code>card</code> value should now have the following type signature:<pre><code>card: { id: String, state: CardState }
+</code></pre></li>
+</ul>
+</li>
+</ol>
+<h3 id="25-type-alias-alias-slayer">2.5 Type Alias (alias slayer)</h3>
+<p>By now we see that our signature for <code>card</code> is getting unwieldy. Imagine maintaining the signatures for our card objects all around the codebase as we add more fields. It doesn&apos;t exactly scale.</p>
+<p>Enter <em>type aliases</em>!</p>
+<p><em>Type aliases</em> allow us to...</p>
+<ul>
+<li>...give a name to records with a specified structure, and use it as a type.</li>
+<li>...define a record with a specified data structure as a new type.</li>
+</ul>
+<p>Let&apos;s look at an example.</p>
+<pre><code class="lang-elm"><span class="hljs-title">customer</span> : { name : <span class="hljs-type">String</span>, age: <span class="hljs-type">CustomerAge</span> }
+<span class="hljs-title">customer</span> =
+    { name = <span class="hljs-string">&quot;Evan&quot;</span>
+    , age = <span class="hljs-type">Unknown</span>
+    }
+
+<span class="hljs-title">getName</span> : { name : <span class="hljs-type">String</span>, age: <span class="hljs-type">CustomerAge</span> } -&gt; <span class="hljs-type">String</span>
+<span class="hljs-title">getName</span> customer =
+    customer.name
+</code></pre>
+<p>If we create a type alias, we can use this in the type signatures:</p>
+<pre><code class="lang-elm"><span class="hljs-keyword">type</span> <span class="hljs-keyword">alias</span> <span class="hljs-type">Customer</span> =
+    { name: <span class="hljs-type">String</span>
+    , age: <span class="hljs-type">CustomerAge</span>
+    }
+
+<span class="hljs-title">customer</span> : <span class="hljs-type">Customer</span>
+<span class="hljs-title">customer</span> = ...
+
+<span class="hljs-title">getName</span> : <span class="hljs-type">Customer</span> -&gt; <span class="hljs-type">String</span>
+<span class="hljs-title">getName</span> customer = ...
+</code></pre>
+<p>The type alias tells the Elm compiler that a <code>Customer</code> is a record with a field <code>name</code> of type <code>String</code>, and a field <code>age</code> of the type <code>CustomerAge</code> (that we defined earlier).</p>
+<p>Imagine calling the <code>getName</code> function with an object without a name field.
+In JavaScript, this would obviously crash hard, but in Elm - the code won&apos;t even compile!
+This moves the discovery of errors from runtime to compile time (when you hit <em>save</em> in your editor), which significantly improves our feedback cycle!</p>
+<hr>
+<p><strong>Task</strong>: Create a type alias called <code>Card</code> that describes our card record. Use this new type in the signatures of <code>viewCard</code> and <code>card</code>.</p>
+<h3 id="26-render-all-the-states">2.6 Render all the states!</h3>
+<p>Our cards can be either <code>Open</code>, <code>Closed</code> or <code>Matched</code>, and we want to display each state differently.
+For this we will be using a language feature called <em>pattern matching</em>.
+It can best be described as a switch-statement on stereoids, allowing us to do more than simple matching on a value.</p>
+<p>Example:</p>
+<pre><code class="lang-elm"><span class="hljs-title">isAdult</span> : <span class="hljs-type">CustomerAge</span> -&gt; <span class="hljs-type">Bool</span>
+<span class="hljs-title">isAdult</span> customerAge =
+    <span class="hljs-keyword">case</span> customerAge <span class="hljs-keyword">of</span>
+        <span class="hljs-type">Known</span> age -&gt;
+            age &gt; <span class="hljs-number">18</span>
+
+        <span class="hljs-type">Unknown</span> -&gt;
+            <span class="hljs-type">False</span>
+</code></pre>
+<p>Notice that we can even extract the value that was used when <code>Known : Int -&gt; CustomerAge</code> was used!
+This is a powerful technique, and is almost always used whenever there&apos;s a union type around.</p>
+<p>In our case, it is handy for rendering different stuff based on the <code>CardState</code> of a card.</p>
+<p>In <code>viewCard</code>, use the following logic (css classes should be applied to the <code>img</code> tag):</p>
+<ul>
+<li>When <code>Closed</code> -&gt; show <code>/static/cats/closed.png</code> and the css class <code>closed</code></li>
+<li>When <code>Open</code> -&gt; show <code>/static/cats/{cardId}.jpg</code> and the css class <code>open</code></li>
+<li>When <code>Matched</code> -&gt; show <code>/static/cats/{cardId}.jpg</code> and the css class <code>matched</code></li>
+</ul>
+<p>Having only one card is pretty boring and we wan&apos;t to be able to see all the different states, so let&apos;s create a list of them.
+Lists in Elm is created with <code>[]</code>, just like in JavaScript.
+Put three cards in the list; one with <code>id = 1</code>, one with <code>id = 2</code> and one with <code>id = 3</code>. Each should also have a different value for <code>state</code>.</p>
+<hr>
+<p><strong>Task</strong>:</p>
+<ol>
+<li>Update <code>viewCard</code> to display differently based on the card&apos;s <code>state</code></li>
+<li>Create <code>cards : List Card</code></li>
+<li>Create <code>viewCards : List Card -&gt; Html a</code></li>
+<li>Call <code>viewCards</code> from <code>main</code></li>
+</ol>
+<h5 id="hint">Hint:</h5>
+<p>Use <code>List.map : (a -&gt; b) -&gt; List a -&gt; List b</code> to convert a list of <code>Card</code> to a list of <code>Html a</code>.
+Remember that <code>div : List (Atribute msg) -&gt; List (Html a) -&gt; Html a</code> (notice the second argument).</p>
+<p>Notice how the type signature helps in communicating what the function does!
+Type signatures are a very powerful tool, as you will discover throughout this workshop.</p>
+<p>Make sure you render the correct image source for each card (<code>{card.id}.jpg</code>).</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="LEVEL1.html" class="navigation navigation-prev " aria-label="Previous page: Level 1">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="LEVEL3.html" class="navigation navigation-next " aria-label="Next page: Level 3">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Level 2","level":"2.2","depth":1,"next":{"title":"Level 3","level":"2.3","depth":1,"path":"memory/LEVEL3.md","ref":"memory/LEVEL3.md","articles":[]},"previous":{"title":"Level 1","level":"2.1","depth":1,"path":"memory/LEVEL1.md","ref":"memory/LEVEL1.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"./book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"memory/LEVEL2.md","mtime":"2017-06-05T18:19:28.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-05T18:26:10.570Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

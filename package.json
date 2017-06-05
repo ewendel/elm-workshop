@@ -11,6 +11,7 @@
     "repl": "elm-repl",
     "reactor": "elm-reactor",
     "book": "gitbook serve",
+    "build:book": "gitbook build ./ ./docs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
