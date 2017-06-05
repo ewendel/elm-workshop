@@ -10,6 +10,7 @@
     "make": "elm-make",
     "repl": "elm-repl",
     "reactor": "elm-reactor",
+    "book": "gitbook serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -40,6 +41,7 @@
     "elm-webpack-loader": "3.1.0",
     "extract-text-webpack-plugin": "1.0.1",
     "file-loader": "0.9.0",
+    "gitbook-cli": "^2.3.0",
     "html-webpack-plugin": "2.24.1",
     "http-proxy-middleware": "^0.17.3",
     "minimist": "1.2.0",
