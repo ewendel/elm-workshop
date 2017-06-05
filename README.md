@@ -1,6 +1,6 @@
 # Elm arcade
 
-Read the [book](dead link) or browse it [here](docs/README.md).
+Instructions are found in the [book](https://ewendel.github.io/elm-workshop/).
 
 
 <h2 align="center">Made by</h2>
