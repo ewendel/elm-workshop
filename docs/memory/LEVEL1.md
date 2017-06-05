@@ -1,7 +1,7 @@
-## Level 1 - Hello, world!
-> The goal of this level is to print "Hello, (name)" to the screen.
+# Level 1 - Hello, world!
+The goal of this level is to print "Hello, (name)" to the screen.
 
-### 1.1 Displaying text
+## 1.1 Displaying text
 
 Locate the file _Main.elm_, which should look like this:
 
@@ -34,10 +34,11 @@ Luckily, we have function named `text` for turning a `String` (such as `"Hello, 
 >* The official docs has a nice chapter on ["Reading types in Elm"](https://guide.elm-lang.org/types/reading_types.html)
 >* Elm-tutorial has a nice chapter on functions in Elm: ["Function basics"](https://www.elm-tutorial.org/en/01-foundations/02-functions.html)
 
-##### Hint
-Use the function `text` to make your program compile and print "Hello, world!" to the screen.
+---
 
-### 1.2 Creating a greeting function
+**Task**: Use the function `text` to make your program compile and print "Hello, world!" to the screen.
+
+## 1.2 Creating a greeting function
 
 Now we want to create a function that takes a name as input and returns a greeting.
 It should have this type signature: `greet: String -> String`.
@@ -62,11 +63,17 @@ There are several things to note here:
 * The parameters are named and come after the function name
 * You don't have to specify the types for the parameters - they are _inferred_! This can be done because Elm sees the addition operator (`+`) and knows that it only works on numbers. Therefore, `x` and `y` must be numbers!
 
-Go ahead and make the `greet` function. The string concatenation operator in Elm is `++`.
 
-### 1.3 Adding type signatures
+---
+
+**Task**: Go ahead and make the `greet` function. The string concatenation operator in Elm is `++`.
+
+## 1.3 Adding type signatures
 
 Before we finish off the first level, try adding the type signature for your `greet` function.
 As mentioned, type signatures are not needed, as the compiler can infer them, but it is good practice to add them anyways.
 This makes the code easier to read and can help you get better error messages.
+
+---
+**Task**: Add the type signature for the `greet` function
 
