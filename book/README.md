@@ -25,6 +25,10 @@ Some of these concepts may be unfamiliar and somewhat confusing to begin with, s
 
 The slides from the presentation are available here: [part 1](https://drive.google.com/open?id=0B3Lh4pXvCuflWTFtT3JfMFh0VG8) & [part 2](https://drive.google.com/open?id=0B3Lh4pXvCuflbENPVmZmSTlCOHM).
 
+## Code
+
+The code for the workshop is available here: https://github.com/ewendel/elm-workshop.
+
 ## Prerequisites
 
 1. Install `node` version 7 or newer (which includes `npm`) from [nodejs.org](https://nodejs.org/en/download/current/).
@@ -44,7 +48,7 @@ The slides from the presentation are available here: [part 1](https://drive.goog
     * You can find the path for `elm-format` by doing `which elm-format` on MacOS/*Nix or `Get-Command elm-format` in powershell on Windows
     * We also recommend you enable `Format on save` in your editor
 
-1. Clone this repo to your computer
+1. Clone the repo (https://github.com/ewendel/elm-workshop) to your computer
 
 1. Run `npm install` (please make sure to have `npm` version 3 or newer)
 
