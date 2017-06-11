@@ -107,7 +107,7 @@
 
     
         
-        <li class="header">Memory</li>
+        <li class="header">1. Memory</li>
         
         
     
@@ -192,7 +192,7 @@
 
     
         
-        <li class="header">Snake</li>
+        <li class="header">2. Snake</li>
         
         
     
@@ -248,6 +248,19 @@
             
         </li>
     
+        <li class="chapter " data-level="3.5" data-path="END.html">
+            
+                <a href="END.html">
+            
+                    
+                    The end
+            
+                </a>
+            
+
+            
+        </li>
+    
 
     
 
@@ -295,6 +308,11 @@
                                 
                                 <h2 id="level-1---model">Level 1 - Model</h2>
 <p>When working in a language with a good type system, it is often a good idea to start development by modeling the types that will be used in your program.</p>
+<p>We encourage you to take a stab at this, but we have included below one way of doing this.</p>
+<p>You will also need a function that can be used to create a <code>Map</code> (the playing field) of a given size.</p>
+<p>By the end of this section you should be able to create an initial <code>Model</code> for the snake game.</p>
+<hr>
+<h4 id="example-domain-model-for-snake">Example domain model for Snake:</h4>
 <pre><code class="lang-elm"><span class="hljs-keyword">module</span> Snake.Model
     exposing
         ( <span class="hljs-type">Model</span>
@@ -352,8 +370,8 @@ type alias Row =
 type alias Map =
     List Row
 </code></pre>
-<p>In addition to this, we will need a function to create a <code>Map</code> of a given size (<code>createMap : Int -&gt; Map</code>).
-<code>createMap</code> can be implemented by these two helper functions:</p>
+<h4 id="example-implementation-of-creating-a-map">Example implementation of creating a <code>Map</code></h4>
+<p><code>createMap</code> can be implemented by these two helper functions:</p>
 <ul>
 <li><code>createRow : Int -&gt; Int -&gt; Row</code></li>
 <li><code>generateTileAt : Int -&gt; Position -&gt; Tile</code>.</li>
@@ -375,8 +393,6 @@ type alias Map =
     <span class="hljs-keyword">else</span>
         <span class="hljs-type">Open</span> ( x, y )
 </code></pre>
-<p>With this in place we can create an initial <code>Model</code>.
-Just fill in some fitting values.</p>
 
                                 
                                 </section>
@@ -420,7 +436,7 @@ Just fill in some fitting values.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Level 1","level":"3.2","depth":1,"next":{"title":"Level 2","level":"3.3","depth":1,"path":"snake/LEVEL2.md","ref":"snake/LEVEL2.md","articles":[]},"previous":{"title":"Introduction","level":"3.1","depth":1,"path":"snake/README.md","ref":"snake/README.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"./book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"snake/LEVEL1.md","mtime":"2017-06-05T18:19:28.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-09T13:59:17.368Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Level 1","level":"3.2","depth":1,"next":{"title":"Level 2","level":"3.3","depth":1,"path":"snake/LEVEL2.md","ref":"snake/LEVEL2.md","articles":[]},"previous":{"title":"Introduction","level":"3.1","depth":1,"path":"snake/README.md","ref":"snake/README.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"./book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"snake/LEVEL1.md","mtime":"2017-06-11T21:48:48.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-11T21:57:34.211Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

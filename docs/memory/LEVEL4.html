@@ -107,7 +107,7 @@
 
     
         
-        <li class="header">Memory</li>
+        <li class="header">1. Memory</li>
         
         
     
@@ -192,7 +192,7 @@
 
     
         
-        <li class="header">Snake</li>
+        <li class="header">2. Snake</li>
         
         
     
@@ -241,6 +241,19 @@
             
                     
                     Level 3
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="../snake/END.html">
+            
+                <a href="../snake/END.html">
+            
+                    
+                    The end
             
                 </a>
             
@@ -297,13 +310,24 @@
 <p>In memory, as you may know, the player opens two cards, one after another, and if they match they stay open.
 If they do not match, both cards are closed again.
 This repeats until all cards on the board are open. Before we start implementing the game logic, let&apos;s clean up a bit.</p>
+<h3 id="41-housekeeping-part-one">4.1 Housekeeping part one</h3>
 <p>Our deck of cards is a list of <code>Card</code>s and we will be passing them around in our program.
-Therefore, instead of having to write <code>List Card</code> everywhere, we want to be able to write <code>Deck</code>. Use a type alias to achieve this.</p>
-<p>In the game we will be matching pairs of cards with each other, and will need some way to distinguish between two cards with the same image.
-We will do this by saying that a card can be <em>either</em> in group <code>A</code> or in group <code>B</code>. Use a union type to achieve this, and add it as a field in our <code>Card</code> type.</p>
-<p>Now we can check if two cards are of one pair by comparing their <code>id</code> and <code>group</code> fields!</p>
+Therefore, instead of having to write <code>List Card</code> everywhere, we want to be able to write <code>Deck</code>.</p>
+<p>Also, in the game we will be matching pairs of cards with each other, and will need some way to distinguish between two cards with the same image.
+We will do this by saying that a card can be <em>either</em> in group <code>A</code> or in group <code>B</code>. Use a union type to achieve this, and add it as a field in our <code>Card</code> type.
+With this we can check if two cards are of one pair by comparing their <code>id</code> and <code>group</code> fields!</p>
+<hr>
+<p><strong>Task:</strong></p>
+<ul>
+<li>Create a type alias for our deck of cards.</li>
+<li>Create a union type for representing the group of a card.</li>
+<li>Add <code>group</code> as a field in our <code>Card</code> type</li>
+</ul>
+<h3 id="42-housekeeping-part-two">4.2 Housekeeping part two</h3>
 <p>By now our <code>Main.elm</code> file is getting quite big, so we should probably do something about that.
-It is common in Elm projects to have the application&apos;s model and associated in their own file(s), so let&apos;s try that:</p>
+It is common in Elm projects to have the application&apos;s model and associated types in their own file(s), so let&apos;s try that.</p>
+<hr>
+<p><strong>Task:</strong></p>
 <ol>
 <li>Move all types and type aliases to the file <code>Model.elm</code><ul>
 <li>A module&apos;s name must match it&apos;s file name, so in our case <code>Model.elm</code> should start with <code>module Model exposing (..)</code></li>
@@ -311,9 +335,9 @@ It is common in Elm projects to have the application&apos;s model and associated
 </li>
 <li>To use our types in <code>Main.elm</code> we also need to import them. This is done in the same way as we import the <code>Html</code> module; <code>import Html exposing (..)</code></li>
 </ol>
-<p>Let&apos;s pretend we&apos;re famous TV chefs and cheat a little bit. We have prepared a module <code>DeckGenerator</code> that can be used to generate a deck of cards.
+<p>In addition to this, let&apos;s pretend we&apos;re famous TV chefs and cheat a little bit. We have prepared a module <code>DeckGenerator</code> that can be used to generate a deck of cards.
 Use this by importing <code>DeckGenerator</code> in <code>Main.elm</code> and using the <code>DeckGenerator.static</code> value as <code>model</code>&apos;s initial value.</p>
-<h3 id="game-logic">Game logic!</h3>
+<h3 id="43-game-logic">4.3 Game logic!</h3>
 <p>Our game implementation will have three states:</p>
 <ol>
 <li><code>Choosing</code> - the player chooses the first card</li>
@@ -334,12 +358,19 @@ Use this by importing <code>DeckGenerator</code> in <code>Main.elm</code> and us
 </li>
 <li>If all cards are <code>Matched</code>, then go to <code>GameOver</code> state, else go to <code>Choosing</code> state</li>
 </ol>
-<p>Start by implementing the three states as a union type called <code>GameState</code>.
-The <code>GameOver</code> state does not need any extra data, but <code>Choosing</code> needs a <code>Deck</code> (the deck we are choosing from), and <code>Matching</code> needs both a <code>Deck</code> (the deck we are choosing from) and a <code>Card</code> (the card we are trying to match with).</p>
-<p>The <code>Model</code> of our program should now change from consisting of just a <code>Deck</code> to being a <code>GameState</code>. Continue by creating a <code>updateCardClick</code> function that can handle the three different <code>GameState</code>s.  It should have the following signature:
-<code>updateCardClick : Card -&gt; GameState -&gt; GameState</code>.</p>
-<p>To complete the game logic you will need yo update your <code>update</code> and <code>view</code> functions to accommodate for the new shape of our model.</p>
-<p>Now take a minute and pat yourself on the back for making an awesome game in Elm!</p>
+<p>The <code>Model</code> of our program should now change from consisting of just a <code>Deck</code> to being a <code>GameState</code>.
+We also need a function that can handle the three different <code>GameState</code>s.
+It should have the signature <code>updateCardClick : Card -&gt; GameState -&gt; GameState</code>.</p>
+<hr>
+<p><strong>Task:</strong></p>
+<ul>
+<li>Implement the three game states as a union type called <code>GameState</code></li>
+<li>Implement the <code>updateCardClick : Card -&gt; GameState -&gt; GameState</code> function</li>
+<li>Update your <code>update</code> and <code>view</code> functions to accomodate for the new shape of our model</li>
+<li>Now take a minute and pat yourself on the back for making an awesome game in Elm!</li>
+</ul>
+<p><strong>Hint:</strong></p>
+<p>The <code>GameOver</code> state does not need any extra data, but <code>Choosing</code> needs a <code>Deck</code> (the deck we are choosing from), and <code>Matching</code> needs both a <code>Deck</code> (the deck we are choosing from) and a <code>Card</code> (the card we are trying to match with).</p>
 <blockquote>
 <h4 id="optional">Optional:</h4>
 <p>Refreshing the page every time you want to play another game is boring, so try to add a &quot;restart game&quot; button in the &quot;Game over&quot; view. Hint: it is common to have a top-level value called <code>init</code> that contains the initial state of the <code>model</code>.</p>
@@ -387,7 +418,7 @@ The <code>GameOver</code> state does not need any extra data, but <code>Choosing
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Level 4","level":"2.4","depth":1,"next":{"title":"Level 5","level":"2.5","depth":1,"path":"memory/LEVEL5.md","ref":"memory/LEVEL5.md","articles":[]},"previous":{"title":"Level 3","level":"2.3","depth":1,"path":"memory/LEVEL3.md","ref":"memory/LEVEL3.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"./book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"memory/LEVEL4.md","mtime":"2017-06-05T18:19:28.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-09T13:59:17.368Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Level 4","level":"2.4","depth":1,"next":{"title":"Level 5","level":"2.5","depth":1,"path":"memory/LEVEL5.md","ref":"memory/LEVEL5.md","articles":[]},"previous":{"title":"Level 3","level":"2.3","depth":1,"path":"memory/LEVEL3.md","ref":"memory/LEVEL3.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"./book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"memory/LEVEL4.md","mtime":"2017-06-11T21:10:35.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-11T21:57:34.211Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
