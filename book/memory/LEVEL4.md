@@ -4,26 +4,40 @@ In memory, as you may know, the player opens two cards, one after another, and i
 If they do not match, both cards are closed again.
 This repeats until all cards on the board are open. Before we start implementing the game logic, let's clean up a bit.
 
+### 4.1 Housekeeping part one
+
 Our deck of cards is a list of `Card`s and we will be passing them around in our program.
-Therefore, instead of having to write `List Card` everywhere, we want to be able to write `Deck`. Use a type alias to achieve this.
+Therefore, instead of having to write `List Card` everywhere, we want to be able to write `Deck`.
 
-In the game we will be matching pairs of cards with each other, and will need some way to distinguish between two cards with the same image.
+Also, in the game we will be matching pairs of cards with each other, and will need some way to distinguish between two cards with the same image.
 We will do this by saying that a card can be _either_ in group `A` or in group `B`. Use a union type to achieve this, and add it as a field in our `Card` type.
+With this we can check if two cards are of one pair by comparing their `id` and `group` fields!
 
-Now we can check if two cards are of one pair by comparing their `id` and `group` fields!
+---
+**Task:**
+* Create a type alias for our deck of cards.
+* Create a union type for representing the group of a card.
+* Add `group` as a field in our `Card` type
+
+### 4.2 Housekeeping part two
 
 By now our `Main.elm` file is getting quite big, so we should probably do something about that.
-It is common in Elm projects to have the application's model and associated in their own file(s), so let's try that:
+It is common in Elm projects to have the application's model and associated types in their own file(s), so let's try that.
+
+---
+**Task:**
 
 1. Move all types and type aliases to the file `Model.elm`
     * A module's name must match it's file name, so in our case `Model.elm` should start with `module Model exposing (..)`
 1. To use our types in `Main.elm` we also need to import them. This is done in the same way as we import the `Html` module; `import Html exposing (..)`
 
 
-Let's pretend we're famous TV chefs and cheat a little bit. We have prepared a module `DeckGenerator` that can be used to generate a deck of cards.
+In addition to this, let's pretend we're famous TV chefs and cheat a little bit. We have prepared a module `DeckGenerator` that can be used to generate a deck of cards.
 Use this by importing `DeckGenerator` in `Main.elm` and using the `DeckGenerator.static` value as `model`'s initial value.
 
-### Game logic!
+
+### 4.3 Game logic!
+
 Our game implementation will have three states:
 
   1. `Choosing` - the player chooses the first card
@@ -40,15 +54,21 @@ The game logic will flow like this:
       1. If it matches the first card, then set the two cards to `Matched`. If the two cards do not match, set the clicked card to `Open`.
   1. If all cards are `Matched`, then go to `GameOver` state, else go to `Choosing` state
 
-Start by implementing the three states as a union type called `GameState`.
+The `Model` of our program should now change from consisting of just a `Deck` to being a `GameState`.
+We also need a function that can handle the three different `GameState`s.
+It should have the signature `updateCardClick : Card -> GameState -> GameState`.
+
+---
+**Task:**
+* Implement the three game states as a union type called `GameState`
+* Implement the `updateCardClick : Card -> GameState -> GameState` function
+* Update your `update` and `view` functions to accomodate for the new shape of our model
+* Now take a minute and pat yourself on the back for making an awesome game in Elm!
+
+
+**Hint:**
+
 The `GameOver` state does not need any extra data, but `Choosing` needs a `Deck` (the deck we are choosing from), and `Matching` needs both a `Deck` (the deck we are choosing from) and a `Card` (the card we are trying to match with).
-
-The `Model` of our program should now change from consisting of just a `Deck` to being a `GameState`. Continue by creating a `updateCardClick` function that can handle the three different `GameState`s.  It should have the following signature:
-`updateCardClick : Card -> GameState -> GameState`.
-
-To complete the game logic you will need yo update your `update` and `view` functions to accommodate for the new shape of our model.
-
-Now take a minute and pat yourself on the back for making an awesome game in Elm!
 
 >#### Optional:
 
