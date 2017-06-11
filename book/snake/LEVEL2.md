@@ -27,4 +27,4 @@ where `{TILECLASSNAME}` should be one of theses:
 * `open`
 
 This is, of course, when when the snake is alive.
-If not, you should show some nice message and a button for restarting the game.
+If the snake is dead, you should show some nice message and a button for restarting the game.

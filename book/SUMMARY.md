@@ -2,7 +2,7 @@
 
 ## Elm arcade
 
-### Memory
+### 1. Memory
 
 * [Level 1](memory/LEVEL1.md)
 * [Level 2](memory/LEVEL2.md)
@@ -13,8 +13,9 @@
 
 --
 
-### Snake
+### 2. Snake
 * [Introduction](snake/README.md)
 * [Level 1](snake/LEVEL1.md)
 * [Level 2](snake/LEVEL2.md)
 * [Level 3](snake/LEVEL3.md)
+* [The end](snake/END.md)

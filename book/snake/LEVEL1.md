@@ -2,6 +2,16 @@
 
 When working in a language with a good type system, it is often a good idea to start development by modeling the types that will be used in your program.
 
+We encourage you to take a stab at this, but we have included below one way of doing this.
+
+You will also need a function that can be used to create a `Map` (the playing field) of a given size.
+
+By the end of this section you should be able to create an initial `Model` for the snake game.
+
+---
+
+#### Example domain model for Snake:
+
 ```elm
 module Snake.Model
     exposing
@@ -61,8 +71,8 @@ type alias Map =
     List Row
 ```
 
+#### Example implementation of creating a `Map`
 
-In addition to this, we will need a function to create a `Map` of a given size (`createMap : Int -> Map`).
 `createMap` can be implemented by these two helper functions:
 * `createRow : Int -> Int -> Row`
 * `generateTileAt : Int -> Position -> Tile`.
@@ -86,7 +96,3 @@ generateTileAt size ( x, y ) =
     else
         Open ( x, y )
 ```
-
-With this in place we can create an initial `Model`.
-Just fill in some fitting values.
-
