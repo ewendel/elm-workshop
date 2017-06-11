@@ -2,7 +2,7 @@
 
 When working in a language with a good type system, it is often a good idea to start development by modeling the types that will be used in your program.
 
-We encourage you to take a stab at this, but we have included below one way of doing this.
+We encourage you to take a stab at this yourself first, but we have included one way of doing it below.
 
 You will also need a function that can be used to create a `Map` (the playing field) of a given size.
 
