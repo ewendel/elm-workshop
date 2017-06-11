@@ -35,9 +35,10 @@ When this section is complete, you should see three closed cards, each of them o
 
 ---
 **Task**:
-1. Add `import Html.Events exposing (..)` and add an `onClick` (that sends `CardClick`) event handler on closed cards.
+1. Add `import Html.Events exposing (..)`
+2. Add an `onClick` attribute on closed cards. This should send a `CardClick` message.
   * The compiler will now complain about some type signatures. Read the messages and fix accordingly.
-1. Create a helper function `setCard: CardState -> Card -> Card`.
+1. Create a helper function `setCard : CardState -> Card -> Card`.
   * As you may have guessed, this function should return a new card with the `state` of the passed card set to the passed `CardState`.
   * See the docs on how to [update a record](http://elm-lang.org/docs/records#updating-records).
 1. Create `update : Msg -> Model -> Model`
@@ -46,4 +47,5 @@ When this section is complete, you should see three closed cards, each of them o
   * Read the docs to see what parameters it accepts!
 
 ##### Hint:
-To update an element in a list you can use `List.map`.
+* To update an element in a list you can use `List.map`.
+* `onClick : msg -> Attribute msg`
