@@ -3,7 +3,17 @@
 The Elm architecture is made up of three parts: `model`, `view` and `update`.
 
 ##### Model
-The model is the state of our application. In Elm this is usually modeled with a record, defined by using a `type alias`.
+The model is the state of our application.
+The application state can consist of for example data fetched from an API, which page the user is currently viewing, the current state of an input form etc.
+In Elm this is usually modeled with a record, defined by using a `type alias`.
+For example:
+```elm
+type alias Model =
+    { userList : List User
+    , currentPage : Page
+    , nameInput : String
+    }
+```
 
 ##### View
 A function that takes the current application state as an argument and returns some HTML.
@@ -35,7 +45,7 @@ beginnerProgram
     -> Program Never
 ```
 
-Here we can see that because of Elm's static typing these three fields must "match" eachother:
+Here we can see that because of Elm's static typing these three fields must "match" each other:
 * The type of the initial model must match the type of the argument to the `view` function.
 * The type of messages returned from `view` (the `msgType` part in `Html msgType`) must be the same type as the first argument to `update`
 * The type of the second argument to `update` must match the type of the model
