@@ -10,9 +10,11 @@ Don't worry about `Matched` for now - we'll deal with that later.
 We've made it this far without TEA because we have a simple, static web page.
 Now we want to start responding to user input, and TEA is the way Elm structures applications and handles interactivity.
 
-Begin by reading the official docs on [`Html.beginnerProgram`](http://package.elm-lang.org/packages/elm-lang/html/1.1.0/Html-App#beginnerProgram)
-
-You may also find the docs on [The Elm Architecture useful.](https://guide.elm-lang.org/architecture/)
+Here you have two options:
+* Head on over to [our TEA chapter](TEA.md) to get a thorough explanation of the Elm architecture which also has a practice exercise for you
+* Read the documentation:
+    1. [The Elm Architecture chapter of guide.elm-lang.org](https://guide.elm-lang.org/architecture/)
+    1. [`Html.beginnerProgram on package.elm-lang.org`](http://package.elm-lang.org/packages/elm-lang/html/1.1.0/Html-App#beginnerProgram)
 
 Now that you're getting warm, we will be giving you fewer specific instructions and more high-level requirements. Use the workshop hosts if you have questions and don't forget to make use of the helpfulness of the compiler.
 

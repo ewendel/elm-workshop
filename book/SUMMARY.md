@@ -9,6 +9,7 @@
 * [Level 3](memory/LEVEL3.md)
 * [Level 4](memory/LEVEL4.md)
 * [Level 5](memory/LEVEL5.md)
+* [The Elm Architecture](memory/TEA.md)
 * [Bonus level](memory/BONUS.md)
 
 --
