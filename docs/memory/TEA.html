@@ -1,0 +1,524 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>The Elm Architecture · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="BONUS.html" />
+    
+    
+    <link rel="prev" href="LEVEL5.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">Elm arcade</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">1. Memory</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="LEVEL1.html">
+            
+                <a href="LEVEL1.html">
+            
+                    
+                    Level 1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="LEVEL2.html">
+            
+                <a href="LEVEL2.html">
+            
+                    
+                    Level 2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="LEVEL3.html">
+            
+                <a href="LEVEL3.html">
+            
+                    
+                    Level 3
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="LEVEL4.html">
+            
+                <a href="LEVEL4.html">
+            
+                    
+                    Level 4
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="LEVEL5.html">
+            
+                <a href="LEVEL5.html">
+            
+                    
+                    Level 5
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.6" data-path="TEA.html">
+            
+                <a href="TEA.html">
+            
+                    
+                    The Elm Architecture
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" data-path="BONUS.html">
+            
+                <a href="BONUS.html">
+            
+                    
+                    Bonus level
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">2. Snake</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../snake/">
+            
+                <a href="../snake/">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../snake/LEVEL1.html">
+            
+                <a href="../snake/LEVEL1.html">
+            
+                    
+                    Level 1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="../snake/LEVEL2.html">
+            
+                <a href="../snake/LEVEL2.html">
+            
+                    
+                    Level 2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="../snake/LEVEL3.html">
+            
+                <a href="../snake/LEVEL3.html">
+            
+                    
+                    Level 3
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="../snake/END.html">
+            
+                <a href="../snake/END.html">
+            
+                    
+                    The end
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >The Elm Architecture</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="level-25---tea-time">Level 2.5 - TEA TIME</h2>
+<p>The Elm architecture is made up of three parts: <code>model</code>, <code>view</code> and <code>update</code>.</p>
+<h5 id="model">Model</h5>
+<p>The model is the state of our application.
+The application state can consist of for example data fetched from an API, which page the user is currently viewing, the current state of an input form etc.
+In Elm this is usually modeled with a record, defined by using a <code>type alias</code>.
+For example:</p>
+<pre><code class="lang-elm"><span class="hljs-keyword">type</span> <span class="hljs-keyword">alias</span> <span class="hljs-type">Model</span> =
+    { userList : <span class="hljs-type">List</span> <span class="hljs-type">User</span>
+    , currentPage : <span class="hljs-type">Page</span>
+    , nameInput : <span class="hljs-type">String</span>
+    }
+</code></pre>
+<h5 id="view">View</h5>
+<p>A function that takes the current application state as an argument and returns some HTML.</p>
+<h5 id="update">Update</h5>
+<p>A function that takes a &quot;message&quot;, the current application state and returns an updated application state.
+This message is modeled with a union type, so usually the <code>update</code> function consists of pattern matching on the message value. </p>
+<p>Messages are events that happen in our application.
+These could be for example:</p>
+<ul>
+<li>User clicked the cancel button</li>
+<li>User clicked the exit button</li>
+<li>User entered some text in a text field</li>
+<li>We received some data from an API</li>
+</ul>
+<h3 id="htmlbeginnerprogram"><code>Html.beginnerProgram</code></h3>
+<p><code>Html.beginnerProgram</code> is the simplest way to run an Elm application.
+It takes only one argument; a record with a field for the initial application state (<code>model</code>), a field for the <code>update</code> function, and a field for the <code>view</code> function.
+With this, the Elm runtime will make sure that when there&apos;s some user-input in your application, the message will be sent to your <code>update</code> function, and when you have updated your model it will be sent to the <code>view</code> function so the HTML gets updated.</p>
+<p>Let&apos;s examine <code>beginnerProgram</code>&apos;s type signature.</p>
+<pre><code class="lang-elm"><span class="hljs-title">beginnerProgram</span>
+    : { model : modelType
+      , view : modelType -&gt; <span class="hljs-type">Html</span> msgType
+      , update : msgType -&gt; modelType -&gt; modelType }
+    -&gt; <span class="hljs-type">Program</span> <span class="hljs-type">Never</span>
+</code></pre>
+<p>Here we can see that because of Elm&apos;s static typing these three fields must &quot;match&quot; each other:</p>
+<ul>
+<li>The type of the initial model must match the type of the argument to the <code>view</code> function.</li>
+<li>The type of messages returned from <code>view</code> (the <code>msgType</code> part in <code>Html msgType</code>) must be the same type as the first argument to <code>update</code></li>
+<li>The type of the second argument to <code>update</code> must match the type of the model</li>
+</ul>
+<p><code>beginnerProgram</code> returns a <code>Program Never</code> but you can forget about the <code>Never</code> part for now.
+The important part is that it returns a <code>Program</code>, which is just what the Elm runtime wants.</p>
+<blockquote>
+<h4 id="html-msgtype"><code>Html msgType</code></h4>
+<p>This part can seem a bit confusing, so let&apos;s look at lists first.
+A list in Elm has the type <code>List someType</code>.
+This means that it is a list where the elements are of type <code>someType</code>.
+For example:</p>
+<ul>
+<li><code>List Int</code> is a list of ints</li>
+<li><code>List String</code> is a list of strings</li>
+</ul>
+<p>The concept is the same for <code>Html msgType</code>. It says that the HTML &quot;contains&quot; some <code>msgType</code>; all messages that come from this bit of HTML will be of type <code>msgType</code>.
+For example:</p>
+<ul>
+<li><code>Html Int</code> - messages from this HTML will be ints</li>
+<li><code>Html String</code> - messages from this HTML will be string</li>
+</ul>
+<p>In practice we will use <code>union types</code> for our messages as they are incredibly useful, but it is useful to realize that our messages could in principle be of <em>any</em> type.</p>
+<p>In the end, this means that when you hook up your <code>view</code> and <code>update</code> functions using <code>Html.beginnerProgram</code>, the messages sent to <code>update</code> will be of the type contained in the HTML.</p>
+</blockquote>
+<hr>
+<h3 id="exercise-time">Exercise time</h3>
+<p>To practice using the Elm architecture we will create the &quot;Hello, world&quot; of interactive web applications; a counter app.
+It will consist of one button for incrementing a number, one button for decrementing a number and a <code>&lt;span&gt;</code> for showing the number.</p>
+<p>You can use the following skeleton code to get quickly up and running:</p>
+<pre><code class="lang-elm"><span class="hljs-title">main</span> : <span class="hljs-type">Program</span> <span class="hljs-type">Never</span>
+<span class="hljs-title">main</span> =
+    <span class="hljs-type">Html</span>.beginnerProgram
+        { model = <span class="hljs-number">0</span>
+        , update = update
+        , view = view
+        }
+
+<span class="hljs-keyword">type</span> <span class="hljs-keyword">alias</span> <span class="hljs-type">Model</span>
+    = <span class="hljs-type">Int</span>
+
+<span class="hljs-keyword">type</span> <span class="hljs-type">Msg</span>
+    = <span class="hljs-type">NoOp</span>
+
+<span class="hljs-title">update</span> : <span class="hljs-type">Msg</span> -&gt; <span class="hljs-type">Model</span> -&gt; <span class="hljs-type">Model</span>
+<span class="hljs-title">update</span> msg model =
+    model
+
+<span class="hljs-title">view</span> : <span class="hljs-type">Model</span> -&gt; <span class="hljs-type">Html</span> <span class="hljs-type">Msg</span>
+<span class="hljs-title">view</span> model =
+    text <span class="hljs-string">&quot;Hello, I&apos;m a view&quot;</span>
+</code></pre>
+<hr>
+<p><strong>Task</strong>:</p>
+<ol>
+<li>Implement the view function. It should output the following HTML (substitute <code>0</code> for the value of the model):<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>-<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>0<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>-<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+</li>
+<li>Create messages for incrementing and decrementing the model<ul>
+<li>These should be <code>constructor function</code>s for the <code>Msg</code> type</li>
+<li>When you have done this, the compiler will complain about your <code>update</code> function.
+Fix this by using pattern matching on the value of <code>msg</code> (<code>case msg of ...</code>).</li>
+</ul>
+</li>
+<li>Add onClick handlers on the two buttons<ul>
+<li><code>onClick</code> is a function from the <code>Html.Events</code> module
+Import it by adding <code>import Html.Events exposing (onClick)</code> at the top of your file</li>
+<li>It has the type <code>onClick : msgType -&gt; Attribute msgType</code>.
+Remember also that the second argument of HTML nodes (<code>button</code> in our case here) is of type <code>List (Attribute msgType)</code></li>
+</ul>
+</li>
+</ol>
+<p>When you have done this, you should be able to increment and decrement the number by clicking on the buttons!</p>
+<hr>
+<p><strong>Bonus level</strong>:</p>
+<p>Can you modify the program so that you have buttons for incrementing/decrementing by 1, 5 and 10 without using more than two different messages?</p>
+<hr>
+<blockquote>
+<p>Hint: <code>constructor function</code>s can take arguments</p>
+</blockquote>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="LEVEL5.html" class="navigation navigation-prev " aria-label="Previous page: Level 5">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="BONUS.html" class="navigation navigation-next " aria-label="Next page: Bonus level">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"The Elm Architecture","level":"2.6","depth":1,"next":{"title":"Bonus level","level":"2.7","depth":1,"path":"memory/BONUS.md","ref":"memory/BONUS.md","articles":[]},"previous":{"title":"Level 5","level":"2.5","depth":1,"path":"memory/LEVEL5.md","ref":"memory/LEVEL5.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"./book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"memory/TEA.md","mtime":"2017-08-30T13:04:08.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-30T13:04:24.016Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
