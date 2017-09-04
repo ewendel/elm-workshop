@@ -62,7 +62,7 @@ It should have the signature `updateCardClick : Card -> GameState -> GameState`.
 **Task:**
 * Implement the three game states as a union type called `GameState`
 * Implement the `updateCardClick : Card -> GameState -> GameState` function
-* Update your `update` and `view` functions to accomodate for the new shape of our model
+* Update your `update` and `view` functions to accommodate for the new shape of our model
 * Now take a minute and pat yourself on the back for making an awesome game in Elm!
 
 
