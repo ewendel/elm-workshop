@@ -52,7 +52,7 @@ The code for the workshop is available here: https://github.com/ewendel/elm-work
 
 1. Run `npm install` (please make sure to have `npm` version 3 or newer)
 
-1. Start your local application enviroment with `npm start` in the root folder of this repo. This should open a new browser window with `localhost:3000` and a nice compilation error.
+1. Start your local application environment with `npm start` in the root folder of this repo. This should open a new browser window with `localhost:3000` and a nice compilation error.
 
 Congratulations, you're now ready to begin learning Elm!
 

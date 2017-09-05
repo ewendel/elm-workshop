@@ -11,7 +11,7 @@ Luckily, there is a way to do exactly that.
 > Take for example JavaScript's function `Math.random()`, which produces random floating point numbers. It takes zero arguments and it will (probably) give you a different number back each time you call it.
 
 > From wikipedia:
-> > random() is impure because each call potentially yields a different value. This is because pseudorandom generators use and update a global "seed" state. If we modify it to take the seed as an argument, i.e. random(seed); then random becomes pure, because multiple calls with the same seed value return the same random number.
+> > random() is impure because each call potentially yields a different value. This is because pseudo-random generators use and update a global "seed" state. If we modify it to take the seed as an argument, i.e. random(seed); then random becomes pure, because multiple calls with the same seed value return the same random number.
 
 To generate something random, we can to use the built-in function
 
@@ -30,7 +30,7 @@ There are a couple of changes we have to do to make this official transition fro
   1. The record should have a new field called `subscriptions : Model -> Sub Msg`.
 * `update` now has the type signature `update : Msg -> Model -> (Model, Cmd Msg)`
 
-The official docs has a nice exaplanation of what [_subscriptions_](http://package.elm-lang.org/packages/elm-lang/core/5.1.1/Platform-Sub#Sub) are.
+The official docs has a nice explanation of what [_subscriptions_](http://package.elm-lang.org/packages/elm-lang/core/5.1.1/Platform-Sub#Sub) are.
 
 ---
 **Task:**

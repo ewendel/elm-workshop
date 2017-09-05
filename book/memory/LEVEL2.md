@@ -181,7 +181,7 @@ This moves the discovery of errors from runtime to compile time (when you hit _s
 
 Our cards can be either `Open`, `Closed` or `Matched`, and we want to display each state differently.
 For this we will be using a language feature called _pattern matching_.
-It can best be described as a switch-statement on stereoids, allowing us to do more than simple matching on a value.
+It can best be described as a switch-statement on steroids, allowing us to do more than simple matching on a value.
 
 Example:
 ```elm
@@ -219,7 +219,7 @@ Put three cards in the list; one with `id = 1`, one with `id = 2` and one with `
 
 ##### Hint:
 Use `List.map : (a -> b) -> List a -> List b` to convert a list of `Card` to a list of `Html a`.
-Remember that `div : List (Atribute msg) -> List (Html a) -> Html a` (notice the second argument).
+Remember that `div : List (Attribute msg) -> List (Html a) -> Html a` (notice the second argument).
 
 Notice how the type signature helps in communicating what the function does!
 Type signatures are a very powerful tool, as you will discover throughout this workshop.
