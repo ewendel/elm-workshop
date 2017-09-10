@@ -384,6 +384,36 @@ It should have the signature <code>updateCardClick : Card -&gt; GameState -&gt; 
 </ul>
 <p><strong>Hint:</strong></p>
 <p>The <code>GameOver</code> state does not need any extra data, but <code>Choosing</code> needs a <code>Deck</code> (the deck we are choosing from), and <code>Matching</code> needs both a <code>Deck</code> (the deck we are choosing from) and a <code>Card</code> (the card we are trying to match with).</p>
+<p>When implementing <code>updateCardClick</code> there are a couple of things that will help:</p>
+<ol>
+<li>You can create a function <code>closeUnmatched : Deck -&gt; Deck</code> that, as its name implies, sets all cards that are not <code>Matched</code> to <code>Closed</code></li>
+<li>You can use the built-in function <code>List.all : (a -&gt; Bool) -&gt; List a -&gt; Bool</code> to check if all cards are are matched</li>
+<li>The <code>setCard : CardState -&gt; Card -&gt; Card</code> can be changed to operate on a <code>Deck</code> instead; <code>setCard : CardState -&gt; Card -&gt; Deck -&gt; Deck</code>. This will fit nicely with using Elm&apos;s &quot;pipe operator&quot;</li>
+<li>The &quot;pipe operator&quot; (<a href="http://package.elm-lang.org/packages/elm-lang/core/latest/Basics#|" target="_blank"><code>|&gt;</code></a>) is great when you have multiple functions that all depend on the result of the previous function.
+For example:<pre><code class="lang-elm"><span class="hljs-title">myString</span> =
+ <span class="hljs-type">String</span>.toUpper (<span class="hljs-type">String</span>.repeat <span class="hljs-number">2</span> (<span class="hljs-type">String</span>.reverse <span class="hljs-string">&quot;olleh&quot;</span>))
+<span class="hljs-comment">-- myString == &quot;HELLOHELLO&quot;</span>
+</code></pre>
+can be written as<pre><code class="lang-elm"><span class="hljs-title">myString</span> =
+ <span class="hljs-string">&quot;olleh&quot;</span>
+     |&gt; <span class="hljs-type">String</span>.reverse
+     |&gt; <span class="hljs-type">String</span>.repeat <span class="hljs-number">2</span>
+     |&gt; <span class="hljs-type">String</span>.toUpper
+<span class="hljs-comment">-- myString == &quot;HELLOHELLO&quot;</span>
+</code></pre>
+In short: <code>myFunction myArgument == myArgument |&gt; myFunction</code>.
+This will prove useful with the updated <code>setCard</code> function.</li>
+<li>&quot;Let expressions&quot; is a way of storing intermediate values (kind of like variables).
+The above example can also be written as:<pre><code class="lang-elm"><span class="hljs-title">myString</span> =
+ <span class="hljs-keyword">let</span>
+     reversed = <span class="hljs-type">String</span>.reverse <span class="hljs-string">&quot;olleh&quot;</span>
+     repeated = <span class="hljs-type">String</span>.repeat <span class="hljs-number">2</span> reversed
+ <span class="hljs-keyword">in</span>
+     <span class="hljs-type">String</span>.toUpper repeated
+<span class="hljs-comment">-- myString == &quot;HELLOHELLO&quot;</span>
+</code></pre>
+It&apos;s a way of saying &quot;<strong><em>Let</em></strong> <code>reversed</code> and <code>repeated</code> be defined <strong><em>in</em></strong> the following expression but nowhere else&quot;.</li>
+</ol>
 <blockquote>
 <h4 id="optional">Optional:</h4>
 <p>Refreshing the page every time you want to play another game is boring, so try to add a &quot;restart game&quot; button in the &quot;Game over&quot; view. Hint: it is common to have a top-level value called <code>init</code> that contains the initial state of the <code>model</code>.</p>
@@ -431,7 +461,7 @@ It should have the signature <code>updateCardClick : Card -&gt; GameState -&gt; 
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Level 4","level":"2.4","depth":1,"next":{"title":"Level 5","level":"2.5","depth":1,"path":"memory/LEVEL5.md","ref":"memory/LEVEL5.md","articles":[]},"previous":{"title":"Level 3","level":"2.3","depth":1,"path":"memory/LEVEL3.md","ref":"memory/LEVEL3.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"./book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"memory/LEVEL4.md","mtime":"2017-08-30T13:03:59.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-30T13:04:24.016Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Level 4","level":"2.4","depth":1,"next":{"title":"Level 5","level":"2.5","depth":1,"path":"memory/LEVEL5.md","ref":"memory/LEVEL5.md","articles":[]},"previous":{"title":"Level 3","level":"2.3","depth":1,"path":"memory/LEVEL3.md","ref":"memory/LEVEL3.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"./book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"memory/LEVEL4.md","mtime":"2017-09-10T12:00:34.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-10T17:11:06.108Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
