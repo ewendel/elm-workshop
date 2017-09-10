@@ -70,6 +70,41 @@ It should have the signature `updateCardClick : Card -> GameState -> GameState`.
 
 The `GameOver` state does not need any extra data, but `Choosing` needs a `Deck` (the deck we are choosing from), and `Matching` needs both a `Deck` (the deck we are choosing from) and a `Card` (the card we are trying to match with).
 
+When implementing `updateCardClick` there are a couple of things that will help:
+1. You can create a function `closeUnmatched : Deck -> Deck` that, as its name implies, sets all cards that are not `Matched` to `Closed`
+1. You can use the built-in function `List.all : (a -> Bool) -> List a -> Bool` to check if all cards are are matched
+1. The `setCard : CardState -> Card -> Card` can be changed to operate on a `Deck` instead; `setCard : CardState -> Card -> Deck -> Deck`. This will fit nicely with using Elm's "pipe operator"
+1. The "pipe operator" ([`|>`](http://package.elm-lang.org/packages/elm-lang/core/latest/Basics#|>)) is great when you have multiple functions that all depend on the result of the previous function.
+For example:
+```elm
+myString =
+    String.toUpper (String.repeat 2 (String.reverse "olleh"))
+-- myString == "HELLOHELLO"
+```
+can be written as
+```elm
+myString =
+    "olleh"
+        |> String.reverse
+        |> String.repeat 2
+        |> String.toUpper
+-- myString == "HELLOHELLO"
+```
+In short: `myFunction myArgument == myArgument |> myFunction`.
+This will prove useful with the updated `setCard` function.
+1. "Let expressions" is a way of storing intermediate values (kind of like variables).
+The above example can also be written as:
+```elm
+myString =
+    let
+        reversed = String.reverse "olleh"
+        repeated = String.repeat 2 reversed
+    in
+        String.toUpper repeated
+-- myString == "HELLOHELLO"
+```
+It's a way of saying "**_Let_** `reversed` and `repeated` be defined **_in_** the following expression but nowhere else".
+
 >#### Optional:
 
 >Refreshing the page every time you want to play another game is boring, so try to add a "restart game" button in the "Game over" view. Hint: it is common to have a top-level value called `init` that contains the initial state of the `model`.
