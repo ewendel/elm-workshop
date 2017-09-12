@@ -81,7 +81,10 @@ It will consist of one button for incrementing a number, one button for decremen
 You can use the following skeleton code to get quickly up and running:
 
 ```elm
-main : Program Never
+module Main exposing (..)
+
+import Html exposing (..)
+
 main =
     Html.beginnerProgram
         { model = 0
