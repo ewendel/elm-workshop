@@ -336,7 +336,7 @@ For example:</p>
 <p>A function that takes the current application state as an argument and returns some HTML.</p>
 <h5 id="update">Update</h5>
 <p>A function that takes a &quot;message&quot;, the current application state and returns an updated application state.
-This message is modeled with a union type, so usually the <code>update</code> function consists of pattern matching on the message value. </p>
+This message is modeled with a union type, so usually the <code>update</code> function consists of pattern matching on the message value.</p>
 <p>Messages are events that happen in our application.
 These could be for example:</p>
 <ul>
@@ -422,8 +422,7 @@ It will consist of one button for incrementing a number, one button for decremen
 </li>
 <li>Create messages for incrementing and decrementing the model<ul>
 <li>These should be <code>constructor function</code>s for the <code>Msg</code> type</li>
-<li>When you have done this, the compiler will complain about your <code>update</code> function.
-Fix this by using pattern matching on the value of <code>msg</code> (<code>case msg of ...</code>).</li>
+<li>When you have done this, use pattern matching on the value of <code>msg</code> (<code>case msg of ...</code>) in <code>update</code>.</li>
 </ul>
 </li>
 <li>Add onClick handlers on the two buttons<ul>
@@ -485,7 +484,7 @@ Remember also that the second argument of HTML nodes (<code>button</code> in our
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"The Elm Architecture","level":"2.6","depth":1,"next":{"title":"Bonus level","level":"2.7","depth":1,"path":"memory/BONUS.md","ref":"memory/BONUS.md","articles":[]},"previous":{"title":"Level 5","level":"2.5","depth":1,"path":"memory/LEVEL5.md","ref":"memory/LEVEL5.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"./book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"memory/TEA.md","mtime":"2017-08-30T13:04:08.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-10T17:11:06.108Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"The Elm Architecture","level":"2.6","depth":1,"next":{"title":"Bonus level","level":"2.7","depth":1,"path":"memory/BONUS.md","ref":"memory/BONUS.md","articles":[]},"previous":{"title":"Level 5","level":"2.5","depth":1,"path":"memory/LEVEL5.md","ref":"memory/LEVEL5.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"./book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"memory/TEA.md","mtime":"2017-09-12T08:58:39.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-12T08:59:52.499Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

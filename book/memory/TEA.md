@@ -20,7 +20,7 @@ A function that takes the current application state as an argument and returns s
 
 ##### Update
 A function that takes a "message", the current application state and returns an updated application state.
-This message is modeled with a union type, so usually the `update` function consists of pattern matching on the message value. 
+This message is modeled with a union type, so usually the `update` function consists of pattern matching on the message value.
 
 Messages are events that happen in our application.
 These could be for example:
@@ -60,14 +60,14 @@ The important part is that it returns a `Program`, which is just what the Elm ru
 > For example:
 > * `List Int` is a list of ints
 > * `List String` is a list of strings
-> 
+>
 > The concept is the same for `Html msgType`. It says that the HTML "contains" some `msgType`; all messages that come from this bit of HTML will be of type `msgType`.
 > For example:
 > * `Html Int` - messages from this HTML will be ints
 > * `Html String` - messages from this HTML will be string
-> 
+>
 > In practice we will use `union types` for our messages as they are incredibly useful, but it is useful to realize that our messages could in principle be of _any_ type.
-> 
+>
 > In the end, this means that when you hook up your `view` and `update` functions using `Html.beginnerProgram`, the messages sent to `update` will be of the type contained in the HTML.
 
 ---
@@ -88,7 +88,7 @@ main =
         , update = update
         , view = view
         }
-    
+
 type alias Model
     = Int
 
@@ -117,8 +117,7 @@ view model =
 ```
 1. Create messages for incrementing and decrementing the model
     * These should be `constructor function`s for the `Msg` type
-    * When you have done this, the compiler will complain about your `update` function.
-    Fix this by using pattern matching on the value of `msg` (`case msg of ...`).
+    * When you have done this, use pattern matching on the value of `msg` (`case msg of ...`) in `update`.
 1. Add onClick handlers on the two buttons
     * `onClick` is a function from the `Html.Events` module
     Import it by adding `import Html.Events exposing (onClick)` at the top of your file
