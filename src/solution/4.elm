@@ -1,5 +1,3 @@
-module Main exposing (..)
-
 import Html exposing (..)
 import Html.Attributes exposing (..)
 
@@ -49,4 +47,3 @@ viewCards cards =
 
 main =
     viewCards [ openCard, closedCard, matchedCard ]
-ead
