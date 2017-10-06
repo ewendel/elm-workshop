@@ -38,6 +38,7 @@ The code for the workshop is available here: https://github.com/ewendel/elm-work
 1. Install a [`plugin`](https://guide.elm-lang.org/install.html#configure-your-editor) for your editor. At the time of writing, Atom's Elm integration seems the best so we **strongly** recommend you use that, even if Atom is not usually your main editor of choice.
     * The following packages are needed for a pleasant development experience in Atom:
         * `language-elm`
+        * `linter-elm-make`
         * `elmjutsu`
         * `elm-format`
 
