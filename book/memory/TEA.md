@@ -115,7 +115,7 @@ view model =
 <div>
     <button>-</button>
     <span>0</span>
-    <button>-</button>
+    <button>+</button>
 </div>
 ```
 1. Create messages for incrementing and decrementing the model
