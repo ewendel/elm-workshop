@@ -115,14 +115,14 @@ view model =
 <div>
     <button>-</button>
     <span>0</span>
-    <button>-</button>
+    <button>+</button>
 </div>
 ```
 1. Create messages for incrementing and decrementing the model
     * These should be `constructor function`s for the `Msg` type
     * When you have done this, use pattern matching on the value of `msg` (`case msg of ...`) in `update`.
 1. Add onClick handlers on the two buttons
-    * `onClick` is a function from the `Html.Events` module
+    * `onClick` is a function from the `Html.Events` module.
     Import it by adding `import Html.Events exposing (onClick)` at the top of your file
     * It has the type `onClick : msgType -> Attribute msgType`.
     Remember also that the second argument of HTML nodes (`button` in our case here) is of type `List (Attribute msgType)`
