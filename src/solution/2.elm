@@ -1,12 +1,17 @@
 module Main exposing (..)
+
 import Html exposing (..)
 
+
 prefix : String
-prefix = "Welcome to our humble establishment, "
+prefix =
+    "Welcome to our humble establishment, "
+
 
 greet : String -> Html a
-greet name = text (prefix ++ name)
+greet name =
+    text (prefix ++ name)
 
 
-
-main = greet "World"
+main =
+    greet "World"

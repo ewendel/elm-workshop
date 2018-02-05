@@ -46,10 +46,10 @@ type alias Card =
 
 module Main exposing (..)
 
+import DeckGenerator
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
-import DeckGenerator
 import Model exposing (..)
 import Random
 
@@ -60,7 +60,7 @@ viewCard card =
         Open ->
             img
                 [ class "card open"
-                , src ("/static/cats/" ++ card.id ++ ".jpg")
+                , src ("/cats/" ++ card.id ++ ".jpg")
                 ]
                 []
 
@@ -68,14 +68,14 @@ viewCard card =
             img
                 [ class "card closed"
                 , onClick (CardClicked card)
-                , src ("/static/cats/closed.png")
+                , src ("/cats/closed.png")
                 ]
                 []
 
         Matched ->
             img
                 [ class "card matched"
-                , src ("/static/cats/" ++ card.id ++ ".jpg")
+                , src ("/cats/" ++ card.id ++ ".jpg")
                 ]
                 []
 
