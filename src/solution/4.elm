@@ -39,7 +39,7 @@ matchedCard =
 
 viewCard : Card -> Html a
 viewCard card =
-    img [ src ("/static/cats/" ++ card.id ++ ".jpg") ] []
+    img [ src ("/cats/" ++ card.id ++ ".jpg") ] []
 
 
 viewCards : List Card -> Html a
@@ -49,4 +49,3 @@ viewCards cards =
 
 main =
     viewCards [ openCard, closedCard, matchedCard ]
-ead

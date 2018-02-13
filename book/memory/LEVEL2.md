@@ -58,7 +58,7 @@ For example, the function to create a `div` node has this signature: `div : List
 **Task**: Write the function `viewCard: { id: String } -> Html a`, which should output the following HTML:
 ```html
 <div>
-	<img src="/static/cats/{card.id}.jpg" />
+	<img src="/cats/{card.id}.jpg" />
 </div>
 ```
 
@@ -201,9 +201,9 @@ This is a powerful technique, and is almost always used whenever there's a union
 In our case, it is handy for rendering different stuff based on the `CardState` of a card.
 
 In `viewCard`, use the following logic (css classes should be applied to the `img` tag):
-* When `Closed` -> show `/static/cats/closed.png` and the css class `closed`
-* When `Open` -> show `/static/cats/{cardId}.jpg` and the css class `open`
-* When `Matched` -> show `/static/cats/{cardId}.jpg` and the css class `matched`
+* When `Closed` -> show `/cats/closed.png` and the css class `closed`
+* When `Open` -> show `/cats/{cardId}.jpg` and the css class `open`
+* When `Matched` -> show `/cats/{cardId}.jpg` and the css class `matched`
 
 
 Having only one card is pretty boring and we wan't to be able to see all the different states, so let's create a list of them.
@@ -214,7 +214,7 @@ Put three cards in the list; one with `id = 1`, one with `id = 2` and one with `
 **Task**:
 1. Update `viewCard` to display differently based on the card's `state`
 1. Create `cards : List Card`
-1. Create `viewCards : List Card -> Html a`
+1. Create `viewCards : List Card -> Html a` - the cards should be placed in a `div` with the class `cards`
 1. Call `viewCards` from `main`
 
 ##### Hint:
