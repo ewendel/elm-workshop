@@ -81,5 +81,5 @@ ul {
 }
 
 .food {
-  background-image: url('/static/snake/food.ico');
+  background-image: url('/snake/food.ico');
 }
