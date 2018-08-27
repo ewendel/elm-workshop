@@ -58,7 +58,7 @@ For example, the function to create a `div` node has this signature: `div : List
 **Task**: Write the function `viewCard: { id: String } -> Html a`, which should output the following HTML:
 ```html
 <div>
-	<img src="/cats/{card.id}.jpg" />
+	<img src="/cats/{card.id}.png" />
 </div>
 ```
 
@@ -202,8 +202,8 @@ In our case, it is handy for rendering different stuff based on the `CardState` 
 
 In `viewCard`, use the following logic (css classes should be applied to the `img` tag):
 * When `Closed` -> show `/cats/closed.png` and the css class `closed`
-* When `Open` -> show `/cats/{cardId}.jpg` and the css class `open`
-* When `Matched` -> show `/cats/{cardId}.jpg` and the css class `matched`
+* When `Open` -> show `/cats/{cardId}.png` and the css class `open`
+* When `Matched` -> show `/cats/{cardId}.png` and the css class `matched`
 
 
 Having only one card is pretty boring and we wan't to be able to see all the different states, so let's create a list of them.
@@ -224,5 +224,5 @@ Remember that `div : List (Attribute msg) -> List (Html a) -> Html a` (notice th
 Notice how the type signature helps in communicating what the function does!
 Type signatures are a very powerful tool, as you will discover throughout this workshop.
 
-Make sure you render the correct image source for each card (`{card.id}.jpg`).
+Make sure you render the correct image source for each card (`{card.id}.png`).
 

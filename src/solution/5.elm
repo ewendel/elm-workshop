@@ -53,7 +53,7 @@ viewCard card =
         Open ->
             img
                 [ class "open"
-                , src ("/cats/" ++ card.id ++ ".jpg")
+                , src ("/cats/" ++ card.id ++ ".png")
                 ]
                 []
 
@@ -68,7 +68,7 @@ viewCard card =
         Matched ->
             img
                 [ class "matched"
-                , src ("/cats/" ++ card.id ++ ".jpg")
+                , src ("/cats/" ++ card.id ++ ".png")
                 ]
                 []
 
