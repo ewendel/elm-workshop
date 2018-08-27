@@ -365,7 +365,7 @@
 <hr>
 <p><strong>Task</strong>: Write the function <code>viewCard: { id: String } -&gt; Html a</code>, which should output the following HTML:</p>
 <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;/cats/{card.id}.jpg&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;/cats/{card.id}.png&quot;</span> /&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 </code></pre>
 <h5 id="hint">Hint</h5>
@@ -471,8 +471,8 @@ This is a powerful technique, and is almost always used whenever there&apos;s a 
 <p>In <code>viewCard</code>, use the following logic (css classes should be applied to the <code>img</code> tag):</p>
 <ul>
 <li>When <code>Closed</code> -&gt; show <code>/cats/closed.png</code> and the css class <code>closed</code></li>
-<li>When <code>Open</code> -&gt; show <code>/cats/{cardId}.jpg</code> and the css class <code>open</code></li>
-<li>When <code>Matched</code> -&gt; show <code>/cats/{cardId}.jpg</code> and the css class <code>matched</code></li>
+<li>When <code>Open</code> -&gt; show <code>/cats/{cardId}.png</code> and the css class <code>open</code></li>
+<li>When <code>Matched</code> -&gt; show <code>/cats/{cardId}.png</code> and the css class <code>matched</code></li>
 </ul>
 <p>Having only one card is pretty boring and we wan&apos;t to be able to see all the different states, so let&apos;s create a list of them.
 Lists in Elm is created with <code>[]</code>, just like in JavaScript.
@@ -490,7 +490,7 @@ Put three cards in the list; one with <code>id = 1</code>, one with <code>id = 2
 Remember that <code>div : List (Attribute msg) -&gt; List (Html a) -&gt; Html a</code> (notice the second argument).</p>
 <p>Notice how the type signature helps in communicating what the function does!
 Type signatures are a very powerful tool, as you will discover throughout this workshop.</p>
-<p>Make sure you render the correct image source for each card (<code>{card.id}.jpg</code>).</p>
+<p>Make sure you render the correct image source for each card (<code>{card.id}.png</code>).</p>
 
                                 
                                 </section>
@@ -534,7 +534,7 @@ Type signatures are a very powerful tool, as you will discover throughout this w
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Level 2","level":"2.2","depth":1,"next":{"title":"Level 3","level":"2.3","depth":1,"path":"memory/LEVEL3.md","ref":"memory/LEVEL3.md","articles":[]},"previous":{"title":"Level 1","level":"2.1","depth":1,"path":"memory/LEVEL1.md","ref":"memory/LEVEL1.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"./book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"memory/LEVEL2.md","mtime":"2018-02-05T22:49:54.934Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-02-05T23:00:22.059Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Level 2","level":"2.2","depth":1,"next":{"title":"Level 3","level":"2.3","depth":1,"path":"memory/LEVEL3.md","ref":"memory/LEVEL3.md","articles":[]},"previous":{"title":"Level 1","level":"2.1","depth":1,"path":"memory/LEVEL1.md","ref":"memory/LEVEL1.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"./book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"memory/LEVEL2.md","mtime":"2018-08-27T17:57:08.082Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-08-27T18:00:15.034Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

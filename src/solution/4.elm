@@ -39,7 +39,7 @@ matchedCard =
 
 viewCard : Card -> Html a
 viewCard card =
-    img [ src ("/cats/" ++ card.id ++ ".jpg") ] []
+    img [ src ("/cats/" ++ card.id ++ ".png") ] []
 
 
 viewCards : List Card -> Html a
