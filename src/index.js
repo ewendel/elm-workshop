@@ -1,6 +1,5 @@
 require('./main.css');
 var Elm = require('./Main.elm');
 
-var root = document.getElementById('root');
-
-Elm.Main.embed(root);
+// Bug i elm-webpack-loader gjør at vi får Elm.Elm her; https://github.com/elm-community/elm-webpack-loader/issues/149
+Elm.Elm.Main.init({ node: document.getElementById('root') });

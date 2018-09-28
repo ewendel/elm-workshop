@@ -1,6 +1,6 @@
 module DeckGenerator exposing (random, static)
 
-import Model exposing (Deck, Card, Group(..), CardState(..))
+import Model exposing (Card, CardState(..), Deck, Group(..))
 import Random
 import Random.List
 
@@ -29,4 +29,4 @@ static =
         groupB =
             urls |> List.map (\url -> { id = url, group = B, state = Closed })
     in
-        List.concat [ groupA, groupB ]
+    List.concat [ groupA, groupB ]

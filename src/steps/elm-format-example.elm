@@ -1,7 +1,7 @@
 -- Model.elm
 
 
-module Model exposing (..)
+module Model exposing (Card, GameState(..), Model, Msg(..))
 
 
 type GameState

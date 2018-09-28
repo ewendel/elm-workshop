@@ -1,5 +1,6 @@
-module Main exposing (..)
+module Main exposing (main)
 
+import Browser
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
@@ -61,7 +62,7 @@ viewCard card =
             img
                 [ class "closed"
                 , onClick (CardClicked card)
-                , src ("/cats/closed.png")
+                , src "/cats/closed.png"
                 ]
                 []
 
@@ -91,7 +92,8 @@ update msg model =
                 List.map
                     (\c ->
                         if c.id == clickedCard.id then
-                            (setCard Open clickedCard)
+                            setCard Open clickedCard
+
                         else
                             c
                     )
@@ -105,8 +107,8 @@ view model =
 
 
 main =
-    Html.beginnerProgram
-        { model = { cards = [ openCard, closedCard, matchedCard ] }
+    Browser.sandbox
+        { init = { cards = [ openCard, closedCard, matchedCard ] }
         , view = view
         , update = update
         }
