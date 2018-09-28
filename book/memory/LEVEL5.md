@@ -8,34 +8,40 @@ Elm is a _pure_ functional language, and if you look through the type signatures
 Luckily, there is a way to do exactly that.
 
 > #### Why is generating random numbers impure?
+>
 > Take for example JavaScript's function `Math.random()`, which produces random floating point numbers. It takes zero arguments and it will (probably) give you a different number back each time you call it.
 
 > From wikipedia:
+>
 > > random() is impure because each call potentially yields a different value. This is because pseudo-random generators use and update a global "seed" state. If we modify it to take the seed as an argument, i.e. random(seed); then random becomes pure, because multiple calls with the same seed value return the same random number.
 
 To generate something random, we can to use the built-in function
 
-`Random.generate : (a -> msg) -> Generator a -> Cmd msg`.
+```elm
+Random.generate : (a -> msg) -> Generator a -> Cmd msg
+```
 
 The `Generator a` part is covered by `DeckGenerator.random : Generator Deck`, so that means you have to supply a function that takes a `Deck` and returns a `Msg`.
 
 Now you're probably wondering what that `Cmd` thingy is, so take a minute and head on over to [elm-tutorial.org](https://www.elm-tutorial.org/en/), which has a nice explanation of [commands](https://www.elm-tutorial.org/en/03-subs-cmds/02-commands.html).
 
-Since we're now not longer _beginners_ we should also change our `Html.beginnerProgram` to `Html.program`.
+Since we're now not longer beginners we should also change our `Browser.sandbox` to `Browser.element`.
 
 There are a couple of changes we have to do to make this official transition from _beginners_ to _adepts_.
 
-* The argument to `Html.program` differs slightly from the argument to `Html.beginnerProgram`:
-  1. `model` is now called `init`, and its type is now `(Model, Cmd Msg)`
-  1. The record should have a new field called `subscriptions : Model -> Sub Msg`.
-* `update` now has the type signature `update : Msg -> Model -> (Model, Cmd Msg)`
+-   The argument to `Browser.element` differs slightly from the argument to `Browser.sandbox`:
+    1. `init`'s type is now `Flags -> (Model, Cmd Msg)` – you can use `()` for `Flags`
+    1. The record should have a new field called `subscriptions : Model -> Sub Msg`.
+-   `update` now has the type signature `update : Msg -> Model -> (Model, Cmd Msg)`
 
-The official docs has a nice explanation of what [_subscriptions_](http://package.elm-lang.org/packages/elm-lang/core/5.1.1/Platform-Sub#Sub) are.
+The official docs has a nice explanation of what [_subscriptions_](https://package.elm-lang.org/packages/elm/core/latest/Platform-Sub#Sub) and [_flags_](https://guide.elm-lang.org/interop/flags.html) are.
 
 ---
+
 **Task:**
-* Change from `Html.beginnerProgram` to `Html.program`
-* Use `Random.generate` together with `DeckGenerator.random` to get a different deck each time the game is started
+
+-   Change from `Browser.sandbox` to `Browser.element`
+-   Use `Random.generate` together with `DeckGenerator.random` to get a different deck each time the game is started
 
 **Hint:**
 In your code you can use `Sub.none` and `Cmd.none` when you don't have any _subscriptions_ or _commands_ you want to perform.
@@ -43,4 +49,3 @@ In your code you can use `Sub.none` and `Cmd.none` when you don't have any _subs
 ## Game over?
 
 And there you have it! You have now created your own version of a memory game with Elm (and cats)!
-
