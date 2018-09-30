@@ -323,7 +323,7 @@
 <p>The goal of this level is to print &quot;Hello, (name)&quot; to the screen.</p>
 <h2 id="11-displaying-text">1.1 Displaying text</h2>
 <p>Locate the file <em>Main.elm</em>, which should look like this:</p>
-<pre><code class="lang-elm"><span class="hljs-keyword">module</span> Main exposing (..)
+<pre><code class="lang-elm"><span class="hljs-keyword">module</span> Main exposing (main)
 
 import Html exposing (..)
 
@@ -355,12 +355,14 @@ Most times they tell you exactly what you have to do to make your program work.<
 <p>Now we want to create a function that takes a name as input and returns a greeting.
 It should have this type signature: <code>greet: String -&gt; String</code>.</p>
 <p>Called with the argument &quot;Erik&quot;, the function should produce the string &quot;Hello, Erik&quot;. Thus:</p>
-<pre><code>&gt; greet &quot;Erik&quot;
-&quot;Hello, Erik&quot; : String
-</code></pre><p>Here is an example of a function that takes two numbers and returns the sum of those numbers:</p>
-<pre><code>add x y =
+<pre><code class="lang-elm">&gt; greet <span class="hljs-string">&quot;Erik&quot;</span>
+<span class="hljs-string">&quot;Hello, Erik&quot;</span> : <span class="hljs-type">String</span>
+</code></pre>
+<p>Here is an example of a function that takes two numbers and returns the sum of those numbers:</p>
+<pre><code class="lang-elm"><span class="hljs-title">add</span> x y =
     x + y
-</code></pre><p>There are several things to note here:</p>
+</code></pre>
+<p>There are several things to note here:</p>
 <ul>
 <li>There&apos;s no <code>return</code> keyword - the evaluated value of the function body is automatically returned</li>
 <li>The parameters are named and come after the function name</li>
@@ -417,7 +419,7 @@ This makes the code easier to read and can help you get better error messages.</
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Level 1","level":"2.1","depth":1,"next":{"title":"Level 2","level":"2.2","depth":1,"path":"memory/LEVEL2.md","ref":"memory/LEVEL2.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"./book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"memory/LEVEL1.md","mtime":"2017-06-05T18:19:28.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-08-27T18:00:15.034Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Level 1","level":"2.1","depth":1,"next":{"title":"Level 2","level":"2.2","depth":1,"path":"memory/LEVEL2.md","ref":"memory/LEVEL2.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"./book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"memory/LEVEL1.md","mtime":"2018-09-28T09:22:45.259Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-09-30T12:49:56.061Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

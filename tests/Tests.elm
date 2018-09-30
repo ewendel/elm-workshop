@@ -1,9 +1,9 @@
-module Tests exposing (..)
+module Tests exposing (all)
 
-import Test exposing (..)
+import App
 import Expect
 import String
-import App
+import Test exposing (..)
 
 
 all : Test

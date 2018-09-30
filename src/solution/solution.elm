@@ -1,6 +1,6 @@
 -- Model.elm
 
-module Model exposing (..)
+module Model exposing (Card, CardState(..), Deck, GameState(..), Group(..), Model, Msg(..))
 
 
 type GameState
@@ -42,10 +42,12 @@ type alias Card =
     }
 
 
+
 -- Main.elm
 
-module Main exposing (..)
+module Main exposing (main)
 
+import Browser
 import DeckGenerator
 import Html exposing (..)
 import Html.Attributes exposing (..)
@@ -68,7 +70,7 @@ viewCard card =
             img
                 [ class "card closed"
                 , onClick (CardClicked card)
-                , src ("/cats/closed.png")
+                , src "/cats/closed.png"
                 ]
                 []
 
@@ -95,6 +97,7 @@ setCard state card deck =
         (\c ->
             if c.id == card.id && c.group == card.group then
                 { card | state = state }
+
             else
                 c
         )
@@ -112,6 +115,7 @@ closeUnmatched deck =
         (\c ->
             if c.state /= Matched then
                 { c | state = Closed }
+
             else
                 c
         )
@@ -133,7 +137,7 @@ updateCardClick clickedCard game =
                         |> closeUnmatched
                         |> setCard Open clickedCard
             in
-                Matching updatedDeck clickedCard
+            Matching updatedDeck clickedCard
 
         Matching deck openCard ->
             let
@@ -142,13 +146,15 @@ updateCardClick clickedCard game =
                         deck
                             |> setCard Matched clickedCard
                             |> setCard Matched openCard
+
                     else
                         setCard Open clickedCard deck
             in
-                if allMatched updatedDeck then
-                    GameOver
-                else
-                    Choosing updatedDeck
+            if allMatched updatedDeck then
+                GameOver
+
+            else
+                Choosing updatedDeck
 
         GameOver ->
             game
@@ -194,11 +200,12 @@ view model =
 
 
 main =
-    Html.program
+    Browser.element
         { init =
-            ( init
-            , Random.generate DeckGenerated DeckGenerator.random
-            )
+            \() ->
+                ( init
+                , Random.generate DeckGenerated DeckGenerator.random
+                )
         , view = view
         , update = update
         , subscriptions = \s -> Sub.none

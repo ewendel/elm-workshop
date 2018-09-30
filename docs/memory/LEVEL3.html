@@ -320,7 +320,7 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="level-3---beginner-program">Level 3 - Beginner Program!</h2>
-<p>In this section, we will take our first steps toward learning The Elm Architecture (TEA), the architecture that inspired Dan Abramov to create Redux.</p>
+<p>In this section, we will take our first steps towards learning The Elm Architecture (TEA), the architecture that inspired Dan Abramov to create Redux.</p>
 <p>The goal of the section is to implement card clicking: all cards should start as <code>Closed</code>, and change to <code>Open</code> when clicked.
 Don&apos;t worry about <code>Matched</code> for now - we&apos;ll deal with that later.</p>
 <h3 id="31-tea">3.1 Tea</h3>
@@ -331,7 +331,7 @@ Now we want to start responding to user input, and TEA is the way Elm structures
 <li>Head on over to <a href="TEA.html">our TEA chapter</a> to get a thorough explanation of the Elm architecture which also has a practice exercise for you</li>
 <li>Read the documentation:<ol>
 <li><a href="https://guide.elm-lang.org/architecture/" target="_blank">The Elm Architecture chapter of guide.elm-lang.org</a></li>
-<li><a href="http://package.elm-lang.org/packages/elm-lang/html/1.1.0/Html-App#beginnerProgram" target="_blank"><code>Html.beginnerProgram on package.elm-lang.org</code></a></li>
+<li><a href="https://package.elm-lang.org/packages/elm/browser/latest/Browser#sandbox" target="_blank"><code>Browser.sandbox on package.elm-lang.org</code></a></li>
 </ol>
 </li>
 </ul>
@@ -353,22 +353,23 @@ We will then have to go over each card in our card list (in <code>Model</code>) 
 <p><strong>Task</strong>:</p>
 <ol>
 <li>Add <code>import Html.Events exposing (..)</code></li>
-<li>Add an <code>onClick</code> attribute on closed cards. This should send a <code>CardClick</code> message.<ul>
-<li>The compiler will now complain about some type signatures. Read the messages and fix accordingly.</li>
-</ul>
+<li><p>Add an <code>onClick</code> attribute on closed cards. This should send a <code>CardClick</code> message.</p>
 </li>
-<li>Create a helper function <code>setCard : CardState -&gt; Card -&gt; Card</code>.<ul>
-<li>As you may have guessed, this function should return a new card with the <code>state</code> of the passed card set to the passed <code>CardState</code>.</li>
-<li>See the docs on how to <a href="http://elm-lang.org/docs/records#updating-records" target="_blank">update a record</a>.</li>
-</ul>
+<li><p>The compiler will now complain about some type signatures. Read the messages and fix accordingly.</p>
 </li>
-<li>Create <code>update : Msg -&gt; Model -&gt; Model</code><ul>
-<li>Use pattern matching and open the clicked card</li>
-</ul>
+<li><p>Create a helper function <code>setCard : CardState -&gt; Card -&gt; Card</code>.</p>
 </li>
-<li>Change <code>main</code> to be <code>Html.beginnerProgram { ... }</code><ul>
-<li>Read the docs to see what parameters it accepts!</li>
-</ul>
+<li><p>As you may have guessed, this function should return a new card with the <code>state</code> of the passed card set to the passed <code>CardState</code>.</p>
+</li>
+<li><p>See the docs on how to <a href="http://elm-lang.org/docs/records#updating-records" target="_blank">update a record</a>.</p>
+</li>
+<li><p>Create <code>update : Msg -&gt; Model -&gt; Model</code></p>
+</li>
+<li><p>Use pattern matching on <code>Msg</code> and open the clicked card</p>
+</li>
+<li><p>Change <code>main</code> to be <code>Browser.sandbox { ... }</code></p>
+</li>
+<li><p>Read the docs to see what parameters it accepts!</p>
 </li>
 </ol>
 <h5 id="hint">Hint:</h5>
@@ -419,7 +420,7 @@ We will then have to go over each card in our card list (in <code>Model</code>) 
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Level 3","level":"2.3","depth":1,"next":{"title":"Level 4","level":"2.4","depth":1,"path":"memory/LEVEL4.md","ref":"memory/LEVEL4.md","articles":[]},"previous":{"title":"Level 2","level":"2.2","depth":1,"path":"memory/LEVEL2.md","ref":"memory/LEVEL2.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"./book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"memory/LEVEL3.md","mtime":"2017-08-30T13:04:08.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-08-27T18:00:15.034Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Level 3","level":"2.3","depth":1,"next":{"title":"Level 4","level":"2.4","depth":1,"path":"memory/LEVEL4.md","ref":"memory/LEVEL4.md","articles":[]},"previous":{"title":"Level 2","level":"2.2","depth":1,"path":"memory/LEVEL2.md","ref":"memory/LEVEL2.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"./book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"memory/LEVEL3.md","mtime":"2018-09-28T10:13:05.851Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-09-30T12:49:56.061Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

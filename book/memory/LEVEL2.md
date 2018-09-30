@@ -1,4 +1,5 @@
 ## Level 2 - Learning types
+
 > The goal of this level is to learn union types and type aliases, which we often use to represent state.
 
 From here on we'll move in small steps, writing small chunks of code that will be a part of our final game, while using more and more features from functional programming and Elm along the way. Ready, set, go!
@@ -7,14 +8,14 @@ From here on we'll move in small steps, writing small chunks of code that will b
 
 We are going to create a representation of a "card" - something that is hiding a picture and can be flipped by the player. We'll start off by creating the equivalent data structure of a JavaScript object - a _record_. You can see the similarities between JavaScript objects and Elm records here:
 
-
 ```javascript
 // JavaScript object
 var person = {
-	name: 'Tom Cruise',
-	expensiveShoes: true
+    name: 'Tom Cruise',
+    expensiveShoes: true,
 };
 ```
+
 ```elm
 -- Elm record
 person : { name: String, fancyShoes: Bool }
@@ -25,7 +26,8 @@ person =
 ```
 
 ---
-**Task**: Create an Elm record with the type `{ id : String }`. Use `id = "1"` for the initial value. This `id` string will refer to the file name of the image our card will be hiding.
+
+**Task**: Create an Elm record with the type `{ id : String }` called `myCard`. Use `id = "1"` for the initial value. This `id` string will refer to the file name of the image our card will be hiding.
 
 ### 2.2 Rendering HTML to the screen
 
@@ -41,7 +43,6 @@ All HTML tags have corresponding functions in Elm, and they all accept two param
 </div>
 ```
 
-
 ```elm
 -- Elm
 div [ class "ninja" ]
@@ -51,11 +52,14 @@ div [ class "ninja" ]
 
 For example, the function to create a `div` node has this signature: `div : List (Attribute msg) -> List (Html a) -> Html a`
 
->#### Note about `Html a`
->Don't worry about that scary type `Html a` - we'll learn more about that later! Simply put, it's just saying that "hey, our HTML will emit some actions later on, and they will be of type `a` (which is a type variable, or a wildcard).
+> #### Note about `Html a`
+>
+> Don't worry about that scary type `Html a` - we'll learn more about that later! Simply put, it's just saying that "hey, our HTML will emit some actions later on, and they will be of type `a` (which is a type variable, or a wildcard).
 
 ---
+
 **Task**: Write the function `viewCard: { id: String } -> Html a`, which should output the following HTML:
+
 ```html
 <div>
 	<img src="/cats/{card.id}.png" />
@@ -63,17 +67,18 @@ For example, the function to create a `div` node has this signature: `div : List
 ```
 
 ##### Hint
-These functions will be useful:
-* `div : List (Attribute msg) -> List (Html a) -> Html a`
-* `img : List (Attribute msg) -> List (Html a) -> Html a`
-* `src : String -> Attribute msg`
+
+These functions will be useful (they are included in the standard library so you don't have to write them yourself):
+
+-   `div : List (Attribute msg) -> List (Html a) -> Html a`
+-   `img : List (Attribute msg) -> List (Html a) -> Html a`
+-   `src : String -> Attribute msg`
 
 To get the `src` function you should put `import Html.Attributes exposing (..)` near the beginning of your file.
 
 Remember also that string concatenation is done with `++`.
 
 If you now substitute the `greet` call in `main` with `viewCard` called with the record you created earlier you should see a beautiful little kitten on you screen!
-
 
 ### 2.3 Union Types: Representing card state
 
@@ -96,7 +101,7 @@ A union type is like a Java enumerable or C# enum - a union type is a value that
 type PieceColor = White | Black
 ```
 
-`PieceColor` is now a normal type in our system, just as `String` or `Bool`. `White` or `Black` are _constructor functions_, functions that take _zero_ arguments and return a value of type `PieceColor`. Or, expressed with a type signature:
+`PieceColor` is now a normal type in our system, just as `String` or `Bool`. `White` or `Black` are _constructor functions_. In this case they take _zero_ arguments and return a value of type `PieceColor`. Or, expressed with a type signature:
 
 ```elm
 White : PieceColor
@@ -110,22 +115,26 @@ type CustomerAge = Unknown | Known Int
 -- Unknown : CustomerAge
 -- Known : Int -> CustomerAge
 ```
+
 This can be used to represent a customer's age in a situation where we might not know the age.
 We see that the constructor function `Known` takes an `Int` argument and returns a `CustomerAge`.
 
-We can wrap any type of _accompanying data_ within a union type value (like `Known`), and the type of the accompanying data doesn't have to be the same for all the value types within a union.
+We can wrap _any_ type of _accompanying data_ within a union type value (like `Known`), and the type of the accompanying data doesn't have to be the same for all the value types within a union.
 
 This is incredibly useful, and we will now make our own!
 
 ---
+
 **Task**:
 
 1. Create a union type called `CardState` that can be either `Open`, `Closed` or `Matched` (_constructor functions_ are always capitalized).
-1. Enrich our previous `card` record with a field called `state` that carries a `CardState` value.
-You will also have to update the signature of `viewCard`.
-  * Our `card` value should now have the following type signature:
-```
-card: { id: String, state: CardState }
+1. Enrich our previous `Card` record with a field called `state` that carries a `CardState` value.
+   You will also have to update the signature of `viewCard`.
+
+-   Our `myCard` value should now have the following type signature:
+
+```elm
+myCard : { id : String, state : CardState }
 ```
 
 ### 2.5 Type Alias (alias slayer)
@@ -135,8 +144,9 @@ By now we see that our signature for `card` is getting unwieldy. Imagine maintai
 Enter _type aliases_!
 
 _Type aliases_ allow us to...
-* ...give a name to records with a specified structure, and use it as a type.
-* ...define a record with a specified data structure as a new type.
+
+-   ...give a name to records with a specified structure, and use it as a type.
+-   ...define a record with a specified data structure as a new type.
 
 Let's look at an example.
 
@@ -174,8 +184,8 @@ In JavaScript, this would obviously crash hard, but in Elm - the code won't even
 This moves the discovery of errors from runtime to compile time (when you hit _save_ in your editor), which significantly improves our feedback cycle!
 
 ---
-**Task**: Create a type alias called `Card` that describes our card record. Use this new type in the signatures of `viewCard` and `card`.
 
+**Task**: Create a type alias called `Card` that describes our card record. Use this new type in the signatures of `viewCard` and `myCard`.
 
 ### 2.6 Render all the states!
 
@@ -184,6 +194,7 @@ For this we will be using a language feature called _pattern matching_.
 It can best be described as a switch-statement on steroids, allowing us to do more than simple matching on a value.
 
 Example:
+
 ```elm
 isAdult : CustomerAge -> Bool
 isAdult customerAge =
@@ -201,28 +212,30 @@ This is a powerful technique, and is almost always used whenever there's a union
 In our case, it is handy for rendering different stuff based on the `CardState` of a card.
 
 In `viewCard`, use the following logic (css classes should be applied to the `img` tag):
-* When `Closed` -> show `/cats/closed.png` and the css class `closed`
-* When `Open` -> show `/cats/{cardId}.png` and the css class `open`
-* When `Matched` -> show `/cats/{cardId}.png` and the css class `matched`
 
+-   When `Closed` -> show `/cats/closed.png` and the css class `closed`
+-   When `Open` -> show `/cats/{cardId}.png` and the css class `open`
+-   When `Matched` -> show `/cats/{cardId}.png` and the css class `matched`
 
-Having only one card is pretty boring and we wan't to be able to see all the different states, so let's create a list of them.
+Having only one card is pretty boring and we won't to be able to see all the different states, so let's create a list of them.
 Lists in Elm is created with `[]`, just like in JavaScript.
 Put three cards in the list; one with `id = 1`, one with `id = 2` and one with `id = 3`. Each should also have a different value for `state`.
 
 ---
+
 **Task**:
+
 1. Update `viewCard` to display differently based on the card's `state`
-1. Create `cards : List Card`
-1. Create `viewCards : List Card -> Html a` - the cards should be placed in a `div` with the class `cards`
+1. Create `myCards : List Card`
+1. Create `viewCards : List Card -> Html a` - the cards should be placed in a `div` with the css class `cards`
 1. Call `viewCards` from `main`
 
 ##### Hint:
-Use `List.map : (a -> b) -> List a -> List b` to convert a list of `Card` to a list of `Html a`.
-Remember that `div : List (Attribute msg) -> List (Html a) -> Html a` (notice the second argument).
+
+Use the built-in function `List.map : (a -> b) -> List a -> List b` to convert a list of `Card` to a list of `Html a`.
+Remember that `div : List (Attribute msg) -> List (Html a) -> Html a` – notice the second argument (`List (Html a)`)and how it corresponds with the return value of `List.map`.
 
 Notice how the type signature helps in communicating what the function does!
 Type signatures are a very powerful tool, as you will discover throughout this workshop.
 
 Make sure you render the correct image source for each card (`{card.id}.png`).
-

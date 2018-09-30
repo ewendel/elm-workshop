@@ -345,16 +345,16 @@ These could be for example:</p>
 <li>User entered some text in a text field</li>
 <li>We received some data from an API</li>
 </ul>
-<h3 id="htmlbeginnerprogram"><code>Html.beginnerProgram</code></h3>
-<p><code>Html.beginnerProgram</code> is the simplest way to run an Elm application.
-It takes only one argument; a record with a field for the initial application state (<code>model</code>), a field for the <code>update</code> function, and a field for the <code>view</code> function.
+<h3 id="browsersandbox"><code>Browser.sandbox</code></h3>
+<p><code>Browser.sandbox</code> is the simplest way to run an Elm application.
+It takes only one argument; a record with a field for the initial application state (<code>init</code>), a field for the <code>update</code> function, and a field for the <code>view</code> function.
 With this, the Elm runtime will make sure that when there&apos;s some user-input in your application, the message will be sent to your <code>update</code> function, and when you have updated your model it will be sent to the <code>view</code> function so the HTML gets updated.</p>
-<p>Let&apos;s examine <code>beginnerProgram</code>&apos;s type signature.</p>
-<pre><code class="lang-elm"><span class="hljs-title">beginnerProgram</span>
-    : { model : modelType
+<p>Let&apos;s examine <code>Brower.sandbox</code>&apos;s type signature.</p>
+<pre><code class="lang-elm"><span class="hljs-type">Browser</span>.sandbox
+    : { init : modelType
       , view : modelType -&gt; <span class="hljs-type">Html</span> msgType
       , update : msgType -&gt; modelType -&gt; modelType }
-    -&gt; <span class="hljs-type">Program</span> <span class="hljs-type">Never</span>
+    -&gt; <span class="hljs-type">Program</span> () modelType msgType
 </code></pre>
 <p>Here we can see that because of Elm&apos;s static typing these three fields must &quot;match&quot; each other:</p>
 <ul>
@@ -362,8 +362,8 @@ With this, the Elm runtime will make sure that when there&apos;s some user-input
 <li>The type of messages returned from <code>view</code> (the <code>msgType</code> part in <code>Html msgType</code>) must be the same type as the first argument to <code>update</code></li>
 <li>The type of the second argument to <code>update</code> must match the type of the model</li>
 </ul>
-<p><code>beginnerProgram</code> returns a <code>Program Never</code> but you can forget about the <code>Never</code> part for now.
-The important part is that it returns a <code>Program</code>, which is just what the Elm runtime wants.</p>
+<p><code>Browser.sandbox</code> returns a <code>Program () modelType msgType</code> but you can forget about the <code>() modelType msgType</code> part for now.
+The important part is that it returns a <code>Program</code> , which is just what the Elm runtime wants.</p>
 <blockquote>
 <h4 id="html-msgtype"><code>Html msgType</code></h4>
 <p>This part can seem a bit confusing, so let&apos;s look at lists first.
@@ -381,20 +381,21 @@ For example:</p>
 <li><code>Html String</code> - messages from this HTML will be string</li>
 </ul>
 <p>In practice we will use <code>union types</code> for our messages as they are incredibly useful, but it is useful to realize that our messages could in principle be of <em>any</em> type.</p>
-<p>In the end, this means that when you hook up your <code>view</code> and <code>update</code> functions using <code>Html.beginnerProgram</code>, the messages sent to <code>update</code> will be of the type contained in the HTML.</p>
+<p>In the end, this means that when you hook up your <code>view</code> and <code>update</code> functions using <code>Browser.sandbox</code>, the messages sent to <code>update</code> will be of the type contained in the HTML.</p>
 </blockquote>
 <hr>
 <h3 id="exercise-time">Exercise time</h3>
 <p>To practice using the Elm architecture we will create the &quot;Hello, world&quot; of interactive web applications; a counter app.
 It will consist of one button for incrementing a number, one button for decrementing a number and a <code>&lt;span&gt;</code> for showing the number.</p>
 <p>You can use the following skeleton code to get quickly up and running:</p>
-<pre><code class="lang-elm"><span class="hljs-keyword">module</span> Main exposing (..)
+<pre><code class="lang-elm"><span class="hljs-keyword">module</span> Main exposing (main)
 
+import Browser
 import Html exposing (..)
 
 main =
-    Html.beginnerProgram
-        { model = 0
+    Browser.sandbox
+        { init = 0
         , update = update
         , view = view
         }
@@ -416,13 +417,15 @@ view model =
 <hr>
 <p><strong>Task</strong>:</p>
 <ol>
-<li>Implement the view function. It should output the following HTML (substitute <code>0</code> for the value of the model):<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
- <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>-<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
- <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>0<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
- <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<li>Implement the view function. It should output the following HTML (substitute <code>0</code> for the value of the model):</li>
+</ol>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>-<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>0<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 </code></pre>
-</li>
+<ol>
 <li>Create messages for incrementing and decrementing the model<ul>
 <li>These should be <code>constructor function</code>s for the <code>Msg</code> type</li>
 <li>When you have done this, use pattern matching on the value of <code>msg</code> (<code>case msg of ...</code>) in <code>update</code>.</li>
@@ -487,7 +490,7 @@ Remember also that the second argument of HTML nodes (<code>button</code> in our
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"The Elm Architecture","level":"2.6","depth":1,"next":{"title":"Bonus level","level":"2.7","depth":1,"path":"memory/BONUS.md","ref":"memory/BONUS.md","articles":[]},"previous":{"title":"Level 5","level":"2.5","depth":1,"path":"memory/LEVEL5.md","ref":"memory/LEVEL5.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"./book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"memory/TEA.md","mtime":"2018-02-05T22:22:39.979Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-08-27T18:00:15.034Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"The Elm Architecture","level":"2.6","depth":1,"next":{"title":"Bonus level","level":"2.7","depth":1,"path":"memory/BONUS.md","ref":"memory/BONUS.md","articles":[]},"previous":{"title":"Level 5","level":"2.5","depth":1,"path":"memory/LEVEL5.md","ref":"memory/LEVEL5.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"./book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"memory/TEA.md","mtime":"2018-09-28T10:23:12.509Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-09-30T12:49:56.061Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

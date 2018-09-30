@@ -1,11 +1,11 @@
-module Main exposing (..)
+module Main exposing (main)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
 
 
-card : { id : String }
-card =
+myCard : { id : String }
+myCard =
     { id = "1"
     }
 
@@ -18,4 +18,4 @@ viewCard card =
 
 
 main =
-    viewCard card
+    viewCard myCard
