@@ -1,23 +1,24 @@
 # Elm Arcade
+
 # Getting Started With Elm and Typed Functional Programming
 
 Welcome to this workshop! Today we're learning Elm and typed functional programming techniques through creating the classic game Memory.
 
 The workshop will cover the following topics:
 
-* Tuples
-* Records
-* Type Inference
-* Type Signatures
-* Union Types
-* Type Aliases
-* Pattern Matching
-* Functions
-* Partial Application
-* Currying
-* Maybe
-* Html.beginnerProgram
-* Piping
+-   Tuples
+-   Records
+-   Type Inference
+-   Type Signatures
+-   Union Types
+-   Type Aliases
+-   Pattern Matching
+-   Functions
+-   Partial Application
+-   Currying
+-   Maybe
+-   Running your application in the browser
+-   Piping
 
 Some of these concepts may be unfamiliar and somewhat confusing to begin with, so please do ask us if and when you get stuck, or simply have a question. That's what we're here for!
 
@@ -35,19 +36,14 @@ The code for the workshop is available here: https://github.com/ewendel/elm-work
 
 1. Install `elm`. This can be done with `npm install -g elm`, `brew install elm` (if on MacOS) or an old-school file download from [elm-lang.org](https://guide.elm-lang.org/install.html).
 
-1. Install a [`plugin`](https://guide.elm-lang.org/install.html#configure-your-editor) for your editor. At the time of writing, Atom's Elm integration seems the best so we **strongly** recommend you use that, even if Atom is not usually your main editor of choice.
-    * The following packages are needed for a pleasant development experience in Atom:
-        * `language-elm`
-        * `linter-elm-make`
-        * `elmjutsu`
-        * `elm-format`
+1. Install a [`plugin`](https://guide.elm-lang.org/install.html#configure-your-editor) for your editor. At the time of writing we prefer VS Code for Elm development so we recommend you use that, even if VS Code is not usually your main editor of choice.
 
-1. Install [`elm-format`](https://github.com/avh4/elm-format#for-elm-018), which is a crucial tool to make your Elm experience more enjoyable.
-    * `npm install -g elm-format`
-    * Remember to make sure that `elm-format` is available on your PATH or that you tell your editor where to find it
-    * In Atom, this can be done under package settings for the `elm-format` package: input the path to the `elm-format` binary.
-    * You can find the path for `elm-format` by doing `which elm-format` on MacOS/*Nix or `Get-Command elm-format` in powershell on Windows
-    * We also recommend you enable `Format on save` in your editor
+1. Install [`elm-format`](https://github.com/avh4/elm-format#installation-), which is a crucial tool to make your Elm experience more enjoyable.
+
+    - `npm install -g elm-format`
+    - Remember to make sure that `elm-format` is available on your PATH or that you tell your editor where to find it
+    - Follow the instructions [here](https://github.com/avh4/elm-format#visual-studio-code-installation) to enable running `elm-format` in VS Code
+    - You can find the path for `elm-format` by doing `which elm-format` on MacOS/\*Nix or `Get-Command elm-format` in powershell on Windows
 
 1. Clone the repo (https://github.com/ewendel/elm-workshop) to your computer
 
@@ -58,7 +54,6 @@ The code for the workshop is available here: https://github.com/ewendel/elm-work
 Congratulations, you're now ready to begin learning Elm!
 
 ---
-
 
 <h2 align="center">Made by</h2>
 
