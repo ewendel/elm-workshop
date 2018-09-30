@@ -333,7 +333,7 @@
 <li>Partial Application</li>
 <li>Currying</li>
 <li>Maybe</li>
-<li>Html.beginnerProgram</li>
+<li>Running your application in the browser</li>
 <li>Piping</li>
 </ul>
 <p>Some of these concepts may be unfamiliar and somewhat confusing to begin with, so please do ask us if and when you get stuck, or simply have a question. That&apos;s what we&apos;re here for!</p>
@@ -347,24 +347,14 @@
 </li>
 <li><p>Install <code>elm</code>. This can be done with <code>npm install -g elm</code>, <code>brew install elm</code> (if on MacOS) or an old-school file download from <a href="https://guide.elm-lang.org/install.html" target="_blank">elm-lang.org</a>.</p>
 </li>
-<li><p>Install a <a href="https://guide.elm-lang.org/install.html#configure-your-editor" target="_blank"><code>plugin</code></a> for your editor. At the time of writing, Atom&apos;s Elm integration seems the best so we <strong>strongly</strong> recommend you use that, even if Atom is not usually your main editor of choice.</p>
-<ul>
-<li>The following packages are needed for a pleasant development experience in Atom:<ul>
-<li><code>language-elm</code></li>
-<li><code>linter-elm-make</code></li>
-<li><code>elmjutsu</code></li>
-<li><code>elm-format</code></li>
-</ul>
+<li><p>Install a <a href="https://guide.elm-lang.org/install.html#configure-your-editor" target="_blank"><code>plugin</code></a> for your editor. At the time of writing we prefer VS Code for Elm development so we recommend you use that, even if VS Code is not usually your main editor of choice.</p>
 </li>
-</ul>
-</li>
-<li><p>Install <a href="https://github.com/avh4/elm-format#for-elm-018" target="_blank"><code>elm-format</code></a>, which is a crucial tool to make your Elm experience more enjoyable.</p>
+<li><p>Install <a href="https://github.com/avh4/elm-format#installation-" target="_blank"><code>elm-format</code></a>, which is a crucial tool to make your Elm experience more enjoyable.</p>
 <ul>
 <li><code>npm install -g elm-format</code></li>
 <li>Remember to make sure that <code>elm-format</code> is available on your PATH or that you tell your editor where to find it</li>
-<li>In Atom, this can be done under package settings for the <code>elm-format</code> package: input the path to the <code>elm-format</code> binary.</li>
+<li>Follow the instructions <a href="https://github.com/avh4/elm-format#visual-studio-code-installation" target="_blank">here</a> to enable running <code>elm-format</code> in VS Code</li>
 <li>You can find the path for <code>elm-format</code> by doing <code>which elm-format</code> on MacOS/*Nix or <code>Get-Command elm-format</code> in powershell on Windows</li>
-<li>We also recommend you enable <code>Format on save</code> in your editor</li>
 </ul>
 </li>
 <li><p>Clone the repo (<a href="https://github.com/ewendel/elm-workshop" target="_blank">https://github.com/ewendel/elm-workshop</a>) to your computer</p>
@@ -439,7 +429,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"Level 1","level":"2.1","depth":1,"path":"memory/LEVEL1.md","ref":"memory/LEVEL1.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"./book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"README.md","mtime":"2017-10-06T08:26:54.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-08-27T18:00:15.034Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"Level 1","level":"2.1","depth":1,"path":"memory/LEVEL1.md","ref":"memory/LEVEL1.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"./book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"README.md","mtime":"2018-09-30T12:48:36.112Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-09-30T12:49:56.061Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
