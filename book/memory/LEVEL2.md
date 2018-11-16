@@ -82,7 +82,7 @@ If you now substitute the `greet` call in `main` with `viewCard` called with the
 
 ### 2.3 Union Types: Representing card state
 
-Memory requires us to flip a card and reveal it's image when clicked. This means we need a way to represent card state, as a card can be in one of three potential states: `Open | Closed | Matched`.
+Memory requires us to flip a card and reveal its image when clicked. This means we need a way to represent card state, as a card can be in one of three potential states: `Open | Closed | Matched`.
 
 Think about how we'd store this state in JS. Most likely, we'd reach for a string:
 
