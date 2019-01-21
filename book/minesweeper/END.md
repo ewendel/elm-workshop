@@ -1,13 +1,12 @@
 # And boom goes the dynamite
 
-Congratulations, you have now created two awesome games using Elm! 
+Congratulations, you have now created three awesome games using Elm!
 
 We really hope you have enjoyed it and hopefully this is just the beginning of your journey with Elm.
 
-Please do reach out to us  if you have any feedback on the workshop or if you just want to get in touch.
+Please do reach out to us if you have any feedback on the workshop or if you just want to get in touch.
 
 ---
-
 
 <h2 align="center">Made by</h2>
 
@@ -33,5 +32,3 @@ Please do reach out to us  if you have any feedback on the workshop or if you ju
      </tr>
   </tbody>
 </table>
-
-

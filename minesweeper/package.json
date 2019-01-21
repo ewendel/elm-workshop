@@ -1,0 +1,20 @@
+{
+  "name": "minesweeper",
+  "version": "1.0.0",
+  "description": "This project is bootstrapped with [Create Elm App](https://github.com/halfzebra/create-elm-app).",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "build": "elm-app build",
+    "start": "elm-app start",
+    "test": "elm-app test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "create-elm-app": "^3.0.3"
+  }
+}

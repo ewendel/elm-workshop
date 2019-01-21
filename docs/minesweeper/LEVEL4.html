@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Level 2 · GitBook</title>
+        <title>Level 4 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="LEVEL3.html" />
     
-    
-    <link rel="prev" href="LEVEL1.html" />
+    <link rel="prev" href="LEVEL3.html" />
     
 
     </head>
@@ -209,9 +207,9 @@
         
         
     
-        <li class="chapter " data-level="3.1" data-path="./">
+        <li class="chapter " data-level="3.1" data-path="../snake/">
             
-                <a href="./">
+                <a href="../snake/">
             
                     
                     Introduction
@@ -222,9 +220,9 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2" data-path="LEVEL1.html">
+        <li class="chapter " data-level="3.2" data-path="../snake/LEVEL1.html">
             
-                <a href="LEVEL1.html">
+                <a href="../snake/LEVEL1.html">
             
                     
                     Level 1
@@ -235,9 +233,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="3.3" data-path="LEVEL2.html">
+        <li class="chapter " data-level="3.3" data-path="../snake/LEVEL2.html">
             
-                <a href="LEVEL2.html">
+                <a href="../snake/LEVEL2.html">
             
                     
                     Level 2
@@ -248,9 +246,9 @@
             
         </li>
     
-        <li class="chapter " data-level="3.4" data-path="LEVEL3.html">
+        <li class="chapter " data-level="3.4" data-path="../snake/LEVEL3.html">
             
-                <a href="LEVEL3.html">
+                <a href="../snake/LEVEL3.html">
             
                     
                     Level 3
@@ -261,9 +259,9 @@
             
         </li>
     
-        <li class="chapter " data-level="3.5" data-path="END.html">
+        <li class="chapter " data-level="3.5" data-path="../snake/END.html">
             
-                <a href="END.html">
+                <a href="../snake/END.html">
             
                     
                     The end
@@ -281,9 +279,9 @@
         
         
     
-        <li class="chapter " data-level="4.1" data-path="../minesweeper/">
+        <li class="chapter " data-level="4.1" data-path="./">
             
-                <a href="../minesweeper/">
+                <a href="./">
             
                     
                     Introduction
@@ -294,9 +292,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.2" data-path="../minesweeper/LEVEL1.html">
+        <li class="chapter " data-level="4.2" data-path="LEVEL1.html">
             
-                <a href="../minesweeper/LEVEL1.html">
+                <a href="LEVEL1.html">
             
                     
                     Level 1
@@ -307,9 +305,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.3" data-path="../minesweeper/LEVEL2.html">
+        <li class="chapter " data-level="4.3" data-path="LEVEL2.html">
             
-                <a href="../minesweeper/LEVEL2.html">
+                <a href="LEVEL2.html">
             
                     
                     Level 2
@@ -320,9 +318,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.4" data-path="../minesweeper/LEVEL3.html">
+        <li class="chapter " data-level="4.4" data-path="LEVEL3.html">
             
-                <a href="../minesweeper/LEVEL3.html">
+                <a href="LEVEL3.html">
             
                     
                     Level 3
@@ -333,9 +331,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.5" data-path="../minesweeper/LEVEL4.html">
+        <li class="chapter active" data-level="4.5" data-path="LEVEL4.html">
             
-                <a href="../minesweeper/LEVEL4.html">
+                <a href="LEVEL4.html">
             
                     
                     Level 4
@@ -376,7 +374,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Level 2</a>
+        <a href=".." >Level 4</a>
     </h1>
 </div>
 
@@ -391,33 +389,26 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="level-2---view">Level 2 - View</h2>
-<p>If we have a <code>Model</code> we can also create our view function!
-Recall that it should have the signature: <code>view : Model -&gt; Html a</code>.</p>
-<p>The HTML structure we want is this:</p>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;map&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;row&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tile {TILECLASSNAME}&quot;</span> /&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tile {TILECLASSNAME}&quot;</span> /&gt;</span>
-    ...
-  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;row&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tile {TILECLASSNAME}&quot;</span> /&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tile {TILECLASSNAME}&quot;</span> /&gt;</span>
-    ...
-  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-  ...
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-</code></pre>
-<p>where <code>{TILECLASSNAME}</code> should be one of theses:</p>
-<ul>
-<li><code>snake</code></li>
-<li><code>food</code></li>
-<li><code>wall</code></li>
-<li><code>open</code></li>
+                                <h1 id="level-4---finishing-touches">Level 4 - Finishing touches</h1>
+<p>There are some finishing touches to make before we can call our Minesweeper game complete.</p>
+<ol>
+<li>Generating random boards<ul>
+<li>Remember the hint about using <a href="https://package.elm-lang.org/packages/elm-community/random-extra/latest/Random-List#shuffle" target="_blank">Random.List.shuffle</a>?</li>
 </ul>
-<p>This is, of course, when when the snake is alive.
-If the snake is dead, you should show some nice message and a button for restarting the game.</p>
+</li>
+<li>Starting a new game without having to refresh the page<ul>
+<li>Hint: use the smiley face in the top center of the game</li>
+</ul>
+</li>
+<li>Showing the remaining number of mines in the top left corner<ul>
+<li>This should be the total number of mines on the board minus the count of flagged cells</li>
+</ul>
+</li>
+<li>Showing the elapsed time (in seconds) in the top right corner<ul>
+<li>Hint: <a href="https://package.elm-lang.org/packages/elm/time/latest/Time#every" target="_blank"><code>Time.every</code></a></li>
+</ul>
+</li>
+</ol>
 
                                 
                                 </section>
@@ -445,14 +436,10 @@ If the snake is dead, you should show some nice message and a button for restart
 
             
                 
-                <a href="LEVEL1.html" class="navigation navigation-prev " aria-label="Previous page: Level 1">
+                <a href="LEVEL3.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Level 3">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="LEVEL3.html" class="navigation navigation-next " aria-label="Next page: Level 3">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -461,7 +448,7 @@ If the snake is dead, you should show some nice message and a button for restart
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Level 2","level":"3.3","depth":1,"next":{"title":"Level 3","level":"3.4","depth":1,"path":"snake/LEVEL3.md","ref":"snake/LEVEL3.md","articles":[]},"previous":{"title":"Level 1","level":"3.2","depth":1,"path":"snake/LEVEL1.md","ref":"snake/LEVEL1.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"./book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"snake/LEVEL2.md","mtime":"2019-01-21T14:49:30.104Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-21T16:49:14.729Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Level 4","level":"4.5","depth":1,"previous":{"title":"Level 3","level":"4.4","depth":1,"path":"minesweeper/LEVEL3.md","ref":"minesweeper/LEVEL3.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"./book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"minesweeper/LEVEL4.md","mtime":"2019-01-21T16:42:25.944Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-21T16:49:14.729Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
