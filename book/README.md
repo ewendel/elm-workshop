@@ -32,7 +32,7 @@ The code for the workshop is available here: https://github.com/ewendel/elm-work
 
 ## Prerequisites
 
-1. Install `node` version 7 or newer (which includes `npm`) from [nodejs.org](https://nodejs.org/en/download/current/).
+1. Install `node` version 12 or newer (which includes `npm`) from [nodejs.org](https://nodejs.org/en/download/current/).
 
 1. Install `elm`. This can be done with `npm install -g elm`, `brew install elm` (if on MacOS) or an old-school file download from [elm-lang.org](https://guide.elm-lang.org/install.html).
 
@@ -47,7 +47,7 @@ The code for the workshop is available here: https://github.com/ewendel/elm-work
 
 1. Clone the repo (https://github.com/ewendel/elm-workshop) to your computer
 
-1. Run `npm install` (please make sure to have `npm` version 3 or newer)
+1. Run `npm ci` (please make sure to have `npm` version 6 or newer)
 
 1. Start your local application environment with `npm start` in the root folder of this repo. This should open a new browser window with `localhost:3000` and a nice compilation error.
 
