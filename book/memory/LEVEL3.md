@@ -25,7 +25,7 @@ Now that you're getting warm, we will be giving you fewer specific instructions 
 
 1. Create a type alias `Model` that has the following type: `{ cards : List Card }`
 1. Create a value `init : Model`
-1. Create the union type `Msg` with only one constructor: `CardClick Card`
+1. Create the custom type `Msg` with only one constructor: `CardClick Card`
 1. Create a function `view : Model -> Html a` that renders a `div` with our list of cards.
 
 ### 3.2 Stuff is happening!

@@ -10,7 +10,7 @@ Our deck of cards is a list of `Card`s and we will be passing them around in our
 Therefore, instead of having to write `List Card` everywhere, we want to be able to write `Deck`.
 
 Also, in the game we will be matching pairs of cards with each other, and will need some way to distinguish between two cards with the same image.
-We will do this by saying that a card can be _either_ in group `A` or in group `B`. Use a union type to achieve this, and add it as a field in our `Card` type.
+We will do this by saying that a card can be _either_ in group `A` or in group `B`. Use a custom type to achieve this, and add it as a field in our `Card` type.
 With this we can check if two cards are of one pair by comparing their `id` and `group` fields!
 
 ---
@@ -18,7 +18,7 @@ With this we can check if two cards are of one pair by comparing their `id` and 
 **Task:**
 
 -   Create a type alias for our deck of cards.
--   Create a union type for representing the group of a card.
+-   Create a custom type for representing the group of a card.
 -   Add `group` as a field in our `Card` type
 
 ### 4.2 Housekeeping part two
@@ -46,7 +46,7 @@ Use this by importing `DeckGenerator` in `Main.elm` and using the `DeckGenerator
 > -   Filename: `Models/User.elm` -> module: `Models.User`
 >
 > You must also be explicit with what your module exposes to the public by listing them along with the module declaration.
-> For type aliases and functions you just list their names, but for custom types (union types) you have two choices:
+> For type aliases and functions you just list their names, but for custom types you have two choices:
 >
 > -   exposing _only the type_ (often called opaque types)
 > -   exposing both the type and its constructors.
@@ -98,7 +98,7 @@ It should have the signature `updateCardClick : Card -> GameState -> GameState`.
 
 **Task:**
 
--   Implement the three game states as a union type called `GameState`
+-   Implement the three game states as a custom type called `GameState`
 -   Implement the `updateCardClick : Card -> GameState -> GameState` function
 -   Update your `update` and `view` functions to accommodate for the new shape of our model
 -   Now take a minute and pat yourself on the back for making an awesome game in Elm!

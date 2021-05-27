@@ -1,6 +1,6 @@
 ## Level 2 - Learning types
 
-> The goal of this level is to learn union types and type aliases, which we often use to represent state.
+> The goal of this level is to learn about custom types and type aliases, which we often use to represent state.
 
 From here on we'll move in small steps, writing small chunks of code that will be a part of our final game, while using more and more features from functional programming and Elm along the way. Ready, set, go!
 
@@ -80,7 +80,7 @@ Remember also that string concatenation is done with `++`.
 
 If you now substitute the `greet` call in `main` with `viewCard` called with the record you created earlier you should see a beautiful little kitten on you screen!
 
-### 2.3 Union Types: Representing card state
+### 2.3 Custom Types: Representing card state
 
 Memory requires us to flip a card and reveal its image when clicked. This means we need a way to represent card state, as a card can be in one of three potential states: `Open | Closed | Matched`.
 
@@ -93,9 +93,9 @@ Think about how we'd store this state in JS. Most likely, we'd reach for a strin
 }
 ```
 
-This is obviously not very safe. This doesn't constrain us to using only the three possible values, and there's nothing to avoid typing errors. Elm and other ML-languages have a great feature for this use case: _Union Types_.
+This is obviously not very safe. This doesn't constrain us to using only the three possible values, and there's nothing to avoid typing errors. Elm and other ML-languages have a great feature for this use case: Custom Types_.
 
-A union type is like a Java enumerable or C# enum - a union type is a value that may be one of a fixed set of values. Chess pieces, for example, can only be either white or black.
+A custom type is somewhat like a Java enumerable or C# enum - a custom type is a value that may be one of a fixed set of values. Chess pieces, for example, can only be either white or black.
 
 ```elm
 type PieceColor = White | Black
@@ -108,7 +108,7 @@ White : PieceColor
 Black : PieceColor
 ```
 
-Union types may also carry data. This means that the _constructor functions_ for such union type values aren't zero argument functions. Let's look at an example:
+Custom types may also carry data. This means that the _constructor functions_ for such custom type values aren't zero argument functions. Let's look at an example:
 
 ```elm
 type CustomerAge = Unknown | Known Int
@@ -119,7 +119,7 @@ type CustomerAge = Unknown | Known Int
 This can be used to represent a customer's age in a situation where we might not know the age.
 We see that the constructor function `Known` takes an `Int` argument and returns a `CustomerAge`.
 
-We can wrap _any_ type of _accompanying data_ within a union type value (like `Known`), and the type of the accompanying data doesn't have to be the same for all the value types within a union.
+We can wrap _any_ type of _accompanying data_ within a custom type value (like `Known`), and the type of the accompanying data doesn't have to be the same for all the value types within a union.
 
 This is incredibly useful, and we will now make our own!
 
@@ -127,7 +127,7 @@ This is incredibly useful, and we will now make our own!
 
 **Task**:
 
-1. Create a union type called `CardState` that can be either `Open`, `Closed` or `Matched` (_constructor functions_ are always capitalized).
+1. Create a custom type called `CardState` that can be either `Open`, `Closed` or `Matched` (_constructor functions_ are always capitalized).
 1. Enrich our previous `Card` record with a field called `state` that carries a `CardState` value.
    You will also have to update the signature of `viewCard`.
 
@@ -207,7 +207,7 @@ isAdult customerAge =
 ```
 
 Notice that we can even extract the value that was used when `Known : Int -> CustomerAge` was used!
-This is a powerful technique, and is almost always used whenever there's a union type around.
+This is a powerful technique, and is almost always used whenever there's a custom type around.
 
 In our case, it is handy for rendering different stuff based on the `CardState` of a card.
 

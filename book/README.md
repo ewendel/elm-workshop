@@ -10,7 +10,7 @@ The workshop will cover the following topics:
 -   Records
 -   Type Inference
 -   Type Signatures
--   Union Types
+-   Custom Types
 -   Type Aliases
 -   Pattern Matching
 -   Functions
