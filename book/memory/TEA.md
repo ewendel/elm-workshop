@@ -24,7 +24,7 @@ A function that takes the current application state as an argument and returns s
 ##### Update
 
 A function that takes a "message", the current application state and returns an updated application state.
-This message is modeled with a union type, so usually the `update` function consists of pattern matching on the message value.
+This message is modeled with a custom type, so usually the `update` function consists of pattern matching on the message value.
 
 Messages are events that happen in our application.
 These could be for example:
@@ -75,7 +75,7 @@ The important part is that it returns a `Program` , which is just what the Elm r
 > -   `Html Int` - messages from this HTML will be ints
 > -   `Html String` - messages from this HTML will be string
 >
-> In practice we will use `union types` for our messages as they are incredibly useful, but it is useful to realize that our messages could in principle be of _any_ type.
+> In practice we will use `custom types` for our messages as they are incredibly useful, but it is useful to realize that our messages could in principle be of _any_ type.
 >
 > In the end, this means that when you hook up your `view` and `update` functions using `Browser.sandbox`, the messages sent to `update` will be of the type contained in the HTML.
 
