@@ -2,13 +2,12 @@
   "name": "elm-workshop",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
-    "build": "elm-app build",
-    "start": "elm-app start",
+    "build": "vite build",
+    "start": "vite serve ./",
     "book": "gitbook serve",
-    "build:book": "gitbook build ./ ./docs",
-    "test": "elm-app test"
+    "build:book": "gitbook build ./ ./docs"
   },
   "repository": {
     "type": "git",
@@ -21,8 +20,10 @@
   },
   "homepage": "https://github.com/ewendel/elm-workshop#readme",
   "dependencies": {
-    "create-elm-app": "^4.1.2",
     "gitbook-cli": "^2.3.2"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "vite": "^2.7.13",
+    "vite-plugin-elm": "^2.5.1"
+  }
 }
