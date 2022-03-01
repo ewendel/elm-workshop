@@ -23,6 +23,8 @@
     "gitbook-cli": "^2.3.2"
   },
   "devDependencies": {
+    "elm": "^0.19.1-5",
+    "elm-format": "^0.8.5",
     "vite": "^2.7.13",
     "vite-plugin-elm": "^2.5.1"
   }
