@@ -399,7 +399,7 @@
 <p>We are going to create a representation of a &quot;card&quot; - something that is hiding a picture and can be flipped by the player. We&apos;ll start off by creating the equivalent data structure of a JavaScript object - a <em>record</em>. You can see the similarities between JavaScript objects and Elm records here:</p>
 <pre><code class="lang-javascript"><span class="hljs-comment">// JavaScript object</span>
 <span class="hljs-keyword">var</span> person = {
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&apos;Tom Cruise&apos;</span>,
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Tom Cruise&quot;</span>,
     <span class="hljs-attr">expensiveShoes</span>: <span class="hljs-literal">true</span>,
 };
 </code></pre>
@@ -457,7 +457,7 @@
     <span class="hljs-attr">state</span>: <span class="hljs-string">&apos;open&apos;</span> <span class="hljs-comment">// or &apos;closed&apos; or &apos;matched&apos;</span>
 }
 </code></pre>
-<p>This is obviously not very safe. This doesn&apos;t constrain us to using only the three possible values, and there&apos;s nothing to avoid typing errors. Elm and other ML-languages have a great feature for this use case: Custom Types_.</p>
+<p>This is obviously not very safe. This doesn&apos;t constrain us to using only the three possible values, and there&apos;s nothing to avoid typing errors. Elm and other ML-languages have a great feature for this use case: <em>Custom Types</em>.</p>
 <p>A custom type is somewhat like a Java enumerable or C# enum - a custom type is a value that may be one of a fixed set of values. Chess pieces, for example, can only be either white or black.</p>
 <pre><code class="lang-elm"><span class="hljs-keyword">type</span> <span class="hljs-type">PieceColor</span> = <span class="hljs-type">White</span> | <span class="hljs-type">Black</span>
 </code></pre>
@@ -606,7 +606,7 @@ Type signatures are a very powerful tool, as you will discover throughout this w
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Level 2","level":"2.2","depth":1,"next":{"title":"Level 3","level":"2.3","depth":1,"path":"memory/LEVEL3.md","ref":"memory/LEVEL3.md","articles":[]},"previous":{"title":"Level 1","level":"2.1","depth":1,"path":"memory/LEVEL1.md","ref":"memory/LEVEL1.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"memory/LEVEL2.md","mtime":"2022-03-15T08:49:34.959Z","type":"markdown"},"gitbook":{"version":"3.7.1","time":"2022-03-15T12:12:16.683Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Level 2","level":"2.2","depth":1,"next":{"title":"Level 3","level":"2.3","depth":1,"path":"memory/LEVEL3.md","ref":"memory/LEVEL3.md","articles":[]},"previous":{"title":"Level 1","level":"2.1","depth":1,"path":"memory/LEVEL1.md","ref":"memory/LEVEL1.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"memory/LEVEL2.md","mtime":"2022-03-15T14:31:29.574Z","type":"markdown"},"gitbook":{"version":"3.7.1","time":"2022-03-16T09:20:28.181Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
