@@ -1,59 +1,12 @@
--- Model.elm
-
-module Model exposing (Card, CardState(..), Deck, GameState(..), Group(..), Model, Msg(..))
-
-
-type GameState
-    = Choosing Deck
-    | Matching Deck Card
-    | GameOver
-
-
-type alias Model =
-    { game : GameState
-    }
-
-
-type Msg
-    = CardClicked Card
-    | DeckGenerated Deck
-    | RestartGame
-
-
-type CardState
-    = Open
-    | Closed
-    | Matched
-
-
-type alias Deck =
-    List Card
-
-
-type Group
-    = A
-    | B
-
-
-type alias Card =
-    { id : String
-    , group : Group
-    , state : CardState
-    }
-
-
-
--- Main.elm
-
-module Main exposing (main)
+module Solution.Solution exposing (main)
 
 import Browser
-import DeckGenerator
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
-import Model exposing (..)
 import Random
+import Solution.DeckGenerator as DeckGenerator
+import Solution.Model exposing (Card, CardState(..), Deck, GameState(..), Model, Msg(..))
 
 
 viewCard : Card -> Html Msg
@@ -184,7 +137,7 @@ view model =
         Choosing deck ->
             viewCards deck
 
-        Matching deck card ->
+        Matching deck _ ->
             viewCards deck
 
         GameOver ->
@@ -208,5 +161,5 @@ main =
                 )
         , view = view
         , update = update
-        , subscriptions = \s -> Sub.none
+        , subscriptions = \_ -> Sub.none
         }

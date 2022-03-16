@@ -11,7 +11,7 @@ We are going to create a representation of a "card" - something that is hiding a
 ```javascript
 // JavaScript object
 var person = {
-    name: 'Tom Cruise',
+    name: "Tom Cruise",
     expensiveShoes: true,
 };
 ```
@@ -39,7 +39,7 @@ All HTML tags have corresponding functions in Elm, and they all accept two param
 ```html
 <!-- HTML -->
 <div class="ninja">
-	<span>Banzai!</span>
+    <span>Banzai!</span>
 </div>
 ```
 
@@ -62,7 +62,7 @@ For example, the function to create a `div` node has this signature: `div : List
 
 ```html
 <div>
-	<img src="/cats/{card.id}.png" />
+    <img src="/cats/{card.id}.png" />
 </div>
 ```
 
@@ -93,7 +93,7 @@ Think about how we'd store this state in JS. Most likely, we'd reach for a strin
 }
 ```
 
-This is obviously not very safe. This doesn't constrain us to using only the three possible values, and there's nothing to avoid typing errors. Elm and other ML-languages have a great feature for this use case: Custom Types_.
+This is obviously not very safe. This doesn't constrain us to using only the three possible values, and there's nothing to avoid typing errors. Elm and other ML-languages have a great feature for this use case: _Custom Types_.
 
 A custom type is somewhat like a Java enumerable or C# enum - a custom type is a value that may be one of a fixed set of values. Chess pieces, for example, can only be either white or black.
 

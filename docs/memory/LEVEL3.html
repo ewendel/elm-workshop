@@ -3,11 +3,10 @@
 <html lang="" >
     <head>
         <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Level 3 · GitBook</title>
+        <title>Level 3 · HonKit</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="generator" content="HonKit 3.7.1">
         
         
         
@@ -66,7 +65,7 @@
     </head>
     <body>
         
-<div class="book">
+<div class="book honkit-cloak">
     <div class="book-summary">
         
             
@@ -261,19 +260,6 @@
             
         </li>
     
-        <li class="chapter " data-level="3.5" data-path="../snake/END.html">
-            
-                <a href="../snake/END.html">
-            
-                    
-                    The end
-            
-                </a>
-            
-
-            
-        </li>
-    
 
     
         
@@ -346,14 +332,27 @@
             
         </li>
     
+        <li class="chapter " data-level="4.6" data-path="../minesweeper/END.html">
+            
+                <a href="../minesweeper/END.html">
+            
+                    
+                    The end
+            
+                </a>
+            
+
+            
+        </li>
+    
 
     
 
     <li class="divider"></li>
 
     <li>
-        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            Published with GitBook
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            Published with HonKit
         </a>
     </li>
 </ul>
@@ -413,7 +412,7 @@ Now we want to start responding to user input, and TEA is the way Elm structures
 <ol>
 <li>Create a type alias <code>Model</code> that has the following type: <code>{ cards : List Card }</code></li>
 <li>Create a value <code>init : Model</code></li>
-<li>Create the union type <code>Msg</code> with only one constructor: <code>CardClick Card</code></li>
+<li>Create the custom type <code>Msg</code> with only one constructor: <code>CardClick Card</code></li>
 <li>Create a function <code>view : Model -&gt; Html a</code> that renders a <code>div</code> with our list of cards.</li>
 </ol>
 <h3 id="32-stuff-is-happening">3.2 Stuff is happening!</h3>
@@ -492,12 +491,56 @@ We will then have to go over each card in our card list (in <code>Model</code>) 
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Level 3","level":"2.3","depth":1,"next":{"title":"Level 4","level":"2.4","depth":1,"path":"memory/LEVEL4.md","ref":"memory/LEVEL4.md","articles":[]},"previous":{"title":"Level 2","level":"2.2","depth":1,"path":"memory/LEVEL2.md","ref":"memory/LEVEL2.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"./book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"memory/LEVEL3.md","mtime":"2019-01-21T14:49:30.102Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-21T16:49:14.729Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Level 3","level":"2.3","depth":1,"next":{"title":"Level 4","level":"2.4","depth":1,"path":"memory/LEVEL4.md","ref":"memory/LEVEL4.md","articles":[]},"previous":{"title":"Level 2","level":"2.2","depth":1,"path":"memory/LEVEL2.md","ref":"memory/LEVEL2.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"memory/LEVEL3.md","mtime":"2022-03-15T08:49:34.959Z","type":"markdown"},"gitbook":{"version":"3.7.1","time":"2022-03-15T12:12:16.683Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
     <script src="../gitbook/gitbook.js"></script>
     <script src="../gitbook/theme.js"></script>
     
@@ -515,10 +558,6 @@ We will then have to go over each card in our card list (in <code>Model</code>) 
     
         
         <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
         
     
         

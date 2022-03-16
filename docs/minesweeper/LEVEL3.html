@@ -3,11 +3,10 @@
 <html lang="" >
     <head>
         <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Level 3 · GitBook</title>
+        <title>Level 3 · HonKit</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="generator" content="HonKit 3.7.1">
         
         
         
@@ -66,7 +65,7 @@
     </head>
     <body>
         
-<div class="book">
+<div class="book honkit-cloak">
     <div class="book-summary">
         
             
@@ -261,19 +260,6 @@
             
         </li>
     
-        <li class="chapter " data-level="3.5" data-path="../snake/END.html">
-            
-                <a href="../snake/END.html">
-            
-                    
-                    The end
-            
-                </a>
-            
-
-            
-        </li>
-    
 
     
         
@@ -346,14 +332,27 @@
             
         </li>
     
+        <li class="chapter " data-level="4.6" data-path="END.html">
+            
+                <a href="END.html">
+            
+                    
+                    The end
+            
+                </a>
+            
+
+            
+        </li>
+    
 
     
 
     <li class="divider"></li>
 
     <li>
-        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            Published with GitBook
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            Published with HonKit
         </a>
     </li>
 </ul>
@@ -466,20 +465,22 @@
 <td>Set game state to <code>Lost</code> and change the cell state of all mines to <code>Open</code></td>
 </tr>
 <tr>
-<td><code>Safe N</code>, when N &gt; 0</td>
-<td>Change cell state to <code>Open</code></td>
-</tr>
-<tr>
 <td><code>Safe 0</code></td>
 <td>When opening a cell with no neighboring mines, you should change its state to <code>Open</code>, as usual, and then open all its neighbors. For each neighbor that is also <code>Safe 0</code>, repeat this process.</td>
 </tr>
+<tr>
+<td><code>Safe N</code>, when N &gt; 0</td>
+<td>Change cell state to <code>Open</code></td>
+</tr>
 </tbody>
 </table>
-<h4 id="safe-0">Safe 0</h4>
-<p>The na&#xEF;ve way to implement opening <code>Safe 0</code> recursively might be veeeery slow in practice (and might even recurse infinitely).
-Hint: keeping track of which cells you have already checked should avoid this problem.
-Hint 2: a helper function to find the neighboring cells of a given cell might be handy.</p>
-<p>Remember: ask for help if you get stuck &#x2013; this is probably the hardest algorithm to implement when creating Minesweeper.</p>
+<h4 id="opening-safe-0">Opening <code>Safe 0</code></h4>
+<p>The naïve way to implement opening <code>Safe 0</code> recursively might be veeeery slow in practice (and might even recurse infinitely).</p>
+<ul>
+<li>Hint: keeping track of which cells you have already checked should avoid this problem.</li>
+<li>Hint 2: a helper function to find the neighboring cells of a given cell might be handy.</li>
+</ul>
+<p>Remember: ask for help if you get stuck – this is probably the hardest algorithm to implement when creating Minesweeper.</p>
 <h3 id="winning">Winning?</h3>
 <p>If opening a cell leads to <em>all</em> safe cells being <code>Open</code>, you have won the game!</p>
 <hr>
@@ -527,12 +528,56 @@ Hint 2: a helper function to find the neighboring cells of a given cell might be
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Level 3","level":"4.4","depth":1,"next":{"title":"Level 4","level":"4.5","depth":1,"path":"minesweeper/LEVEL4.md","ref":"minesweeper/LEVEL4.md","articles":[]},"previous":{"title":"Level 2","level":"4.3","depth":1,"path":"minesweeper/LEVEL2.md","ref":"minesweeper/LEVEL2.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"./book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"minesweeper/LEVEL3.md","mtime":"2019-01-21T16:32:40.436Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-21T16:49:14.729Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Level 3","level":"4.4","depth":1,"next":{"title":"Level 4","level":"4.5","depth":1,"path":"minesweeper/LEVEL4.md","ref":"minesweeper/LEVEL4.md","articles":[]},"previous":{"title":"Level 2","level":"4.3","depth":1,"path":"minesweeper/LEVEL2.md","ref":"minesweeper/LEVEL2.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"minesweeper/LEVEL3.md","mtime":"2022-03-15T08:49:34.959Z","type":"markdown"},"gitbook":{"version":"3.7.1","time":"2022-03-15T12:12:16.683Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
     <script src="../gitbook/gitbook.js"></script>
     <script src="../gitbook/theme.js"></script>
     
@@ -550,10 +595,6 @@ Hint 2: a helper function to find the neighboring cells of a given cell might be
     
         
         <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
         
     
         

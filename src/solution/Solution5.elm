@@ -1,4 +1,4 @@
-module Main exposing (main)
+module Solution.Solution5 exposing (main)
 
 import Browser
 import Html exposing (..)
@@ -106,6 +106,7 @@ view model =
     viewCards model.cards
 
 
+main : Program () Model Msg
 main =
     Browser.sandbox
         { init = { cards = [ openCard, closedCard, matchedCard ] }

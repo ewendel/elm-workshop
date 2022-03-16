@@ -1,10 +1,16 @@
-module Main exposing (main)
+module Solution.Solution6 exposing (main)
 
-import DeckGenerator
+import Browser
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
-import Model exposing (..)
+import Solution.DeckGenerator as DeckGenerator
+import Solution.Model exposing (Card, CardState(..), Deck, GameState(..), Model)
+
+
+type Msg
+    = CardClicked Card
+    | RestartGame
 
 
 viewCard : Card -> Html Msg
@@ -119,7 +125,7 @@ update msg model =
 
 init : Model
 init =
-    { game = Choosing GameGenerator.staticDeck }
+    { game = Choosing DeckGenerator.static }
 
 
 view : Model -> Html Msg
@@ -128,7 +134,7 @@ view model =
         Choosing deck ->
             viewCards deck
 
-        Matching deck card ->
+        Matching deck _ ->
             viewCards deck
 
         GameOver ->
@@ -140,9 +146,10 @@ view model =
                 ]
 
 
+main : Program () Model Msg
 main =
-    Html.beginnerProgram
-        { model = init
+    Browser.sandbox
+        { init = init
         , view = view
         , update = update
         }

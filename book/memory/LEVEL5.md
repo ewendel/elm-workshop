@@ -25,13 +25,13 @@ The `Generator a` part is covered by `DeckGenerator.random : Generator Deck`, so
 
 Now you're probably wondering what that `Cmd` thingy is, so take a minute and head on over to [elm-tutorial.org](https://www.elm-tutorial.org/en/), which has a nice explanation of [commands](https://www.elm-tutorial.org/en/03-subs-cmds/02-commands.html).
 
-Since we're now not longer beginners we should also change our `Browser.sandbox` to `Browser.element`.
+In order to use `Cmd` we need to change our `Browser.sandbox` to `Browser.element`.
 
 There are a couple of changes we have to do to make this official transition from _beginners_ to _adepts_.
 
 -   The argument to `Browser.element` differs slightly from the argument to `Browser.sandbox`:
-    1. `init`'s type is now `Flags -> (Model, Cmd Msg)` – you can use `()` for `Flags`
-    1. The record should have a new field called `subscriptions : Model -> Sub Msg`.
+    1. `init`'s type is now `flags -> (Model, Cmd Msg)` – you can use `()` for `flags`
+    2. The record should have a new field called `subscriptions : Model -> Sub Msg`.
 -   `update` now has the type signature `update : Msg -> Model -> (Model, Cmd Msg)`
 
 The official docs has a nice explanation of what [_subscriptions_](https://package.elm-lang.org/packages/elm/core/latest/Platform-Sub#Sub) and [_flags_](https://guide.elm-lang.org/interop/flags.html) are.

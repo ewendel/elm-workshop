@@ -3,11 +3,10 @@
 <html lang="" >
     <head>
         <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>The Elm Architecture · GitBook</title>
+        <title>The Elm Architecture · HonKit</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="generator" content="HonKit 3.7.1">
         
         
         
@@ -66,7 +65,7 @@
     </head>
     <body>
         
-<div class="book">
+<div class="book honkit-cloak">
     <div class="book-summary">
         
             
@@ -261,19 +260,6 @@
             
         </li>
     
-        <li class="chapter " data-level="3.5" data-path="../snake/END.html">
-            
-                <a href="../snake/END.html">
-            
-                    
-                    The end
-            
-                </a>
-            
-
-            
-        </li>
-    
 
     
         
@@ -346,14 +332,27 @@
             
         </li>
     
+        <li class="chapter " data-level="4.6" data-path="../minesweeper/END.html">
+            
+                <a href="../minesweeper/END.html">
+            
+                    
+                    The end
+            
+                </a>
+            
+
+            
+        </li>
+    
 
     
 
     <li class="divider"></li>
 
     <li>
-        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            Published with GitBook
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            Published with HonKit
         </a>
     </li>
 </ul>
@@ -408,7 +407,7 @@ For example:</p>
 <p>A function that takes the current application state as an argument and returns some HTML.</p>
 <h5 id="update">Update</h5>
 <p>A function that takes a &quot;message&quot;, the current application state and returns an updated application state.
-This message is modeled with a union type, so usually the <code>update</code> function consists of pattern matching on the message value.</p>
+This message is modeled with a custom type, so usually the <code>update</code> function consists of pattern matching on the message value.</p>
 <p>Messages are events that happen in our application.
 These could be for example:</p>
 <ul>
@@ -452,7 +451,7 @@ For example:</p>
 <li><code>Html Int</code> - messages from this HTML will be ints</li>
 <li><code>Html String</code> - messages from this HTML will be string</li>
 </ul>
-<p>In practice we will use <code>union types</code> for our messages as they are incredibly useful, but it is useful to realize that our messages could in principle be of <em>any</em> type.</p>
+<p>In practice we will use <code>custom types</code> for our messages as they are incredibly useful, but it is useful to realize that our messages could in principle be of <em>any</em> type.</p>
 <p>In the end, this means that when you hook up your <code>view</code> and <code>update</code> functions using <code>Browser.sandbox</code>, the messages sent to <code>update</code> will be of the type contained in the HTML.</p>
 </blockquote>
 <hr>
@@ -460,31 +459,31 @@ For example:</p>
 <p>To practice using the Elm architecture we will create the &quot;Hello, world&quot; of interactive web applications; a counter app.
 It will consist of one button for incrementing a number, one button for decrementing a number and a <code>&lt;span&gt;</code> for showing the number.</p>
 <p>You can use the following skeleton code to get quickly up and running:</p>
-<pre><code class="lang-elm"><span class="hljs-keyword">module</span> Main exposing (main)
+<pre><code class="lang-elm"><span class="hljs-keyword">module</span> Main <span class="hljs-keyword">exposing</span> (main)
 
-import Browser
-import Html exposing (..)
+<span class="hljs-keyword">import</span> Browser
+<span class="hljs-keyword">import</span> Html <span class="hljs-keyword">exposing</span> (..)
 
-main =
-    Browser.sandbox
-        { init = 0
+<span class="hljs-title">main</span> =
+    <span class="hljs-type">Browser</span>.sandbox
+        { init = <span class="hljs-number">0</span>
         , update = update
         , view = view
         }
 
-type alias Model
-    = Int
+<span class="hljs-keyword">type</span> <span class="hljs-keyword">alias</span> <span class="hljs-type">Model</span>
+    = <span class="hljs-type">Int</span>
 
-type Msg
-    = NoOp
+<span class="hljs-keyword">type</span> <span class="hljs-type">Msg</span>
+    = <span class="hljs-type">NoOp</span>
 
-update : Msg -&gt; Model -&gt; Model
-update msg model =
+<span class="hljs-title">update</span> : <span class="hljs-type">Msg</span> -&gt; <span class="hljs-type">Model</span> -&gt; <span class="hljs-type">Model</span>
+<span class="hljs-title">update</span> msg model =
     model
 
-view : Model -&gt; Html Msg
-view model =
-    text &quot;Hello, I&apos;m a view&quot;
+<span class="hljs-title">view</span> : <span class="hljs-type">Model</span> -&gt; <span class="hljs-type">Html</span> <span class="hljs-type">Msg</span>
+<span class="hljs-title">view</span> model =
+    text <span class="hljs-string">&quot;Hello, I&apos;m a view&quot;</span>
 </code></pre>
 <hr>
 <p><strong>Task</strong>:</p>
@@ -562,12 +561,56 @@ Remember also that the second argument of HTML nodes (<code>button</code> in our
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"The Elm Architecture","level":"2.6","depth":1,"next":{"title":"Bonus level","level":"2.7","depth":1,"path":"memory/BONUS.md","ref":"memory/BONUS.md","articles":[]},"previous":{"title":"Level 5","level":"2.5","depth":1,"path":"memory/LEVEL5.md","ref":"memory/LEVEL5.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"./book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"memory/TEA.md","mtime":"2019-01-21T14:49:30.103Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-21T16:49:14.729Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"The Elm Architecture","level":"2.6","depth":1,"next":{"title":"Bonus level","level":"2.7","depth":1,"path":"memory/BONUS.md","ref":"memory/BONUS.md","articles":[]},"previous":{"title":"Level 5","level":"2.5","depth":1,"path":"memory/LEVEL5.md","ref":"memory/LEVEL5.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"memory/TEA.md","mtime":"2022-03-15T08:49:34.959Z","type":"markdown"},"gitbook":{"version":"3.7.1","time":"2022-03-15T12:12:16.683Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
     <script src="../gitbook/gitbook.js"></script>
     <script src="../gitbook/theme.js"></script>
     
@@ -585,10 +628,6 @@ Remember also that the second argument of HTML nodes (<code>button</code> in our
     
         
         <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
         
     
         

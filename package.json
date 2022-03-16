@@ -6,8 +6,10 @@
   "scripts": {
     "build": "vite build",
     "start": "vite serve ./",
-    "book": "gitbook serve",
-    "build:book": "gitbook build ./ ./docs"
+    "book": "honkit serve",
+    "build:book": "honkit build ./book ./docs",
+    "reactor": "ln -sF public/cats ./cats && elm reactor",
+    "clean": "rm -rf _book node_modules elm-stuff"
   },
   "repository": {
     "type": "git",
@@ -20,9 +22,12 @@
   },
   "homepage": "https://github.com/ewendel/elm-workshop#readme",
   "dependencies": {
-    "gitbook-cli": "^2.3.2"
+    "elm": "^0.19.1-5",
+    "elm-format": "^0.8.5",
+    "elm-test": "^0.19.1-revision7"
   },
   "devDependencies": {
+    "honkit": "^3.7.1",
     "vite": "^2.7.13",
     "vite-plugin-elm": "^2.5.1"
   }

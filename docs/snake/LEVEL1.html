@@ -3,11 +3,10 @@
 <html lang="" >
     <head>
         <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Level 1 · GitBook</title>
+        <title>Level 1 · HonKit</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="generator" content="HonKit 3.7.1">
         
         
         
@@ -66,7 +65,7 @@
     </head>
     <body>
         
-<div class="book">
+<div class="book honkit-cloak">
     <div class="book-summary">
         
             
@@ -261,19 +260,6 @@
             
         </li>
     
-        <li class="chapter " data-level="3.5" data-path="END.html">
-            
-                <a href="END.html">
-            
-                    
-                    The end
-            
-                </a>
-            
-
-            
-        </li>
-    
 
     
         
@@ -346,14 +332,27 @@
             
         </li>
     
+        <li class="chapter " data-level="4.6" data-path="../minesweeper/END.html">
+            
+                <a href="../minesweeper/END.html">
+            
+                    
+                    The end
+            
+                </a>
+            
+
+            
+        </li>
+    
 
     
 
     <li class="divider"></li>
 
     <li>
-        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            Published with GitBook
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            Published with HonKit
         </a>
     </li>
 </ul>
@@ -399,61 +398,61 @@
 <hr>
 <h4 id="example-domain-model-for-snake">Example domain model for Snake:</h4>
 <pre><code class="lang-elm"><span class="hljs-keyword">module</span> Snake.Model
-    exposing
+    <span class="hljs-keyword">exposing</span>
         ( <span class="hljs-type">Model</span>
-        , <span class="hljs-type">Msg(..)</span>
-        , <span class="hljs-type">Direction(..)</span>
+        , <span class="hljs-type">Msg</span>(..)
+        , <span class="hljs-type">Direction</span>(..)
         , <span class="hljs-type">Snake</span>
         , <span class="hljs-type">Food</span>
         , <span class="hljs-type">Position</span>
-        , <span class="hljs-type">Tile(..)</span>
+        , <span class="hljs-type">Tile</span>(..)
         , <span class="hljs-type">Row</span>
         , init
         )
 
 
-type alias Model =
-    { snake : Snake
-    , direction : Direction
-    , food : Food
-    , dead : Bool
-    , map : Map
+<span class="hljs-keyword">type</span> <span class="hljs-keyword">alias</span> <span class="hljs-type">Model</span> =
+    { snake : <span class="hljs-type">Snake</span>
+    , direction : <span class="hljs-type">Direction</span>
+    , food : <span class="hljs-type">Food</span>
+    , dead : <span class="hljs-type">Bool</span>
+    , map : <span class="hljs-type">Map</span>
     }
 
 
-type alias Position =
+<span class="hljs-keyword">type</span> <span class="hljs-keyword">alias</span> <span class="hljs-type">Position</span> =
     ( <span class="hljs-type">Int</span>, <span class="hljs-type">Int</span> )
 
 
-type alias Food =
-    Maybe Position
+<span class="hljs-keyword">type</span> <span class="hljs-keyword">alias</span> <span class="hljs-type">Food</span> =
+    <span class="hljs-type">Maybe</span> <span class="hljs-type">Position</span>
 
 
-type alias Snake =
-    { head : Position
-    , tail : List Position
-    , isGrowing : Bool
+<span class="hljs-keyword">type</span> <span class="hljs-keyword">alias</span> <span class="hljs-type">Snake</span> =
+    { head : <span class="hljs-type">Position</span>
+    , tail : <span class="hljs-type">List</span> <span class="hljs-type">Position</span>
+    , isGrowing : <span class="hljs-type">Bool</span>
     }
 
 
-type Direction
-    = Up
-    | Down
-    | Left
-    | Right
+<span class="hljs-keyword">type</span> <span class="hljs-type">Direction</span>
+    = <span class="hljs-type">Up</span>
+    | <span class="hljs-type">Down</span>
+    | <span class="hljs-type">Left</span>
+    | <span class="hljs-type">Right</span>
 
 
-type Tile
-    = Wall
-    | Open Position
+<span class="hljs-keyword">type</span> <span class="hljs-type">Tile</span>
+    = <span class="hljs-type">Wall</span>
+    | <span class="hljs-type">Open</span> <span class="hljs-type">Position</span>
 
 
-type alias Row =
-    List Tile
+<span class="hljs-keyword">type</span> <span class="hljs-keyword">alias</span> <span class="hljs-type">Row</span> =
+    <span class="hljs-type">List</span> <span class="hljs-type">Tile</span>
 
 
-type alias Map =
-    List Row
+<span class="hljs-keyword">type</span> <span class="hljs-keyword">alias</span> <span class="hljs-type">Map</span> =
+    <span class="hljs-type">List</span> <span class="hljs-type">Row</span>
 </code></pre>
 <h4 id="example-implementation-of-creating-a-map">Example implementation of creating a <code>Map</code></h4>
 <p><code>createMap</code> can be implemented by these two helper functions:</p>
@@ -521,12 +520,56 @@ type alias Map =
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Level 1","level":"3.2","depth":1,"next":{"title":"Level 2","level":"3.3","depth":1,"path":"snake/LEVEL2.md","ref":"snake/LEVEL2.md","articles":[]},"previous":{"title":"Introduction","level":"3.1","depth":1,"path":"snake/README.md","ref":"snake/README.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"./book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"snake/LEVEL1.md","mtime":"2019-01-21T14:49:30.104Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-21T16:49:14.729Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Level 1","level":"3.2","depth":1,"next":{"title":"Level 2","level":"3.3","depth":1,"path":"snake/LEVEL2.md","ref":"snake/LEVEL2.md","articles":[]},"previous":{"title":"Introduction","level":"3.1","depth":1,"path":"snake/README.md","ref":"snake/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"snake/LEVEL1.md","mtime":"2022-03-15T08:49:34.959Z","type":"markdown"},"gitbook":{"version":"3.7.1","time":"2022-03-15T12:12:16.683Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
     <script src="../gitbook/gitbook.js"></script>
     <script src="../gitbook/theme.js"></script>
     
@@ -544,10 +587,6 @@ type alias Map =
     
         
         <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
         
     
         

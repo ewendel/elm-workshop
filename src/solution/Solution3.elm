@@ -1,4 +1,4 @@
-module Main exposing (main)
+module Solution.Solution3 exposing (main)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
@@ -17,5 +17,6 @@ viewCard card =
         ]
 
 
+main : Html a
 main =
     viewCard myCard

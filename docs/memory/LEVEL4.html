@@ -3,11 +3,10 @@
 <html lang="" >
     <head>
         <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Level 4 · GitBook</title>
+        <title>Level 4 · HonKit</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="generator" content="HonKit 3.7.1">
         
         
         
@@ -66,7 +65,7 @@
     </head>
     <body>
         
-<div class="book">
+<div class="book honkit-cloak">
     <div class="book-summary">
         
             
@@ -261,19 +260,6 @@
             
         </li>
     
-        <li class="chapter " data-level="3.5" data-path="../snake/END.html">
-            
-                <a href="../snake/END.html">
-            
-                    
-                    The end
-            
-                </a>
-            
-
-            
-        </li>
-    
 
     
         
@@ -346,14 +332,27 @@
             
         </li>
     
+        <li class="chapter " data-level="4.6" data-path="../minesweeper/END.html">
+            
+                <a href="../minesweeper/END.html">
+            
+                    
+                    The end
+            
+                </a>
+            
+
+            
+        </li>
+    
 
     
 
     <li class="divider"></li>
 
     <li>
-        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            Published with GitBook
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            Published with HonKit
         </a>
     </li>
 </ul>
@@ -399,13 +398,13 @@ This repeats until all cards on the board are open. Before we start implementing
 <p>Our deck of cards is a list of <code>Card</code>s and we will be passing them around in our program.
 Therefore, instead of having to write <code>List Card</code> everywhere, we want to be able to write <code>Deck</code>.</p>
 <p>Also, in the game we will be matching pairs of cards with each other, and will need some way to distinguish between two cards with the same image.
-We will do this by saying that a card can be <em>either</em> in group <code>A</code> or in group <code>B</code>. Use a union type to achieve this, and add it as a field in our <code>Card</code> type.
+We will do this by saying that a card can be <em>either</em> in group <code>A</code> or in group <code>B</code>. Use a custom type to achieve this, and add it as a field in our <code>Card</code> type.
 With this we can check if two cards are of one pair by comparing their <code>id</code> and <code>group</code> fields!</p>
 <hr>
 <p><strong>Task:</strong></p>
 <ul>
 <li>Create a type alias for our deck of cards.</li>
-<li>Create a union type for representing the group of a card.</li>
+<li>Create a custom type for representing the group of a card.</li>
 <li>Add <code>group</code> as a field in our <code>Card</code> type</li>
 </ul>
 <h3 id="42-housekeeping-part-two">4.2 Housekeeping part two</h3>
@@ -431,27 +430,27 @@ For example:</p>
 <li>Filename: <code>Models/User.elm</code> -&gt; module: <code>Models.User</code></li>
 </ul>
 <p>You must also be explicit with what your module exposes to the public by listing them along with the module declaration.
-For type aliases and functions you just list their names, but for custom types (union types) you have two choices:</p>
+For type aliases and functions you just list their names, but for custom types you have two choices:</p>
 <ul>
 <li>exposing <em>only the type</em> (often called opaque types)</li>
 <li>exposing both the type and its constructors.</li>
 </ul>
 <p>When exposing only the type you list its name, but when you expose its constructors too you add <code>(..)</code> after the type name.</p>
 <p>Example:</p>
-<pre><code class="lang-elm"><span class="hljs-keyword">module</span> MyModule exposing (<span class="hljs-type">MyTypeAlias</span>, myFunction, <span class="hljs-type">MyCustomType(..)</span>, <span class="hljs-type">MyOpaqueCustomType</span>)
+<pre><code class="lang-elm"><span class="hljs-keyword">module</span> MyModule <span class="hljs-keyword">exposing</span> (<span class="hljs-type">MyTypeAlias</span>, myFunction, <span class="hljs-type">MyCustomType</span>(..), <span class="hljs-type">MyOpaqueCustomType</span>)
 
-type alias MyTypeAlias = { name : String }
+<span class="hljs-keyword">type</span> <span class="hljs-keyword">alias</span> <span class="hljs-type">MyTypeAlias</span> = { name : <span class="hljs-type">String</span> }
 
-myFunction : Int -&gt; Int
-myFunction number
-  = number * 2
+<span class="hljs-title">myFunction</span> : <span class="hljs-type">Int</span> -&gt; <span class="hljs-type">Int</span>
+<span class="hljs-title">myFunction</span> number
+  = number * <span class="hljs-number">2</span>
 
-type MyCustomType
-  = Foo
-  | Bar Int
+<span class="hljs-keyword">type</span> <span class="hljs-type">MyCustomType</span>
+  = <span class="hljs-type">Foo</span>
+  | <span class="hljs-type">Bar</span> <span class="hljs-type">Int</span>
 
-type MyOpaqueCustomType
-  = MyOpaqueCustomType { name : String }
+<span class="hljs-keyword">type</span> <span class="hljs-type">MyOpaqueCustomType</span>
+  = <span class="hljs-type">MyOpaqueCustomType</span> { name : <span class="hljs-type">String</span> }
 </code></pre>
 </blockquote>
 <h3 id="43-game-logic">4.3 Game logic!</h3>
@@ -481,7 +480,7 @@ It should have the signature <code>updateCardClick : Card -&gt; GameState -&gt; 
 <hr>
 <p><strong>Task:</strong></p>
 <ul>
-<li>Implement the three game states as a union type called <code>GameState</code></li>
+<li>Implement the three game states as a custom type called <code>GameState</code></li>
 <li>Implement the <code>updateCardClick : Card -&gt; GameState -&gt; GameState</code> function</li>
 <li>Update your <code>update</code> and <code>view</code> functions to accommodate for the new shape of our model</li>
 <li>Now take a minute and pat yourself on the back for making an awesome game in Elm!</li>
@@ -570,12 +569,56 @@ The above example can also be written as:</li>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Level 4","level":"2.4","depth":1,"next":{"title":"Level 5","level":"2.5","depth":1,"path":"memory/LEVEL5.md","ref":"memory/LEVEL5.md","articles":[]},"previous":{"title":"Level 3","level":"2.3","depth":1,"path":"memory/LEVEL3.md","ref":"memory/LEVEL3.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"./book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"memory/LEVEL4.md","mtime":"2019-01-21T14:49:30.103Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-21T16:49:14.729Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Level 4","level":"2.4","depth":1,"next":{"title":"Level 5","level":"2.5","depth":1,"path":"memory/LEVEL5.md","ref":"memory/LEVEL5.md","articles":[]},"previous":{"title":"Level 3","level":"2.3","depth":1,"path":"memory/LEVEL3.md","ref":"memory/LEVEL3.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"memory/LEVEL4.md","mtime":"2022-03-15T08:49:34.959Z","type":"markdown"},"gitbook":{"version":"3.7.1","time":"2022-03-15T12:12:16.683Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
     <script src="../gitbook/gitbook.js"></script>
     <script src="../gitbook/theme.js"></script>
     
@@ -593,10 +636,6 @@ The above example can also be written as:</li>
     
         
         <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
         
     
         

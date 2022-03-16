@@ -3,11 +3,10 @@
 <html lang="" >
     <head>
         <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Level 2 · GitBook</title>
+        <title>Level 2 · HonKit</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="generator" content="HonKit 3.7.1">
         
         
         
@@ -66,7 +65,7 @@
     </head>
     <body>
         
-<div class="book">
+<div class="book honkit-cloak">
     <div class="book-summary">
         
             
@@ -261,19 +260,6 @@
             
         </li>
     
-        <li class="chapter " data-level="3.5" data-path="../snake/END.html">
-            
-                <a href="../snake/END.html">
-            
-                    
-                    The end
-            
-                </a>
-            
-
-            
-        </li>
-    
 
     
         
@@ -346,14 +332,27 @@
             
         </li>
     
+        <li class="chapter " data-level="4.6" data-path="../minesweeper/END.html">
+            
+                <a href="../minesweeper/END.html">
+            
+                    
+                    The end
+            
+                </a>
+            
+
+            
+        </li>
+    
 
     
 
     <li class="divider"></li>
 
     <li>
-        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            Published with GitBook
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            Published with HonKit
         </a>
     </li>
 </ul>
@@ -393,15 +392,15 @@
                                 
                                 <h2 id="level-2---learning-types">Level 2 - Learning types</h2>
 <blockquote>
-<p>The goal of this level is to learn union types and type aliases, which we often use to represent state.</p>
+<p>The goal of this level is to learn about custom types and type aliases, which we often use to represent state.</p>
 </blockquote>
 <p>From here on we&apos;ll move in small steps, writing small chunks of code that will be a part of our final game, while using more and more features from functional programming and Elm along the way. Ready, set, go!</p>
 <h3 id="21-its-a-new-record">2.1 It&apos;s a new record!</h3>
 <p>We are going to create a representation of a &quot;card&quot; - something that is hiding a picture and can be flipped by the player. We&apos;ll start off by creating the equivalent data structure of a JavaScript object - a <em>record</em>. You can see the similarities between JavaScript objects and Elm records here:</p>
 <pre><code class="lang-javascript"><span class="hljs-comment">// JavaScript object</span>
 <span class="hljs-keyword">var</span> person = {
-    name: <span class="hljs-string">&apos;Tom Cruise&apos;</span>,
-    expensiveShoes: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&apos;Tom Cruise&apos;</span>,
+    <span class="hljs-attr">expensiveShoes</span>: <span class="hljs-literal">true</span>,
 };
 </code></pre>
 <pre><code class="lang-elm"><span class="hljs-comment">-- Elm record</span>
@@ -450,35 +449,35 @@
 <p>To get the <code>src</code> function you should put <code>import Html.Attributes exposing (..)</code> near the beginning of your file.</p>
 <p>Remember also that string concatenation is done with <code>++</code>.</p>
 <p>If you now substitute the <code>greet</code> call in <code>main</code> with <code>viewCard</code> called with the record you created earlier you should see a beautiful little kitten on you screen!</p>
-<h3 id="23-union-types-representing-card-state">2.3 Union Types: Representing card state</h3>
+<h3 id="23-custom-types-representing-card-state">2.3 Custom Types: Representing card state</h3>
 <p>Memory requires us to flip a card and reveal its image when clicked. This means we need a way to represent card state, as a card can be in one of three potential states: <code>Open | Closed | Matched</code>.</p>
 <p>Think about how we&apos;d store this state in JS. Most likely, we&apos;d reach for a string:</p>
 <pre><code class="lang-javascript">{
-    id: <span class="hljs-string">&apos;1&apos;</span>,
-    state: <span class="hljs-string">&apos;open&apos;</span> <span class="hljs-comment">// or &apos;closed&apos; or &apos;matched&apos;</span>
+    <span class="hljs-attr">id</span>: <span class="hljs-string">&apos;1&apos;</span>,
+    <span class="hljs-attr">state</span>: <span class="hljs-string">&apos;open&apos;</span> <span class="hljs-comment">// or &apos;closed&apos; or &apos;matched&apos;</span>
 }
 </code></pre>
-<p>This is obviously not very safe. This doesn&apos;t constrain us to using only the three possible values, and there&apos;s nothing to avoid typing errors. Elm and other ML-languages have a great feature for this use case: <em>Union Types</em>.</p>
-<p>A union type is like a Java enumerable or C# enum - a union type is a value that may be one of a fixed set of values. Chess pieces, for example, can only be either white or black.</p>
+<p>This is obviously not very safe. This doesn&apos;t constrain us to using only the three possible values, and there&apos;s nothing to avoid typing errors. Elm and other ML-languages have a great feature for this use case: Custom Types_.</p>
+<p>A custom type is somewhat like a Java enumerable or C# enum - a custom type is a value that may be one of a fixed set of values. Chess pieces, for example, can only be either white or black.</p>
 <pre><code class="lang-elm"><span class="hljs-keyword">type</span> <span class="hljs-type">PieceColor</span> = <span class="hljs-type">White</span> | <span class="hljs-type">Black</span>
 </code></pre>
 <p><code>PieceColor</code> is now a normal type in our system, just as <code>String</code> or <code>Bool</code>. <code>White</code> or <code>Black</code> are <em>constructor functions</em>. In this case they take <em>zero</em> arguments and return a value of type <code>PieceColor</code>. Or, expressed with a type signature:</p>
 <pre><code class="lang-elm"><span class="hljs-type">White</span> : <span class="hljs-type">PieceColor</span>
 <span class="hljs-type">Black</span> : <span class="hljs-type">PieceColor</span>
 </code></pre>
-<p>Union types may also carry data. This means that the <em>constructor functions</em> for such union type values aren&apos;t zero argument functions. Let&apos;s look at an example:</p>
+<p>Custom types may also carry data. This means that the <em>constructor functions</em> for such custom type values aren&apos;t zero argument functions. Let&apos;s look at an example:</p>
 <pre><code class="lang-elm"><span class="hljs-keyword">type</span> <span class="hljs-type">CustomerAge</span> = <span class="hljs-type">Unknown</span> | <span class="hljs-type">Known</span> <span class="hljs-type">Int</span>
 <span class="hljs-comment">-- Unknown : CustomerAge</span>
 <span class="hljs-comment">-- Known : Int -&gt; CustomerAge</span>
 </code></pre>
 <p>This can be used to represent a customer&apos;s age in a situation where we might not know the age.
 We see that the constructor function <code>Known</code> takes an <code>Int</code> argument and returns a <code>CustomerAge</code>.</p>
-<p>We can wrap <em>any</em> type of <em>accompanying data</em> within a union type value (like <code>Known</code>), and the type of the accompanying data doesn&apos;t have to be the same for all the value types within a union.</p>
+<p>We can wrap <em>any</em> type of <em>accompanying data</em> within a custom type value (like <code>Known</code>), and the type of the accompanying data doesn&apos;t have to be the same for all the value types within a union.</p>
 <p>This is incredibly useful, and we will now make our own!</p>
 <hr>
 <p><strong>Task</strong>:</p>
 <ol>
-<li>Create a union type called <code>CardState</code> that can be either <code>Open</code>, <code>Closed</code> or <code>Matched</code> (<em>constructor functions</em> are always capitalized).</li>
+<li>Create a custom type called <code>CardState</code> that can be either <code>Open</code>, <code>Closed</code> or <code>Matched</code> (<em>constructor functions</em> are always capitalized).</li>
 <li><p>Enrich our previous <code>Card</code> record with a field called <code>state</code> that carries a <code>CardState</code> value.
 You will also have to update the signature of <code>viewCard</code>.</p>
 </li>
@@ -539,7 +538,7 @@ It can best be described as a switch-statement on steroids, allowing us to do mo
             <span class="hljs-type">False</span>
 </code></pre>
 <p>Notice that we can even extract the value that was used when <code>Known : Int -&gt; CustomerAge</code> was used!
-This is a powerful technique, and is almost always used whenever there&apos;s a union type around.</p>
+This is a powerful technique, and is almost always used whenever there&apos;s a custom type around.</p>
 <p>In our case, it is handy for rendering different stuff based on the <code>CardState</code> of a card.</p>
 <p>In <code>viewCard</code>, use the following logic (css classes should be applied to the <code>img</code> tag):</p>
 <ul>
@@ -560,7 +559,7 @@ Put three cards in the list; one with <code>id = 1</code>, one with <code>id = 2
 </ol>
 <h5 id="hint">Hint:</h5>
 <p>Use the built-in function <code>List.map : (a -&gt; b) -&gt; List a -&gt; List b</code> to convert a list of <code>Card</code> to a list of <code>Html a</code>.
-Remember that <code>div : List (Attribute msg) -&gt; List (Html a) -&gt; Html a</code> &#x2013; notice the second argument (<code>List (Html a)</code>)and how it corresponds with the return value of <code>List.map</code>.</p>
+Remember that <code>div : List (Attribute msg) -&gt; List (Html a) -&gt; Html a</code> – notice the second argument (<code>List (Html a)</code>)and how it corresponds with the return value of <code>List.map</code>.</p>
 <p>Notice how the type signature helps in communicating what the function does!
 Type signatures are a very powerful tool, as you will discover throughout this workshop.</p>
 <p>Make sure you render the correct image source for each card (<code>{card.id}.png</code>).</p>
@@ -607,12 +606,56 @@ Type signatures are a very powerful tool, as you will discover throughout this w
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Level 2","level":"2.2","depth":1,"next":{"title":"Level 3","level":"2.3","depth":1,"path":"memory/LEVEL3.md","ref":"memory/LEVEL3.md","articles":[]},"previous":{"title":"Level 1","level":"2.1","depth":1,"path":"memory/LEVEL1.md","ref":"memory/LEVEL1.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"./book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"memory/LEVEL2.md","mtime":"2019-01-21T14:49:30.102Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-21T16:49:14.729Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Level 2","level":"2.2","depth":1,"next":{"title":"Level 3","level":"2.3","depth":1,"path":"memory/LEVEL3.md","ref":"memory/LEVEL3.md","articles":[]},"previous":{"title":"Level 1","level":"2.1","depth":1,"path":"memory/LEVEL1.md","ref":"memory/LEVEL1.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"memory/LEVEL2.md","mtime":"2022-03-15T08:49:34.959Z","type":"markdown"},"gitbook":{"version":"3.7.1","time":"2022-03-15T12:12:16.683Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
     <script src="../gitbook/gitbook.js"></script>
     <script src="../gitbook/theme.js"></script>
     
@@ -630,10 +673,6 @@ Type signatures are a very powerful tool, as you will discover throughout this w
     
         
         <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
         
     
         

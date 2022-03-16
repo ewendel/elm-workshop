@@ -1,7 +1,9 @@
--- Model.elm
+module Solution.Model exposing (..)
 
 
-module Model exposing (Card, GameState(..), Model, Msg(..))
+type alias Model =
+    { game : GameState
+    }
 
 
 type GameState
@@ -10,18 +12,29 @@ type GameState
     | GameOver
 
 
-type alias Model =
-    { game : GameState }
-
-
 type Msg
     = CardClicked Card
     | DeckGenerated Deck
     | RestartGame
 
 
+type alias Deck =
+    List Card
+
+
 type alias Card =
     { id : String
-    , group : Group
     , state : CardState
+    , group : Group
     }
+
+
+type CardState
+    = Open
+    | Closed
+    | Matched
+
+
+type Group
+    = A
+    | B

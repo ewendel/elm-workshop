@@ -1,4 +1,4 @@
-module Main exposing (main)
+module Solution.Solution2 exposing (main)
 
 import Html exposing (..)
 
@@ -13,5 +13,6 @@ greet name =
     text (prefix ++ name)
 
 
+main : Html a
 main =
     greet "World"
