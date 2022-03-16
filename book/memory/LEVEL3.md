@@ -46,7 +46,7 @@ When this section is complete, you should see three closed cards, each of them o
 
 -   The compiler will now complain about some type signatures. Read the messages and fix accordingly.
 
-1. Create a helper function `setCard : CardState -> Card -> Card`.
+1. Create a helper function `setCardState : CardState -> Card -> Card`.
 
 -   As you may have guessed, this function should return a new card with the `state` of the passed card set to the passed `CardState`.
 -   See the docs on how to [update a record](http://elm-lang.org/docs/records#updating-records).

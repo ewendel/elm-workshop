@@ -44,8 +44,8 @@ viewCards cards =
         ]
 
 
-setCard : CardState -> Card -> Deck -> Deck
-setCard state card deck =
+setCardState : CardState -> Card -> Deck -> Deck
+setCardState state card deck =
     List.map
         (\c ->
             if c.id == card.id && c.group == card.group then
@@ -88,7 +88,7 @@ updateCardClick clickedCard game =
                 updatedDeck =
                     deck
                         |> closeUnmatched
-                        |> setCard Open clickedCard
+                        |> setCardState Open clickedCard
             in
             Matching updatedDeck clickedCard
 
@@ -97,11 +97,11 @@ updateCardClick clickedCard game =
                 updatedDeck =
                     if isMatching clickedCard openCard then
                         deck
-                            |> setCard Matched clickedCard
-                            |> setCard Matched openCard
+                            |> setCardState Matched clickedCard
+                            |> setCardState Matched openCard
 
                     else
-                        setCard Open clickedCard deck
+                        setCardState Open clickedCard deck
             in
             if allMatched updatedDeck then
                 GameOver

@@ -79,8 +79,8 @@ viewCards cards =
     div [] (List.map viewCard cards)
 
 
-setCard : CardState -> Card -> Card
-setCard state card =
+setCardState : CardState -> Card -> Card
+setCardState state card =
     { card | state = state }
 
 
@@ -92,7 +92,7 @@ update msg model =
                 List.map
                     (\c ->
                         if c.id == clickedCard.id then
-                            setCard Open clickedCard
+                            setCardState Open clickedCard
 
                         else
                             c

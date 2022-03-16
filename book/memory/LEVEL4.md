@@ -111,7 +111,7 @@ When implementing `updateCardClick` there are a couple of things that will help:
 
 1. You can create a function `closeUnmatched : Deck -> Deck` that, as its name implies, sets all cards that are not `Matched` to `Closed`
 1. You can use the built-in function `List.all : (a -> Bool) -> List a -> Bool` to check if all cards are are matched
-1. The `setCard : CardState -> Card -> Card` can be changed to operate on a `Deck` instead; `setCard : CardState -> Card -> Deck -> Deck`. This will fit nicely with using Elm's "pipe operator"
+1. The `setCardState : CardState -> Card -> Card` can be changed to operate on a `Deck` instead; `setCardState : CardState -> Card -> Deck -> Deck`. This will fit nicely with using Elm's "pipe operator"
 1. The "pipe operator" ([`|>`](http://package.elm-lang.org/packages/elm-lang/core/latest/Basics#|>)) is great when you have multiple functions that all depend on the result of the previous function.
    For example:
 
@@ -133,7 +133,7 @@ myString =
 ```
 
 In short: `myFunction myArgument == myArgument |> myFunction`.
-This will prove useful with the updated `setCard` function.
+This will prove useful with the updated `setCardState` function.
 
 1. "Let expressions" is a way of storing intermediate values (kind of like variables).
    The above example can also be written as:
