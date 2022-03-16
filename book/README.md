@@ -26,15 +26,15 @@ Some of these concepts may be unfamiliar and somewhat confusing to begin with, s
 
 1. Install `node` version 12 or newer (which includes `npm`) from [nodejs.org](https://nodejs.org/en/download/current/).
 
-1. Install a plugin for your editor. At the time of writing we prefer VS Code (with the [Elm plugin from Elm Tooling](https://marketplace.visualstudio.com/items?itemName=Elmtooling.elm-ls-vscode)) for Elm development so we recommend you use that, even if VS Code is not usually your main editor of choice.
-
-1. Enable "format on save" for your editor. Almost all Elm projects use a tool called `elm-format` which is an opinionated code formatter.
-
 1. Clone the repo (https://github.com/gauteab/elm-workshop-memory) to your computer
 
 1. Run `npm ci` (please make sure to have `npm` version 6 or newer)
 
 1. Start your local application environment with `npm start` in the root folder of this repo. This should open a new browser window with `localhost:3000` and a nice compilation error.
+
+1. Install a plugin for your editor. At the time of writing we prefer VS Code (with the [Elm plugin from Elm Tooling](https://marketplace.visualstudio.com/items?itemName=Elmtooling.elm-ls-vscode)) for Elm development so we recommend you use that, even if VS Code is not usually your main editor of choice.
+
+1. Enable "format on save" for your editor. Almost all Elm projects use a tool called `elm-format` which is an opinionated code formatter.
 
 Congratulations, you're now ready to begin learning Elm!
 
