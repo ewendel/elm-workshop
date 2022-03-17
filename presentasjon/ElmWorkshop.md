@@ -889,178 +889,34 @@ greetings [ "Gaute", "Even", "Aksel" ] == [ "Hello Gaute", "Hello Even", "Hello 
 myString =
     String.toUpper (String.repeat 2 (String.reverse "olleh"))
 
-kantineSum : Utvikler -> Int -> Int
-kantineSum utvikler pris =
-  utregnKantineRabatt utvikler
+
+"olleh"
+    |> String.reverse
+    |> String.repeat 2
+    |> String.toUpper
+
+--> "HELLOHELLO"
 ```
 
 ^En annen teknikk som brukes masse i funksjonell programmering er Pipes. Si vi skal regne ut pris basert på hva slags kantinerabatt man får. utregnKantineRabatt gir oss et prosenttall. 
 
 ---
 
-# Pipes
+# Let
 
 ```elm
-kantineSum : Utvikler -> Int -> Int
-kantineSum utvikler pris =
-  prosentTilFlyttal (utregnKantineRabatt utvikler)
-```
+sirkelAreal r =
+    let
+    	pi =
+    		3.14
 
-^For å gjøre det enklere å regne med gjør vi det om til et flyttal mellom 0 og 1.
-
----
-
-# Pipes
-
-```elm
-kantineSum : Utvikler -> Int -> Int
-kantineSum utvikler pris =
-  (1 - (prosentTilFlyttal (utregnKantineRabatt utvikler)))
-```
-^Denne verdien trekker vi fra 1
-
-
----
-
-# Pipes
-
-```elm
-kantineSum : Utvikler -> Int -> Int
-kantineSum utvikler pris =
-  pris * (1 - (prosentTilFlyttal (utregnKantineRabatt utvikler)))
-```
-
-^Og multipliserer med prisen for å komme frem til prisen som skal betales. Her blir det mye parenteser som fort kan bli tungt å lese.
-
----
-
-# Pipes
-
-```elm
-kantineSum : Utvikler -> Int -> Int
-kantineSum utvikler pris =
-  let
-    rabattIProsent =
-      utregnKantineRabatt utvikler
-
-    rabattFloat =
-      prosentTilFlyttal rabattIProsent -- eks.: 20 -> 0.20
-
-    rabattMod =
-      1 - rabattFloat
-  in
-    pris * rabattMod
-```
-
-^Vi kunne laget noen hjelpevariabler med beskrivende navn, men kanskje vi heller ønsker å bruke...(ny slide)
-
----
-
-# Pipes
-
-```elm
-kantineSum : Utvikler -> Int -> Int
-kantineSum utvikler pris =
-  utvikler
-    |> utregnKantineRabatt
-    |> prosentTilFlyttal
-    |> ((-) 1)
-    |> ((*) pris)
-
-
--- Kan også brukes motsatt vei:
-Int.toString (1 + 2 + 3) == Int.toString <| 1 + 2 + 3
-```
-
-^...pipes! Verdien på venstre side blir neste parameter til funksjonen på høyre side.
-
----
-
-# Maybe
-
-```elm
-type Maybe a
-  = Just a
-  | Nothing
-
-
-type alias Spill =
-  { tittel : String
-  , personligRekord : Maybe Int
-  }
-```
-
-^Elms svar på optional-verdier(?). Bibliotek som er en del av elm/core. Representerer verdier som kan eksistere eller ikke eksistere.
-
----
-
-# Maybe
-
-```elm
-visPersonligRekord : Spill -> String
-visPersonligRekord spill =
-  case spill.personligRekord of
-    Just pers ->
-      String.fromInt pers
-
-    Nothing ->
-      "Ingen personlig rekord"
-
-
--- Alternativt:
-
-visPersonligRekord : Spill -> String
-visPersonligRekord spill =
-  spill.personligRekord 
-    |> Maybe.map String.fromInt
-    |> Maybe.withDefault "Ingen personlig rekord"
+		r2 = 
+			r * r
+    in
+    pi * r2
 ```
 
 ---
-
-# Result
-
-```elm
-type Result error value
-  = Error error
-  | Ok value
-
-dele : Int -> Int -> Result String Float
-dele top bottom =
-  if bottom == 0 then
-    Error "Kan ikke dele noe med 0"
-
-  else
-    Ok (top / bottom)
-```
-
-^Også del av elm/core. Result inneholder resultatet av noe som kan feile. For eksempel parsing av en String til en Int, eller (slide). 
-
----
-
-# Result
-
-```elm
-hvorMangeEplerTilHver : Int -> Int -> Int
-hvorMangeEplerTilHver epler antall =
-  case dele epler antall of
-    Error feilmelding ->
-      0
-
-    Ok antall ->
-      floor antall
-
--- Alternativt:
-
-hvorMangeEplerTilHver : Int -> Int -> Int
-hvorMangeEplerTilHver epler antall =
-  dele epler antall
-    |> Result.map floor
-    |> Result.withDefault 0
-```
-
----
-
 # _**Elm Architecture**_
 
 ^  Det siste vi skal snakke om før vi skal live-kode er The Elm Architecture.
@@ -1096,6 +952,18 @@ hvorMangeEplerTilHver epler antall =
 ![fit](./images/the-elm-architecture/4-simplified.pdf)
 
 ^ Starter med en modell som lager et view, view sender beskjeder (f.eks. ved at brukeren trykker på en knapp), og update tar imot beskjeden og lager en ny modell, som igjen oppdaterer viewet, som kan sende beskjeder, og sånn går det, i en evig rund-dans
+
+---
+
+![fit](images/the-elm-architecture/5-side-effekter.pdf)
+
+---
+
+![fit](images/the-elm-architecture/6-elm-runtime.pdf)
+
+---
+
+![fit](images/the-elm-architecture/7-full.pdf)
 
 ---
 
@@ -1142,8 +1010,6 @@ main =
     , update = update
     }
 ```
-
-[.column]
 
 - Browser.element: Tillater sideeffekter (HTTP, JS-interop, hente dato og tid)
 - Browser.document: Som element, men gir kontroll over <title> og <body>
@@ -1206,3 +1072,421 @@ update msg model =
 ---
 
 # Lykke til!
+
+---
+
+# Elm Workshop
+
+### Dag 2
+
+---
+
+# Plan for dagen
+
+* Mer om Elm
+* Http-requests
+
+---
+
+# Maybe
+
+```elm
+type Maybe a
+  = Just a
+  | Nothing
+
+
+type alias Spill =
+  { tittel : String
+  , personligRekord : Maybe Int
+  }
+```
+
+^Elms svar på optional-verdier(?). Bibliotek som er en del av elm/core. Representerer verdier som kan eksistere eller ikke eksistere.
+
+---
+
+# Feilhåndtering - Maybe
+
+```elm
+visPersonligRekord : Spill -> String
+visPersonligRekord spill =
+  case spill.personligRekord of
+    Just pers ->
+      String.fromInt pers
+
+    Nothing ->
+      "Ingen personlig rekord"
+```
+
+^Kan brukes for å fortelle om noe har gått galt, men forteller ikke hvorfor.
+
+---
+
+# Result
+
+[.column]
+```elm
+type Result error value
+  = Err error
+  | Ok value
+```
+
+[.column]
+```elm
+isReasonableAge : Int -> Result String Int
+isReasonableAge age =
+  if age < 0 then
+    Err "Please try again after you are born."
+
+  else if age > 135 then
+    Err "Are you some kind of turtle?"
+
+  else
+    Ok age
+```
+
+---
+
+# Result
+
+[.column]
+```elm
+type Result error value
+  = Err error
+  | Ok value
+
+
+type AgeError 
+  = TooYoung 
+  | TooOld
+
+```
+
+[.column]
+```elm
+toReasonableAge : Int -> Result AgeError Int
+toReasonableAge age =
+  if age < 0 then
+    Err TooYoung
+
+  else if age > 135 then
+    Err TooOld
+
+  else
+    Ok age
+```
+
+^Når vi nå skal sjekke på denne feilen passer kompilatoren på at man tar høyde for alle caser.
+
+---
+
+# Feilhåndtering - Result
+
+```elm
+viewAge : Result AgeError Int -> String
+viewAge ageResult =
+  case ageResult of
+  	Ok age ->
+  	  "Age: " ++ String.fromInt age
+
+  	Err TooOld ->
+  	  "Are you some kind of turtle?"
+
+	Err TooYoung ->
+	  "Please try again after you are born."
+```
+^Mapping
+
+---
+
+# Mapping-funksjoner
+
+```elm
+Maybe.map : (a -> b) -> Maybe a -> Maybe b
+
+visPersonligRekord : Spill -> String
+visPersonligRekord spill =
+  spill.personligRekord 
+    |> Maybe.map String.fromInt
+    |> Maybe.withDefault "Ingen personlig rekord"
+
+```
+^Mapping
+
+---
+
+# Mapping-funksjoner
+
+```elm
+Maybe.map : (a -> b) -> Maybe a -> Maybe b
+
+Result.map : (a -> b) -> Result x a -> Result x b
+
+List.map : (a -> b) -> List a -> List b
+
+```
+^Mapping
+
+---
+
+# Json-dekoding
+
+- Typesikkerhet
+- Feilhåndtering
+
+---
+
+# Json-dekoding
+
+[.column]
+```elm
+import Json.Decode exposing 
+	( Decoder
+	, field
+	, int
+	, string
+    )
+
+ageDecoder : Decoder Int
+ageDecoder =
+  field "age" int
+
+-- int : Decoder Int
+-- field : String -> Decoder a -> Decoder a
+
+nameDecoder : Decoder String
+nameDecoder =
+  field "name" string
+
+-- string : Decoder String
+```
+[.column]
+```json
+{
+    "name": "Tom",
+    "age": 42
+}
+```
+
+---
+# Json-dekoding
+
+```elm
+Decode.map : (a -> b) -> Decoder a -> Decoder b
+
+
+ageDecoder : Decoder Int
+ageDecoder =
+  field "age" int
+
+
+chineseAgeDecoder : Decoder Int
+chineseAgeDecoder =
+  Decode.map (\age -> age + 1) ageDecoder
+```
+
+---
+
+# Json-dekoding
+
+```elm
+Maybe.map2 : (a -> b -> value) -> Maybe a -> Maybe b -> Maybe value
+
+Maybe.map2 (+) (Just 1) (Just 2)
+--> Just 3
+
+List.map2 : (a -> b -> value) -> List a -> List b -> List value
+
+List.map2 (++) [ "Hei", "Hello" ] [ "Verden", "World" ]
+--> [ "HeiVerden", "HelloWorld" ]
+
+Decode.map2 : (a -> b -> value) -> Decoder a -> Decoder b -> Decoder value
+```
+
+---
+# Json-dekoding
+
+[.column]
+```elm
+-- Person : String -> Int -> Person
+type alias Person =
+  { name : String
+  , age : Int
+  }
+
+map2 : (a -> b -> value) -> Decoder a -> Decoder b -> Decoder value
+
+personDecoder : Decoder Person
+personDecoder =
+  Decode.map2 Person
+      nameDecoder
+      ageDecoder
+
+```
+
+---
+
+# Json-dekoding
+
+[.column]
+```elm
+-- Person : String -> Int -> Person
+type alias Person =
+  { name : String
+  , age : Int
+  }
+
+map2 : (a -> b -> value) -> Decoder a -> Decoder b -> Decoder value
+
+personDecoder : Decoder Person
+personDecoder =
+  Decode.map2 Person
+      (field "name" string)
+      (field "age" int)
+
+```
+
+---
+
+# Json-dekoding
+
+NoRedInk/elm-json-decode-pipeline
+
+---
+
+# Json-dekoding
+
+
+
+```elm
+type alias Person =
+  { name : String
+  , age : Int
+  , phone : String
+  }
+
+personDecoder : Decoder Person
+personDecoder =
+    Decode.succeed Person
+        |> required "name" string
+        |> required "age" int
+        |> optional "name" string ""
+```
+
+^Innebygd decoding-funksjonalitet (som Decode.map2 osv) fungerer bra for veldig enkle datasett.
+
+^Json.Decode.Pipeline anbefales. Kan bruke piping for å bygge JSON decodere og har mange nyttige hjelpefunksjoner.
+
+---
+# Json-dekoding
+
+```elm
+type alias Person =
+  { name : String
+  , age : Int
+  , phone : Maybe String
+  }
+
+personDecoder : Decoder Person
+personDecoder =
+    Decode.succeed Person
+        |> required "name" string
+        |> required "age" int
+        |> optional "name" (maybe string) Nothing
+```
+
+---
+
+# Json-dekoding
+
+```json
+{
+    "version": 1,
+    "name": "Tom",
+    "phone": 99112233
+}
+
+{
+    "version": 2,
+    "name": "Tom",
+    "phone": "+47 99112233"
+}
+```
+
+---
+# Json-dekoding
+
+```elm
+andThen : (a -> Decoder b) -> Decoder a -> Decoder b
+```
+
+---
+
+# Json-dekoding
+
+```elm
+andThen : (a -> Decoder b) -> Decoder a -> Decoder b
+```
+
+[.column]
+```elm
+type alias Person =
+  { name : String
+  , phone : String
+  }
+
+versionedPersonDecoder : Decoder Person
+versionedPersonDecoder =
+  field "version" int
+    |> Decode.andThen personDecoder
+```
+
+[.column]
+```elm
+personDecoder : Int -> Decoder Person
+personDecoder version =
+  case version of
+    2 ->
+      Decode.succeed Person 
+        |> required "name" string
+        |> required "phone" string
+
+    1 ->	
+      Decode.succeed Person 
+        |> required "name" string
+        |> ( required "phone" int
+               |> Decode.map String.fromInt
+           )
+
+    _ ->
+      Decode.fail "Version not supported!"
+```
+
+---
+
+# Json-dekoding
+
+```elm
+type Msg
+  = GotPerson (Result Http.Error Person)
+
+
+getPerson : Cmd Msg
+getPerson =
+  Http.get
+    { url = "/person/123"
+    , expect = Http.expectJson versionedPersonDecoder GotPerson
+    }
+```
+^Hvis decoding feiler får man Http.BadBody
+
+---
+
+# Elm hos SVV
+
+- Private moduler
+- Komponentkassen
+- Tekstapp Elm
+
+^Show and tell fra eksisterende apper 
