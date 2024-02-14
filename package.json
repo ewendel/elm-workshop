@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.html",
   "scripts": {
+    "postinstall": "elm-tooling install",
     "build": "vite build",
     "start": "vite serve ./",
     "book": "gitbook serve",
@@ -23,6 +24,7 @@
     "gitbook-cli": "^2.3.2"
   },
   "devDependencies": {
+    "elm-tooling": "^1.15.0",
     "vite": "^2.7.13",
     "vite-plugin-elm": "^2.5.1"
   }

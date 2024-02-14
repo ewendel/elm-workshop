@@ -34,20 +34,13 @@ The code for the workshop is available here: https://github.com/ewendel/elm-work
 
 1. Install `node` version 12 or newer (which includes `npm`) from [nodejs.org](https://nodejs.org/en/download/current/).
 
-1. Install `elm`. This can be done with `npm install -g elm`, `brew install elm` (if on MacOS) or an old-school file download from [elm-lang.org](https://guide.elm-lang.org/install.html).
-
-1. Install a [`plugin`](https://guide.elm-lang.org/install.html#configure-your-editor) for your editor. At the time of writing we prefer VS Code for Elm development so we recommend you use that, even if VS Code is not usually your main editor of choice.
-
-1. Install [`elm-format`](https://github.com/avh4/elm-format#installation-), which is a crucial tool to make your Elm experience more enjoyable.
-
-    - `npm install -g elm-format`
-    - Remember to make sure that `elm-format` is available on your PATH or that you tell your editor where to find it
-    - Follow the instructions [here](https://github.com/avh4/elm-format#visual-studio-code-installation) to enable running `elm-format` in VS Code
-    - You can find the path for `elm-format` by doing `which elm-format` on MacOS/\*Nix or `Get-Command elm-format` in powershell on Windows
-
 1. Clone the repo (https://github.com/ewendel/elm-workshop) to your computer
 
 1. Run `npm ci` (please make sure to have `npm` version 6 or newer)
+   - This will install `elm` and `elm-format`. The binaries will be places in `node_modules/.bin`
+
+1. Install a [`plugin`](https://guide.elm-lang.org/install.html#configure-your-editor) for your editor. At the time of writing we prefer VS Code for Elm development so we recommend you use that, even if VS Code is not usually your main editor of choice.
+    - Follow the instructions [here](https://github.com/avh4/elm-format#visual-studio-code-installation) to enable running `elm-format` in VS Code
 
 1. Start your local application environment with `npm start` in the root folder of this repo. This should open a new browser window with `localhost:3000` and a nice compilation error.
 
